@@ -1,0 +1,255 @@
+.si-components{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.si-left-component{
+    width: 66vw;
+    background-color:#fff;
+}
+
+.si-left-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.si-head{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+
+.si-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.si-link{
+    color:#fff;
+    font-weight: bold;
+    font-size: 3vw;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.si-head-text-3{
+    color:#000;
+    font-size: 3.375vw;
+}
+
+.si-head-text-4{
+    color: #555a59;
+    font-size: 1.5vw;
+}
+
+.si-btn-2{
+    width: 14.688rem;
+    height: 3.375rem;
+    background-color: #fff;
+    color:#000;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-top: 30px;
+    
+}
+
+.si-btn-2:hover {
+    opacity: 0.7;
+}
+
+.si-input{
+    width: 29rem;
+    height: 3rem;
+    font-weight: bold;
+    background: #eef5f3;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    margin: 0.8rem;
+    padding: 0 16px;
+    
+}
+
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+  }
+
+  
+  
+.fa:hover {
+      opacity: 0.7;
+  }
+  
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+ 
+  .fa-google {
+    background: #dd4b39;
+    color: white;
+  }
+
+
+
+.si-right-component{
+    width: 34vw;
+    background-color: #842bd7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.si-right-content{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.si-head-text{
+    color:#fff;
+    font-size: 3.375vw;
+}
+.si-head-text-2{
+    color:#fff;
+    font-size: 2.0vw;
+}
+
+.si-btn-1{
+    width: 14.688rem;
+    height: 3.375rem;
+    background-color: #842bd7;
+    color:#fff;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-top: 30px;
+    
+}
+
+
+.si-btn-1:hover {
+    opacity: 0.7;
+}
+
+.si-forgot-pass{
+    margin-top: 2rem;
+}
+
+@media all and (max-width:800px){
+    .si-components{
+        position: fixed;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .si-left-component{
+        height: 90vh;
+        width: 100vw;
+        
+    }
+    .si-right-component{
+        height: 10vh;
+        width: 100vw;
+       
+        
+    }
+
+    .si-input{
+        width: 25rem;
+    }
+
+   
+    .si-btn-1{
+        margin-bottom: 20px;
+    }
+
+    
+
+    .si-head-text-2{
+        font-size: 3vw;
+    }
+
+    .si-head-text-3{
+        font-size: 6vw;
+    }
+
+    .si-head-text-4{
+        font-size: 3vw;
+    }
+
+}
+
+@media all and (max-width:420px){
+    .si-input{
+        width: 17em;
+    }
+
+    
+    .si-head{
+        display: none;
+    }
+
+    .si-body{
+        margin-top: 2rem;
+    }
+
+    .si-head-text-2 {
+        font-size: 4vw;
+    }
+
+
+    .si-head-text-3{
+        font-size: 7vw;
+    }
+
+    .si-head-text-4{
+        font-size: 4vw;
+    }
+
+}
+
+@media all and (max-width:320px){
+    .si-input{
+        width: 12em;
+        height: 2rem;
+    }
+
+
+    .si-head-text-3{
+        display: none;
+    }
+
+    .si-head-text-4{
+        margin-top: 20px;
+        font-size: 5vw;
+    }
+}
+

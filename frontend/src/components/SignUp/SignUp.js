@@ -20,13 +20,13 @@ function SignUp({signup, isAuthenticated}) {
 
       const [accountCreated, setAccountCreated] = useState(false)
       const [formData, setFormData] = useState({
-          full_name: '',
+          fullname: '',
           email: '',
           password: '',
           re_password: ''
       })
   
-      const { full_name, email, password, re_password } = formData
+      const { fullname, email, password, re_password } = formData
   
       const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
   
@@ -34,7 +34,7 @@ function SignUp({signup, isAuthenticated}) {
           e.preventDefault()
   
           if (password === re_password) {
-              signup(full_name, email, password, re_password)
+              signup(fullname, email, password, re_password)
               setAccountCreated(true)
           }
       }
@@ -90,8 +90,8 @@ function SignUp({signup, isAuthenticated}) {
                         className='su-input'
                         type='text'
                         placeholder='Full Name*'
-                        name='full_name'
-                        value={full_name}
+                        name='fullname'
+                        value={fullname}
                         onChange={e => onChange(e)}
                         required
                         />

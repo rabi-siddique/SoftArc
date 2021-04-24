@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
     'accounts',
+    'Scanner'
 
 ]
 
@@ -86,7 +87,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'rabisiddique27@gmail.com'
-EMAIL_HOST_PASSWORD = 'qwrwnbmjflikhhwz'
+EMAIL_HOST_PASSWORD ='idqatqbnrrfnmyqj'
 EMAIL_USE_TLS = True  
 
 # Password validation
@@ -138,6 +139,10 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    )
+    
 }
 SIMPLE_JWT = {
    'AUTH_HEADER_TYPES': ('JWT',),
@@ -168,3 +173,6 @@ DJOSER = {
     }
 }
 AUTH_USER_MODEL = 'accounts.UserAccount'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'Scanner/media')
+MEDIA_URL = 'media/'

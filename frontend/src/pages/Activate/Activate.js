@@ -36,9 +36,6 @@ const Activate = ({ verify, match }) => {
                 <button
                      className='a-btn-1'
                     onClick={verify_account}
-                    style={{ marginTop: '50px' }}
-                    type='button'
-                    className='btn btn-primary'
                 >
                     Verify
                 </button>

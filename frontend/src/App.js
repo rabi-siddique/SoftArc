@@ -6,6 +6,7 @@ import {Dashboard} from './pages'
 import {ResetPassword} from './pages'
 import {ResetPasswordConfirm} from './pages'
 import {Activate} from './pages'
+import {Upload} from './pages'
 import {Provider} from 'react-redux'
 import store from './store'
 
@@ -18,6 +19,7 @@ function App() {
       <Switch>
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/login' component={Login} />
+        <Route exact path='/upload' component={Upload} />
         <Route exact path='/dash' component={Dashboard} />
         <Route exact path='/reset-password' component={ResetPassword} />
         <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />

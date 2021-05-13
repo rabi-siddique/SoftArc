@@ -1,0 +1,10 @@
+.cd-box{
+    width: 100%;
+    margin: 20px;
+    
+}
+.boxes{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+    grid-gap:40px
+}

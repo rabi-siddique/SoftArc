@@ -4,6 +4,7 @@ import {Link,Redirect} from 'react-router-dom'
 import Logo from './SoftArcLogo.jpg'
 import { connect } from 'react-redux'
 import { signup } from '../../actions/auth'
+import axios from 'axios'
 
 
 function SignUp({signup, isAuthenticated}) {
@@ -38,6 +39,28 @@ function SignUp({signup, isAuthenticated}) {
               setAccountCreated(true)
           }
       }
+
+      const continueWithGoogle = async () => {
+        try {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/google-oauth2/?redirect_uri=${process.env.REACT_APP_API_URL}/google`)
+
+            window.location.replace(res.data.authorization_url);
+        } catch (err) {
+
+        }
+    };
+
+    const continueWithFacebook = async () => {
+        try {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/facebook/?redirect_uri=${process.env.REACT_APP_API_URL}/facebook`)
+
+            window.location.replace(res.data.authorization_url);
+        } catch (err) {
+
+        }
+    };
+
+
 
     if (isAuthenticated) {
         return <Redirect to='/login' />
@@ -76,8 +99,8 @@ function SignUp({signup, isAuthenticated}) {
                     <h1 className="su-head-text-3">Create Free Account</h1>
                      <p className="su-head-text-4">Sign up using social networks</p>
                      <div className="su-social-media-buttons">
-                     <a href="#" class="fa fa-facebook"></a>
-                     <a href="#" class="fa fa-google"></a>
+                     <button onClick={continueWithGoogle} className="fa fa-google"> </button>
+                     <button onClick={continueWithFacebook} className="fa fa-facebook"></button>
                      </div>
                      <div className="su-wrapper">
                      <div className="su-border">OR</div>

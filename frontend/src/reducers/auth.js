@@ -24,7 +24,8 @@ const initialState = {
     access: localStorage.getItem('access'),
     refresh: localStorage.getItem('refresh'),
     isAuthenticated: null,
-    user: null
+    user: null,
+    isLoading: false
 };
 
 export default function(state = initialState, action) {
@@ -34,7 +35,9 @@ export default function(state = initialState, action) {
         case AUTHENTICATED_SUCCESS:
             return {
                 ...state,
-                isAuthenticated: true
+                isAuthenticated: true,
+                isLoading:false
+                
             }
         case LOGIN_SUCCESS:
         case GOOGLE_AUTH_SUCCESS:
@@ -45,27 +48,38 @@ export default function(state = initialState, action) {
                 ...state,
                 isAuthenticated: true,
                 access: payload.access,
-                refresh: payload.refresh
+                refresh: payload.refresh,
+                isLoading:false
+                
+
             }
         case SIGNUP_SUCCESS:
             return {
                 ...state,
-                isAuthenticated: false
+                isAuthenticated: false,
+                isLoading:true
+                
             }
         case USER_LOADED_SUCCESS:
             return {
                 ...state,
-                user: payload
+                user: payload,
+                isLoading:false
+                
             }
         case AUTHENTICATED_FAIL:
             return {
                 ...state,
-                isAuthenticated: false
+                isAuthenticated: false,
+                isLoading:false
+                
             }
         case USER_LOADED_FAIL:
             return {
                 ...state,
-                user: null
+                user: null,
+                isLoading:false
+                
             }
         case GOOGLE_AUTH_FAIL:
         case FACEBOOK_AUTH_FAIL:
@@ -79,7 +93,8 @@ export default function(state = initialState, action) {
                 access: null,
                 refresh: null,
                 isAuthenticated: false,
-                user: null
+                user: null,
+                isLoading:false
             }
         case PASSWORD_RESET_SUCCESS:
         case PASSWORD_RESET_FAIL:

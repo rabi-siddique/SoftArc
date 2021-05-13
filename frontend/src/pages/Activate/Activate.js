@@ -1,24 +1,23 @@
 import React, { useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { verify } from '../../actions/auth'
 import Logo from './SoftArcLogo.jpg'
 import './Activate.css'
 
 const Activate = ({ verify, match }) => {
-    const [verified, setVerified] = useState(false)
+    
+    let history = useHistory()
+    
 
     const verify_account = e => {
         const uid = match.params.uid
         const token = match.params.token
 
         verify(uid, token)
-        setVerified(true)
+        history.push("/login")
     }
 
-    if (verified) {
-        return <Redirect to='/dash' />
-    }
 
     return (
         <div className="a-components">

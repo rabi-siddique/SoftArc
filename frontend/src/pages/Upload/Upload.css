@@ -1,8 +1,27 @@
 .upload-container{
+    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border:1px solid #000;
-    margin-top: 100px;
+    margin-top: 20px;
+}
+
+.ubtn{
+    width: 18.688rem;
+    height: 4.375rem;
+    background-color: #842bd7;
+    color:#fff;
+    border-radius: 60px;
+    font-weight: 800;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-top: 30px;
+    
+}
+
+.ubtn:hover {
+    opacity: 0.7;
 }

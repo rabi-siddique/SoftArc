@@ -1,73 +1,60 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom';
+import { Link,useHistory} from 'react-router-dom';
 import HomeIcon from '@material-ui/icons/Home';
-import DashboardIcon from '@material-ui/icons/Dashboard';
 import SettingsIcon from '@material-ui/icons/Settings';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
 import PublishIcon from '@material-ui/icons/Publish';
+import PersonIcon from '@material-ui/icons/Person';
 import DP from './dp.jpg'
 import './Sidebar.css'
+import {SidebarOption} from '../../components'
+import { connect } from 'react-redux';
+import {logout} from '../../actions/auth'
 
-function Sidebar(props) {
+function Sidebar({sidebar,fullname,setDarkmode,logout}) {
+  let history = useHistory()
 
+  const clickHandler = ()=>{
+    logout()
+    history.push("/login")
+  }
+  
   return (
-        <div className={props.sidebar? `side-bar` : `show-side-bar`}>
+        <div className={sidebar? `side-bar` : `show-side-bar`}>
 
         <center>
           <img className="dp" src={DP} />
-          <h4>Rabi Siddique</h4>
+          <h4>{fullname}</h4>
         </center>
 
-        <div className="sidebar-content">
-          
-            <div className="item">
-            <HomeIcon className="icon"/>
-            <span className="item-text">Home</span>
-            </div>
+        <SidebarOption Icon={HomeIcon} text="Home" sidebar={sidebar}/>
+        <Link className="side-link" to="/profile">  
+        <SidebarOption Icon={PersonIcon} text="Profile" sidebar={sidebar}/>
+        </Link>
+        <Link className="side-link" to="/scanner">  
+        <SidebarOption Icon={PublishIcon} text="Upload" sidebar={sidebar}/>
+        </Link>
+        <Link className="side-link" to="/sv">    
+        <SidebarOption Icon={SaveAltIcon} text="Saved" sidebar={sidebar}/>
+        </Link>
 
-        
-            <div className="item">
-            <DashboardIcon className="icon"/>
-            <span className="item-text">Dashboard</span>
-            </div>
-
-           
-            <div className="item">
-            <SaveAltIcon className="icon"/>
-            <span className="item-text">Saved</span>
-            </div>
-
+        <div onClick={setDarkmode}>
+        <SidebarOption Icon={InvertColorsIcon} text="Apply Dark Theme" sidebar={sidebar}/>
+        </div>
+        <div onClick={clickHandler}>
+        <SidebarOption 
+        Icon={ExitToAppIcon} text="Logout" sidebar={sidebar}/>
+      </div>
             
-            <div className="item">
-            <PublishIcon className="icon"/>
-            <span className="item-text">Upload</span>
-            </div>
-
-            
-            <div className="item">
-            <SettingsIcon className="icon"/>
-            <span className="item-text">Settings</span>
-            </div>
-            
-            
-            <div className="item">
-            <InvertColorsIcon className="icon"/>
-            <span className="item-text">Apply Dark Theme</span>
-            </div>
-
-           
-            <div className="item" onClick={props.logout_user}>
-            <ExitToAppIcon className="icon"/>
-            <span className="item-text">LogOut</span>
-            </div>
         </div>
 
            
 
-      </div>
+      
     )
 }
 
-export default Sidebar
+
+export default connect(null, {logout})(Sidebar)

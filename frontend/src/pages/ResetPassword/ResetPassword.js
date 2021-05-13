@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {Redirect} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import './ResetPassword.css'
 import {connect} from 'react-redux'
 import Logo from './SoftArcLogo.jpg'
@@ -7,7 +7,8 @@ import {reset_password} from '../../actions/auth'
 
 
 function ResetPassword({reset_password}) {
-    const [requestSent, setRequestSent] = useState(false);
+    let history = useHistory()
+    
     const [formData, setFormData] = useState({
         email: ''
     });
@@ -20,13 +21,12 @@ function ResetPassword({reset_password}) {
         e.preventDefault();
 
         reset_password(email);
-        setRequestSent(true);
+        console.log("Its nexy")
+        history.push("/login")
+
     };
 
-    if (requestSent) {
-        return <Redirect to='/login' />
-    }
-
+   
 
     return (
         <div className="rp-components">

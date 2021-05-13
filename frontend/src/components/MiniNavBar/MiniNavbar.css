@@ -1,0 +1,10 @@
+.table-nav-bar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.table-nav-bar .it{
+  margin-left: 24px;
+}

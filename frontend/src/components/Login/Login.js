@@ -1,16 +1,33 @@
 import React,{useState,useEffect} from 'react'
-import {Link,Redirect} from 'react-router-dom'
+import {Link,Redirect,useLocation} from 'react-router-dom'
 import './Login.css'
 import {connect} from 'react-redux'
 import Logo from './SoftArcLogo.jpg'
-import {login} from '../../actions/auth'
+import {login,googleAuthenticate} from '../../actions/auth'
+import axios from 'axios'
+import queryString from 'query-string'
 
 
-function Login({login, isAuthenticated}) {
+function Login({login, isAuthenticated,googleAuthenticate}) {
+    let location = useLocation();
     const [formData, setFormData] = useState({
         email: '',
         password: '' 
     });
+    
+    useEffect(() => {
+        const values = queryString.parse(location.search);
+        const state = values.state ? values.state : null;
+        const code = values.code ? values.code : null;
+        console.log("hello")
+
+        console.log('State: ' + state);
+        console.log('Code: ' + code);
+
+        if (state && code) {
+            googleAuthenticate(state, code);
+        }
+    }, [location]);
 
     const { email, password } = formData;
 
@@ -31,6 +48,27 @@ function Login({login, isAuthenticated}) {
         window.addEventListener("resize", updateMedia);
         return () => window.removeEventListener("resize", updateMedia);
       });
+
+      const continueWithGoogle = async () => {
+        try {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/google-oauth2/?redirect_uri=${process.env.REACT_APP_API_URL}/google`)
+
+            window.location.replace(res.data.authorization_url);
+        } catch (err) {
+
+        }
+    };
+
+    const continueWithFacebook = async () => {
+        try {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/facebook/?redirect_uri=${process.env.REACT_APP_API_URL}/facebook`)
+
+            window.location.replace(res.data.authorization_url);
+        } catch (err) {
+
+        }
+    };
+
 
         
 
@@ -54,8 +92,9 @@ function Login({login, isAuthenticated}) {
                     <h1 className="si-head-text-3">Login to your Account</h1>
                      <p className="si-head-text-4">Login using social networks</p>
                      <div className="si-social-media-buttons">
-                     <a href="#" class="fa fa-facebook"></a>
-                     <a href="#" class="fa fa-google"></a>
+                     <button onClick={continueWithGoogle} className="fa fa-google"> </button>
+                     <button onClick={continueWithFacebook} className="fa fa-facebook"></button>
+                    
                      </div>
                      <div className="si-wrapper">
                      <div className="si-border">OR</div>
@@ -131,4 +170,4 @@ const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 })
 
-export default connect(mapStateToProps,{login})(Login)
+export default connect(mapStateToProps,{login,googleAuthenticate})(Login)

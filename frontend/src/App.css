@@ -4,5 +4,105 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.5;
+  --dark:#121212;
+  
+}
+
+.light{
+  background-color: #fff;
+  color: #121212;
+}
+.darkmode{
+  background-color: #121212;
+  color: #fff;
+
+}
+
+.darkmode .header{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)s, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.darkmode .side-bar{box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.darkmode .show-side-bar{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.darkmode .side-link{
+  color:#fff
+}
+
+.darkmode .modal-box{
+  background-color: #121212;
+}
+
+.darkmode .modal-backdrop{
+  background-color: rgba(0,0,0,0.5);
+  
+}
+
+.darkmode th{
+  background-color: #000;
+}
+
+.darkmode tr:nth-child(even){background-color: #000}
+
+
+.darkmode .sidebarOption:hover {
+  background-color: #fff;
+  color: #121212;
+}
+
+.darkmode .Card{
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+}
+
+.darkmode .box{
+  border: 1px solid #fff;
+}
+
+.darkmode .class-name{
+  border-bottom: 1px solid #fff;
+}
+
+.darkmode .variables{
+  border-bottom: 1px solid #fff;
+}
+
+.darkmode .methods{
+  border-bottom: 1px solid #fff;
+}
+
+.darkmode .table-nav-bar h2{
+  color:#fff
+}
+
+.darkmode .A{
+  background-color: #000;
+}
+
+.darkmode .overall-container > h1{
+  background-color: #121212;
+}
+
+.darkmode .profile-banner{
+  background-color: #000;
+}
+
+.darkmode .personal-section{
+  background-color: #000;
+}
+
+.darkmode .about-section{
+  background-color: #121212;
+}
+
+.dashboard{
+  display: flex;
+  
+  
 }
 

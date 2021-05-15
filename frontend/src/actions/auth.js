@@ -52,6 +52,7 @@ export const load_user = () => async dispatch => {
 
 export const googleAuthenticate = (state, code) => async dispatch => {
     if (state && code && !localStorage.getItem('access')) {
+        
         const config = {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -64,10 +65,10 @@ export const googleAuthenticate = (state, code) => async dispatch => {
         };
 
         const formBody = Object.keys(details).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(details[key])).join('&');
-
+        console.log("reading")
+        console.log(formBody)
         try {
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/o/google-oauth2/?${formBody}`, config);
-
             dispatch({
                 type: GOOGLE_AUTH_SUCCESS,
                 payload: res.data
@@ -75,6 +76,10 @@ export const googleAuthenticate = (state, code) => async dispatch => {
 
             dispatch(load_user());
         } catch (err) {
+            console.log("in the catch")
+            console.log(err.name)
+            console.log(err.message)
+            console.log(err.stack)
             dispatch({
                 type: GOOGLE_AUTH_FAIL
             });
@@ -107,6 +112,8 @@ export const facebookAuthenticate = (state, code) => async dispatch => {
 
             dispatch(load_user());
         } catch (err) {
+            console.log("Errors:")
+            console.log(err)
             dispatch({
                 type: FACEBOOK_AUTH_FAIL
             });
@@ -175,14 +182,14 @@ export const login = (email, password) => async dispatch => {
     }
 };
 
-export const signup = (fullname, email, password, re_password) => async dispatch => {
+export const signup = (first_name, last_name, email, password, re_password) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     };
 
-    const body = JSON.stringify({ fullname, email, password, re_password });
+    const body = JSON.stringify({ first_name, last_name, email, password, re_password });
 
     try {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config);
@@ -192,7 +199,6 @@ export const signup = (fullname, email, password, re_password) => async dispatch
             payload: res.data
         });
     } catch (err) {
-        console.log(err.response)
         dispatch({
             type: SIGNUP_FAIL
         })
@@ -215,7 +221,6 @@ export const verify = (uid, token) => async dispatch => {
             type: ACTIVATION_SUCCESS,
         });
     } catch (err) {
-        console.log(err.response)
         dispatch({
             type: ACTIVATION_FAIL
         })

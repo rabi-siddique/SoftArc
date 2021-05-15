@@ -1,0 +1,46 @@
+.box{
+    width: 250px;
+    border: 1px solid #111;
+    border-radius: 1rem;
+
+}
+
+.class-name{
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #111;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+
+.variables{
+    margin-top: 10px;
+    border-bottom: 1px solid #111;
+    
+}
+
+.methods{
+    margin-top: 10px;
+    border-bottom: 1px solid #111;
+}
+
+ul{
+    list-style: none;
+    padding-left: 4px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.accordian{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.accordian-data-inactive{
+    display: none;
+}
+
+.active{
+    display:contents;
+}

@@ -1,0 +1,68 @@
+.modal-wrapper {
+position: fixed;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+
+}
+  
+.modal-backdrop {
+position: fixed;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+z-index: 100;
+background-color: rgba(0,0,0,0.3);
+}
+  
+.modal-box {
+position: relative;
+background-color: #fff;
+top: 50%;
+left: 50%;
+border-radius: 16px;
+transform: translate(-50%, -50%);
+min-height: 30%;
+width: 60%;
+overflow-y: auto;
+box-shadow: 0 0 10px rgba(0,0,0,0.25);
+z-index: 101;
+padding: 40px;
+
+}
+
+.form-elements{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.form-elements > p{
+    font-weight: 800;
+    font-size: 20px;
+    margin:0;
+    margin-top: 16px;
+}
+
+#details{
+    height: 4rem;
+}
+#save-btn{
+    height: 2.375rem;
+    background-color: #842bd7;
+    color:#fff;
+    font-weight: 800;
+    font-size: 20px;
+    margin-top: 20px;
+    border-radius: 16px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#save-btn:hover {
+    opacity: 0.7;
+}

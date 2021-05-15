@@ -1,22 +1,32 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 import AppsIcon from '@material-ui/icons/Apps';
 import {Avatar,IconButton} from '@material-ui/core'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import PublishIcon from '@material-ui/icons/Publish';
 import './Navbar.css'
+import { connect } from 'react-redux';
+import {logout} from '../../actions/auth'
 
 
-function Navbar(props) {
+function Navbar({showSidebar,darkmode,fullname,logout}) {
+  let history = useHistory()
+
+  const clickHandler = ()=>{
+    logout()
+    history.push("/login")
+  }
+  const icon_color = darkmode?"#fff":"#121212"
+  
 
   return (
     
       <div className="header">
 
       <div className="left-area">
-        <IconButton onClick={props.showSidebar}>
-        <MenuIcon className="bar-btn" />
+        <IconButton onClick={showSidebar}>
+        <MenuIcon className="bar-btn" style={{fill: icon_color}}  />
         </IconButton>
         <h1>SOFTARC</h1>
      
@@ -26,26 +36,25 @@ function Navbar(props) {
         <center>
           <Avatar/>
           </center>
-          <h1>Welcome Rabi Siddique</h1>
+          <h1>Welcome {fullname}</h1>
       </div>
 
-      <div className="right-area">
+      <div className={darkmode?"right-area-dark":"right-area-light"}>
 
               <IconButton>
-                  <AppsIcon />
+                  <AppsIcon style={{fill: icon_color}}/>
               </IconButton>
             
-              
+              <Link className="nav-link" to={`/scanner`}>
                 <IconButton>
-                <PublishIcon />
-                <h1 className="upload-label">Upload</h1>
+                <PublishIcon style={{fill: icon_color}}/>
+                <h1 className="upload-label" >Upload</h1>
                 </IconButton>
+                </Link>
               
-            
-
-              
-              <IconButton onClick={props.logout_user}>
-              <ExitToAppIcon />
+          
+              <IconButton onClick={clickHandler}>
+              <ExitToAppIcon color="secondary" style={{fill: icon_color}}/>
               <h1 className="logout-label">LogOut</h1>
               </IconButton>
               
@@ -63,4 +72,4 @@ function Navbar(props) {
   )
 }
 
-export default Navbar
+export default connect(null, {logout})(Navbar)

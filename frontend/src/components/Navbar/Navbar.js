@@ -9,10 +9,10 @@ import './Navbar.css'
 import { connect } from 'react-redux';
 import {logout} from '../../actions/auth'
 
-
-function Navbar({showSidebar,darkmode,fullname,logout}) {
+function Navbar({showSidebar,darkmode,logout,
+  imageurl,imagename,firstname,lastname}) {
   let history = useHistory()
-
+  
   const clickHandler = ()=>{
     logout()
     history.push("/login")
@@ -22,7 +22,7 @@ function Navbar({showSidebar,darkmode,fullname,logout}) {
 
   return (
     
-      <div className="header">
+      <div className="nav-header">
 
       <div className="left-area">
         <IconButton onClick={showSidebar}>
@@ -34,9 +34,9 @@ function Navbar({showSidebar,darkmode,fullname,logout}) {
 
       <div className="mid-area">
         <center>
-          <Avatar/>
+          <Avatar src={imageurl}> {imagename}</Avatar>
           </center>
-          <h1>Welcome {fullname}</h1>
+          <h1>Welcome {`${firstname} ${lastname}`}</h1>
       </div>
 
       <div className={darkmode?"right-area-dark":"right-area-light"}>

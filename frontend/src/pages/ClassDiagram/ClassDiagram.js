@@ -3,7 +3,7 @@ import './ClassDiagram.css'
 import {MiniNavBar} from '../../components'
 import {CDBox} from '../../components'
 import { useContext } from 'react'
-import {DataContext} from '../../DataContext'
+import {DataContext} from '../../context/DataContext'
 import {useHistory} from 'react-router-dom'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 

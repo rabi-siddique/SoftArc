@@ -9,6 +9,7 @@ from rest_framework import status
 from rest_framework import authentication, permissions
 from django.core.files.storage import FileSystemStorage
 from rest_framework.parsers import MultiPartParser,FormParser
+from django.conf import settings
 
 class ProfileView(APIView):
     permission_classes = [permissions.AllowAny]
@@ -31,17 +32,20 @@ class ProfilePhotoView(APIView):
     parser_classes = [MultiPartParser,FormParser]
 
     def get(self, request, pk, format=None):
-        image = UserAccount.objects.get(pk=pk)
-        serializer = ProfilePhotoSerializer(image)
-        return Response(serializer.data)
+        img = UserAccount.objects.filter(pk=pk,file_type='image')
+        return Response({"img":img, 'media_url':settings.MEDIA_URL})
+
+        #image = UserAccount.objects.get(pk=pk)
+        s#erializer = ProfilePhotoSerializer(image)
+        #return Response(serializer.data)
 
     def patch(self, request, pk, format=None):
-        print(request.data)
         data = UserAccount.objects.get(pk=pk)
         serializer = ProfileSerializer(data,data=request.data,partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response({'msg':'Partial Data Updated'})
+            return Response(serializer.data)
+            #return Response({'msg':'Partial Data Updated'})
         return Response(serializer.errors)
  
 

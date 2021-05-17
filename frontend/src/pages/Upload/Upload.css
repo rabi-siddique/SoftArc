@@ -5,8 +5,36 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    
 }
 
+.error-message{
+    max-width: 75ch;
+    word-spacing: 15px;
+    font-size: 1rem;
+    background-color: #f2dede;
+    color: #a94442;
+    border-radius: 15px;
+    padding: 8px;
+    margin-bottom: 70px;
+}
+
+.error-message button{
+    
+    width: 100px;
+    height: 2rem;
+    margin-right: 12px; 
+    cursor: pointer; 
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    background-color:  #a94442;
+    color: #f2dede;
+    margin: 10px auto;
+}
+select {
+    width: 100pxs;     
+ }
 .ubtn{
     width: 18.688rem;
     height: 4.375rem;
@@ -24,4 +52,8 @@
 
 .ubtn:hover {
     opacity: 0.7;
+}
+
+.file-selection{
+    display: flex;
 }

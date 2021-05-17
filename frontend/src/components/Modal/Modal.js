@@ -1,23 +1,16 @@
 import React,{useState,forwardRef,useImperativeHandle} from 'react'
 import './Modal.css'
+import ReactDOM from 'react-dom'
 import { useContext } from 'react'
-import {DataContext} from '../../DataContext'
+import {DataContext} from '../../context/DataContext'
 import axios from 'axios'
 
 
 
-const Modal = forwardRef((props,ref) =>  {
-    const [display,setDisplay] = useState(false)
+function Modal(props){
+
     const owner = props.id
-    
-    const open = () => { 
-        setDisplay(true)
-    }
-
-    const close = () => {
-        setDisplay(false)
-    }
-
+   
     const [datareceived,setdatareceived] = useContext(DataContext)
     const [formData, setFormData] = useState({
         name: '',
@@ -39,7 +32,7 @@ const Modal = forwardRef((props,ref) =>  {
         const body = JSON.stringify({ name, details, data,owner });
         try{
             const resp = await axios.post(url, body,config)
-            close()
+            props.onClose()
            
 
         }
@@ -48,48 +41,49 @@ const Modal = forwardRef((props,ref) =>  {
         }
     }
     
-    
 
-    useImperativeHandle(ref,()=>{
-        return {
-            openModal: () => open(),
-            close: () => close()
-        }
-    })
-    
-    if(display){
-
-    return (
-        <div className="modal-wrapper">
-        <div onClick={close} className="modal-backdrop" />
-        <div className="modal-box">
+    return ReactDOM.createPortal(
+        <div className={`modal ${props.show ? `show` : ``}`} onClick={props.onClose}>
+            <div className="modal-content" onClick={e=>e.stopPropagation()}>
+                <div className="modal-header">
+                    <h4 className="modal-title">Save Data</h4>
+                </div>
+                <div className="modal-body">
+                    
             <form className="form-elements" onSubmit={onClickHandler}>
-            <p>Name of the Project:</p>
+                        <p>Name of the Project:</p>
 
-            <input 
-            type="text" 
-            name="name" 
-            value={name}
-           onChange={e => onChange(e)}
-             />
-            <p>Add Details:</p>
+                        <input 
+                        type="text" 
+                        name="name" 
+                        value={name}
+                        onChange={e => onChange(e)}
+                        />
+                        <p>Add Details:</p>
 
-            <input 
-            id="details"  
-            type="text" 
-            name="details" 
-            value={details}
-           onChange={e => onChange(e)}
-            />
-            <input id="save-btn" type="submit" value="Save" />
-            </form>
+                        <input 
+                        id="details"  
+                        type="text" 
+                        name="details" 
+                        value={details}
+                        onChange={e => onChange(e)}
+                        />
+                        <input id="save-btn" type="submit" value="Save" />
+                        </form>
+                            </div>
+                            <div className="modal-footer">
+                                <button 
+                                onClick={props.onClose}
+                                className="button">
+                                    Close
+                                </button>
+                            </div>
+            </div>
+            
         </div>
-        </div>
-    )
-    }
-    else{
-        return null
-    }
-})
-
+    ,document.getElementById('root'))
+}
+    
 export default Modal
+    
+

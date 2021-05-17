@@ -8,13 +8,13 @@ from django.db import models
 
 class UserAdminConfig(UserAdmin):
     model = UserAccount
-    search_fields = ('email', 'fullname',)
-    list_filter = ('email', 'fullname', 'is_active', 'is_staff')
+    search_fields = ('email', 'first_name','last_name',)
+    list_filter = ('email', 'first_name','last_name', 'is_active', 'is_staff')
     ordering = ('id',)
-    list_display = ('id','email' ,'fullname','username','image','password',
+    list_display = ('id','email' ,'first_name','last_name','username','image','password',
     'about','darktheme','is_active', 'is_staff')
     fieldsets = (
-        (None, {'fields': ('email', 'fullname',)}),
+        (None, {'fields': ('email', 'first_name','last_name',)}),
         ('Permissions', {'fields': ('is_staff', 'is_active')}),
         ('Personal', {'fields': ('password',)}),
     )
@@ -24,7 +24,7 @@ class UserAdminConfig(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'fullname', 'password1', 'password2', 'is_active', 'is_staff')}
+            'fields': ('email', 'first_name','last_name', 'password1', 'password2', 'is_active', 'is_staff')}
          ),
     )
 

@@ -21,7 +21,6 @@ function ResetPassword({reset_password}) {
         e.preventDefault();
 
         reset_password(email);
-        console.log("Its nexy")
         history.push("/login")
 
     };

@@ -86,8 +86,8 @@ DATABASES = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = '[my email ]'
-EMAIL_HOST_PASSWORD ='[my pass]'
+EMAIL_HOST_USER = 'rabisiddique27@gmail.com'
+EMAIL_HOST_PASSWORD ='idqatqbnrrfnmyqj'
 EMAIL_USE_TLS = True  
 
 # Password validation
@@ -168,7 +168,7 @@ DJOSER = {
     'ACTIVATION_URL': 'activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
     'SOCIAL_AUTH_TOKEN_STRATEGY': 'djoser.social.token.jwt.TokenStrategy',
-    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': ['http://localhost:8000/google', 'http://localhost:8000/facebook'],
+    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': ['http://localhost:8000', 'http://localhost:8000'],
     'SERIALIZERS': {
         'user_create': 'accounts.serializers.UserCreateSerializer',
         'user': 'accounts.serializers.UserCreateSerializer',
@@ -177,13 +177,13 @@ DJOSER = {
     }
 }
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = [my key] 
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = [my key] 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '289674081590-o19gv9uv09h695ok6gd7jeb3l5tvlgnj.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'YAwCQCxgj9N5VJ4Gy732-PrD'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile', 'openid']
-SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = ['name']
+SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = ['first_name', 'last_name']
 
-SOCIAL_AUTH_FACEBOOK_KEY = '[YOUR FACEBOOK API KEY]'
-SOCIAL_AUTH_FACEBOOK_SECRET = '[YOUR FACEBOOK API SECRET]'
+SOCIAL_AUTH_FACEBOOK_KEY = '179238600748762'
+SOCIAL_AUTH_FACEBOOK_SECRET = '26acb909e0ac4df70eaf6f450bb705ea'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'email, first_name, last_name'
@@ -191,5 +191,5 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
 
 AUTH_USER_MODEL = 'accounts.UserAccount'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'Scanner/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = 'media/'

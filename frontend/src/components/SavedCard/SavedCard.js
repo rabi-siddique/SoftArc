@@ -4,7 +4,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { useContext } from 'react'
-import {DataContext} from '../../DataContext'
+import {DataContext} from '../../context/DataContext'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 

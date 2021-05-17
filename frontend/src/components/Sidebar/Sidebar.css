@@ -1,6 +1,5 @@
 .side-bar{
     width: 16rem;
-    height: 100vh;
     position: sticky;
     top:2;
     left: 0;
@@ -22,7 +21,8 @@
     height: 150px;
     border-radius: 100px;
     margin-bottom: 10px;
-    margin-top: 20px;
+    margin-top: 40px;
+    
    
 }
 

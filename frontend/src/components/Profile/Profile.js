@@ -2,38 +2,55 @@ import React,{useState,useEffect} from 'react'
 import './Profile.css'
 import EditIcon from '@material-ui/icons/Edit';
 import axios from 'axios'
-import SendIcon from '@material-ui/icons/Send';
-import dp from './dp.jpg'
-import {ResetPasswordModal} from '../../components';
+import NotInterestedIcon from '@material-ui/icons/NotInterested';
+import {Avatar,IconButton} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles((theme) => ({
+  large: {
+    width: theme.spacing(22),
+    height: theme.spacing(22),
+    marginTop : '20px',
+    marginBottom : '20px',
+    fontSize: '60px',
+    
+  },
+  
+}));
 
 function Profile(props) {
-    
+    const classes = useStyles();
     const [namefield,setNameField] = useState(false)
+    const [namefield2,setNameField2] = useState(false)
     const [usernamefield,setUsernameField] = useState(false)
     const [aboutfield,setAboutField] = useState(false)
-    const [profiledata,setprofiledata] = useState({})
-    const [name,setName] = useState("")
+    const [profiledata,setprofiledata] = useState(props.data)
+    const [name,setName] = useState(props.firstname)
+    const [lname,setlname] = useState(props.lastname)
     const [username,setUserName] = useState("")
     const [about,setAbout] = useState("")
-    const [show,setShow] = useState(false)
     const [selectedFile,setSelectedFile] = useState()
     const config = {headers:{"Content-Type":"multipart/form-data",accept:'application/json'}}
     
 
-    let url = `http://127.0.0.1:8000/profile/get/${props.userdata?.id}/`;
     let url2 = `http://127.0.0.1:8000/profile/update/${props.userdata?.id}/`;
     let url3 = `http://127.0.0.1:8000/profile/updatedp/${props.userdata?.id}/`;
-            
-                    
     
-
+    
     const onChangeName = ()=>{
-        const resp = axios.patch(url2,{"fullname":name})
-        profiledata.fullname = name
+        
+        const resp = axios.patch(url2,{"first_name":name})
+        props.setfirstname(name)
         setNameField(false)
     }
 
-   
+    const onChangelname = ()=>{
+        
+        const resp = axios.patch(url2,{"last_name":lname})
+        props.setlastname(lname)
+        setNameField2(false)
+    }
 
     const onChangeUsername = ()=>{
         const resp = axios.patch(url2,{"username":username})
@@ -49,22 +66,14 @@ function Profile(props) {
     }
 
     
-        useEffect(()=>{
-            async function fetchData(){
-        
-            const resp = await axios.get(url)
-            setprofiledata(resp.data)
-            console.log(resp.data)
-                      
-        }  
-
-            fetchData()
-
-   },[url])
-
     const clickHandlerA = ()=>{
         setNameField(!namefield)
     }
+
+    const clickHandlerD = ()=>{
+        setNameField2(!namefield2)
+    }
+
 
     const clickHandlerB = ()=>{
         setUsernameField(!usernamefield)
@@ -78,15 +87,18 @@ function Profile(props) {
         e.preventDefault(); // Prevent form submission
         const data = new FormData()
         data.append("image",selectedFile,selectedFile.name)
-        console.log(data)
+        
         try{
             const resp = await axios.patch(url3, data,config)
-           
+            props.setimageurl(`${process.env.REACT_APP_API_URL}${resp.data.image}`)
+            e.target.value = null
+            
         }
         catch(err){
             console.log(err.response)
         }
     }
+
 
     if(props.userdata){
 
@@ -95,39 +107,53 @@ function Profile(props) {
             <div className="profile-banner">
                <h1> Welcome to your Profile !</h1>
             </div>
-
-            <div className="profile-picture">
-            <img src={dp} /> 
-
-                <form method="patch" encType="multipart/formdata" 
-            onSubmit={onClickHandler}>
+            
+  
+             <div className="profile-picture">
+    
+             <Avatar className={classes.large} 
+             src={props.imageurl}>
+                 {props.imagename}</Avatar>
+          
+            
+             <form method="patch" encType="multipart/formdata" 
+                onSubmit={onClickHandler}>
                 
-
                     <input type="file" 
                     accept="image/*"
                     name="dp" 
+                    required
+                    onChange={(e) => setSelectedFile(e.target.files[0])}
+                    onClick={e => (e.target.value = null)}
                     
-          onChange={(e) => setSelectedFile(e.target.files[0])}/>
+                    />
 
-                    <input type="submit"/>
+                    <input type="submit" className="profile-btn"
+                    value="Upload" 
+                    />
+                    
                 </form>
                 
-                
+                </div>
 
-            </div>
+
 
             <div className="personal-section">
                
                 <div className="name">
+                <div className="section">
+                <h1>First Name</h1>
+                </div>
                 {!namefield?
-                <h1>{profiledata.fullname}</h1>
+                <h1>{props.firstname}</h1>
                 :
                 <div className="conditioned-input">
                 <input 
                 type="text"
-                defaultValue={profiledata.fullname}
+                defaultValue={props.firstname}
                 onChange={(e)=>{setName(e.target.value)}}
                 />
+                
                 <button onClick={onChangeName}>Save</button>
                 </div>
                 }
@@ -135,6 +161,32 @@ function Profile(props) {
                 </div>
 
                 <div className="name">
+                
+                <div className="section">
+                <h1>Last Name</h1>
+                </div>
+                {!namefield2?
+                <h1>{props.lastname}</h1>
+                :
+                <div className="conditioned-input">
+                <input 
+                type="text"
+                defaultValue={props.lastname}
+                onChange={(e)=>{setlname(e.target.value)}}
+                />
+                <button onClick={onChangelname}>Save</button>
+                </div>
+                }
+                <EditIcon className="editicon" onClick={clickHandlerD}/>
+                </div>
+
+
+
+                <div className="name">
+                
+                <div className="section">
+                <h1>Username</h1>
+                </div>
                 {!usernamefield?
                 <h1>{profiledata.username}</h1>
                 :
@@ -150,25 +202,23 @@ function Profile(props) {
                 <EditIcon className="editicon" onClick={clickHandlerB}/>
                 </div>
 
+                <div className="name">
+                <div className="section">
+                <h1>Email</h1>
                 <h1>{props.userdata.email}</h1>
-                <h1 onClick={()=>{setShow(true)}}>Reset Password</h1>
-                <ResetPasswordModal
-                onClose={()=>{setShow(false)}} 
-                show={show}/>
-              </div>
-            
-
-            <div className="about-section">
-                <div className="icon">
-                <EditIcon className="editicon" onClick={clickHandlerC}/>
                 </div>
+                <NotInterestedIcon className="editicon" />
+                </div>
+
+                <div className="name">
+                
+                <div className="section">
                 <h1>About</h1>
+                </div>
                 {!aboutfield?
-                <p>
-                {profiledata.about}
-                </p>
+                <h1>{profiledata.about}</h1>
                 :
-                <div className="conditioned-text">
+                <div className="conditioned-input">
                 <textarea 
                 type="text"
                 defaultValue={profiledata.about}
@@ -177,11 +227,15 @@ function Profile(props) {
                 <button onClick={onChangeAbout}>Save</button>
                 </div>
                 }
+                <EditIcon className="editicon" onClick={clickHandlerC}/>
+                </div>
+            
 
-               
-                
+              </div>
+  
             </div>
-        </div>
+            
+       
     )}
     else{
         return <h1>Loading</h1>

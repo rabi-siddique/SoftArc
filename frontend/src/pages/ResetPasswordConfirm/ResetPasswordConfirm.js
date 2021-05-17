@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { reset_password_confirm } from '../../actions/auth';
 import Logo from './SoftArcLogo.jpg'
 import './ResetPasswordConfirm.css'
 
 const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
-    const [requestSent, setRequestSent] = useState(false);
+    let history = useHistory()
     const [formData, setFormData] = useState({
         new_password: '',
         re_new_password: ''
@@ -23,12 +23,10 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
         const token = match.params.token;
 
         reset_password_confirm(uid, token, new_password, re_new_password);
-        setRequestSent(true);
+        history.push("/login")
     };
 
-    if (requestSent) {
-        return <Redirect to='/dash' />
-    }
+    
     return (
         <div className="rps-components">
 

@@ -3,7 +3,7 @@ import {VariablesTable} from '../../components'
 import {MethodsTable} from '../../components'
 import './TableData.css'
 import { useContext } from 'react'
-import {DataContext} from '../../DataContext'
+import {DataContext} from '../../context/DataContext'
 
 function TableData() {
     const [datareceived,setdatareceived] = useContext(DataContext)

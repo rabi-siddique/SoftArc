@@ -35,14 +35,16 @@ function SignUp({signup, isAuthenticated}) {
           e.preventDefault()
   
           if (password === re_password) {
-              signup(fullname, email, password, re_password)
+              const namearr = fullname.split(" ")
+               
+              signup(namearr[0],namearr[1], email, password, re_password)
               setAccountCreated(true)
           }
       }
 
       const continueWithGoogle = async () => {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/google-oauth2/?redirect_uri=${process.env.REACT_APP_API_URL}/google`)
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/google-oauth2/?redirect_uri=${process.env.REACT_APP_API_URL}`)
 
             window.location.replace(res.data.authorization_url);
         } catch (err) {
@@ -52,7 +54,7 @@ function SignUp({signup, isAuthenticated}) {
 
     const continueWithFacebook = async () => {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/facebook/?redirect_uri=${process.env.REACT_APP_API_URL}/facebook`)
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/facebook/?redirect_uri=${process.env.REACT_APP_API_URL}`)
 
             window.location.replace(res.data.authorization_url);
         } catch (err) {

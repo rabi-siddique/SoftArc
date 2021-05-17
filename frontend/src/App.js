@@ -1,21 +1,26 @@
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch,useLocation} from "react-router-dom";
 import './App.css';
 import {SignUp,Login,Sidebar,Navbar,Profile} from './components'
 import {ResetPassword} from './pages'
 import {ResetPasswordConfirm} from './pages'
 import {Activate} from './pages'
-import {load_user,checkAuthenticated} from './actions/auth'
+import {load_user,checkAuthenticated,googleAuthenticate} from './actions/auth'
 import {useEffect,useState} from 'react'
 import { connect } from 'react-redux';
-import {Upload,ClassDiagram,Table,Buttons,Saved} from './pages'
+import {Upload,ClassDiagram,Table,Buttons,Saved,Homepage,Help} from './pages'
 import axios from 'axios'
+import queryString from 'query-string'
 
 
-function App({checkAuthenticated,load_user,isAuthenticated,userdata}) {
+function App({checkAuthenticated,load_user,isAuthenticated,userdata,googleAuthenticate}) {
 
-    
+    let location = useLocation()
     const [darkmode,setDarkmode] = useState(false);
     const [sidebar,setSidebar] = useState(true)
+    const [profiledata,setprofiledata] = useState({})
+    const [imageurl,setimageurl] = useState("")
+    const [firstname,setfirstname] = useState("")
+    const [lastname,setlastname] = useState("")
     
   
     const showSidebar = ()=> {setSidebar(!sidebar)}
@@ -23,11 +28,11 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata}) {
 
     const applyDark = () => {
 
-      let url = `http://127.0.0.1:8000/profile/update/${userdata?.id}/`;
+      let url1 = `http://127.0.0.1:8000/profile/update/${userdata?.id}/`;
 
         async function setDarkTheme(){
         
-          const resp = await axios.patch(url,{"darktheme":!darkmode})
+          const resp = await axios.patch(url1,{"darktheme":!darkmode})
           setDarkmode(!darkmode)
              
       } 
@@ -39,28 +44,52 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata}) {
     
   
   useEffect(() => {
+    const values = queryString.parse(location.search);
+    const state = values.state ? values.state : null;
+    const code = values.code ? values.code : null;
 
+        console.log('State: ' + state);
+        console.log('Code: ' + code);
+
+    if (state && code) {
+        console.log("try google")
+        googleAuthenticate(state, code);
+    }
+  else{
         checkAuthenticated();
         load_user();
+  }
       
       
-  }, []);
+  }, [location]);
 
   
 
   useEffect(()=>{
     if (isAuthenticated){
-      let url = `http://127.0.0.1:8000/profile/get/${userdata?.id}/`;
+      let url1 = `http://127.0.0.1:8000/profile/get/${userdata?.id}/`;
 
       async function getDarkTheme(){
       
-        const resp = await axios.get(url)
+        const resp = await axios.get(url1)
         setDarkmode(resp.data.darktheme)           
-    }  
+    } 
+    
+    
+      async function fetchData(){
+  
+      const resp = await axios.get(url1)
+      setprofiledata(resp.data)
+      setfirstname(profiledata.first_name)
+      setlastname(profiledata.last_name)
+      setimageurl(`${process.env.REACT_APP_API_URL}${profiledata.image}`)
+                
+  }  
+      fetchData()
+      getDarkTheme()
 
-        getDarkTheme()
     }
-  })
+  },[imageurl,darkmode])
 
   
   
@@ -71,23 +100,40 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata}) {
     {isAuthenticated && 
 
     <div className={darkmode?"darkmode":"light"}>
-        {userdata?
+        {userdata && profiledata?
           <div>
         <Navbar showSidebar={showSidebar}
-        fullname={userdata.fullname} 
+        firstname={firstname}
+        lastname={lastname}
+        imageurl = {imageurl}
+        imagename = {`${userdata.first_name.slice(0,1)}${userdata.last_name.slice(0,1)}`}
         darkmode={darkmode}/>
 
         <div className="dashboard">
 
             <Sidebar sidebar={sidebar}
-            fullname={userdata.fullname}
+            firstname={firstname}
+            lastname={lastname}
+            imageurl = {imageurl}
+            imagename = {`${userdata.first_name.slice(0,1)}${userdata.last_name.slice(0,1)}`}
             setDarkmode={applyDark}/>
+
             <Switch>
             <Route exact path='/profile' 
-            component={() => <Profile darkmode={darkmode} userdata={userdata}/> } />
+            component={() => <Profile darkmode={darkmode} userdata={userdata}
+            firstname = {firstname}
+            lastname = {lastname}
+            setfirstname={setfirstname}
+            setlastname={setlastname}
+            data={profiledata} 
+            setimageurl={setimageurl}
+            imageurl={imageurl}
+            imagename={`${userdata.first_name.slice(0,1)}${userdata.last_name.slice(0,1)}`}
+            /> } />
 
             <Route exact path='/scanner' component={Upload} />
             <Route exact path='/buttons' component={Buttons} />
+            <Route exact path='/help' component={Help} />
 
             <Route exact path='/cd' 
             component={() => <ClassDiagram darkmode={darkmode} id={userdata.id}/> } />
@@ -107,6 +153,7 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata}) {
      
 
       <Switch>
+        <Route exact path='/' component={Homepage} />
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/reset-password' component={ResetPassword} />
@@ -127,5 +174,5 @@ const mapStateToProps = state => ({
   userdata: state.auth.user
 });
 
-export default connect(mapStateToProps, {checkAuthenticated,load_user})(App)
+export default connect(mapStateToProps, {checkAuthenticated,load_user,googleAuthenticate})(App)
 

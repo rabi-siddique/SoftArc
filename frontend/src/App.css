@@ -18,7 +18,8 @@
 
 }
 
-.darkmode .header{
+.darkmode .nav-header{
+  background-color: #121212;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)s, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
@@ -35,14 +36,7 @@
   color:#fff
 }
 
-.darkmode .modal-box{
-  background-color: #121212;
-}
 
-.darkmode .modal-backdrop{
-  background-color: rgba(0,0,0,0.5);
-  
-}
 
 .darkmode th{
   background-color: #000;
@@ -90,10 +84,55 @@
 
 .darkmode .profile-banner{
   background-color: #000;
+  color:#fff
 }
 
-.darkmode .personal-section{
+.darkmode .profile-btn{
+  background-color: #fff;
+  color:#000
+}
+
+.darkmode .card-container button{
+  background-color: #fff;
+  color:#000
+}
+
+.darkmode .upload-container button{
+  background-color: #fff;
+  color:#000
+}
+
+.darkmode .buttons-container button{
+  background-color: #fff;
+  color:#000
+}
+
+
+.darkmode .personal-section *{
   background-color: #000;
+}
+
+.darkmode .conditioned-input button{
+  
+  background-color: #fff;
+  color: #121212;
+}
+
+.darkmode .conditioned-input textarea{
+  color: #fff;
+  background-color: #121212;
+  
+}
+
+.darkmode .conditioned-input input{
+  color: #fff;
+  background-color: #121212;
+  
+}
+
+.darkmode .deletebtn{
+  background-color: #000;
+  color:#fff;
 }
 
 .darkmode .about-section{
@@ -106,3 +145,23 @@
   
 }
 
+.darkmode .error-message{
+  background-color:  #a94442;
+    color: #f2dede;
+}
+
+.darkmode .error-message button{
+  color:  #a94442;
+    background-color: #f2dede;
+}
+
+.darkmode .wrap{
+  background-color: #000;
+  color:#fff
+}
+
+.darkmode .dropdown{
+  background-color: #28282B;
+  color: #fff;
+  
+}

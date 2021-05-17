@@ -19,6 +19,7 @@ function Saved(props) {
 
 },[data])
 
+if(data.length !== 0){
     return (
         <div className="card-container">
             {
@@ -45,6 +46,14 @@ function Saved(props) {
             
         </div>
     )
+    }
+    else{
+        return (
+            <div className="nothing-to-show">
+                <h1>No Items Saved. Nothing to Show.</h1>
+            </div>
+        )
+    }
 }
 
 export default Saved

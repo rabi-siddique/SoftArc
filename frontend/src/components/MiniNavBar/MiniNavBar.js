@@ -1,4 +1,4 @@
-import React,{useRef} from 'react'
+import React,{useState} from 'react'
 import GetAppIcon from '@material-ui/icons/GetApp';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import ShareIcon from '@material-ui/icons/Share';
@@ -8,22 +8,22 @@ import {Modal} from '../../components'
 
 
 function MiniNavBar(props) {
-    
-    const modalRef = useRef()
-
-    const openModal = () => {
-        modalRef.current.openModal()
+    const [show,setShow] = useState(false)
+    const clickhandler = () =>{
+        setShow(true)
     }
     
-
     return (
         <div className="table-nav-bar">
-            <IconButton className="it" onClick={openModal}>
+            <IconButton className="it" onClick={clickhandler}>
             <SaveAltIcon style={{fill: props.icon_color}}/>
             <h2>Save</h2>
             </IconButton>
-
-            <Modal ref={modalRef} id={props.id}/>
+            <Modal
+                onClose={()=>{setShow(false)}} 
+                show={show}
+                id={props.id}
+                />
 
             <IconButton className="it">
             <GetAppIcon style={{fill: props.icon_color}}/>

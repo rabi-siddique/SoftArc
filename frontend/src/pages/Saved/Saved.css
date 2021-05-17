@@ -8,3 +8,16 @@
     flex-direction: column;
     
 }
+
+.nothing-to-show{
+    width: 100%;
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nothing-to-show h1{
+    font-size: 20px;
+    font-weight: 800;
+}

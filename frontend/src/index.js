@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {DataProvider} from './DataContext'
+import {DataProvider} from './context/DataContext'
 import {Provider} from 'react-redux'
 import { BrowserRouter} from "react-router-dom";
 import { PersistGate } from 'redux-persist/integration/react'

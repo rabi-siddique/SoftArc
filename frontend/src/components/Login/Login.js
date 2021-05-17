@@ -1,34 +1,21 @@
 import React,{useState,useEffect} from 'react'
-import {Link,Redirect,useLocation} from 'react-router-dom'
+import {Link,useHistory} from 'react-router-dom'
 import './Login.css'
 import {connect} from 'react-redux'
 import Logo from './SoftArcLogo.jpg'
-import {login,googleAuthenticate} from '../../actions/auth'
+import {login} from '../../actions/auth'
 import axios from 'axios'
-import queryString from 'query-string'
 
 
-function Login({login, isAuthenticated,googleAuthenticate}) {
-    let location = useLocation();
+
+function Login({login,isAuthenticated}) {
+    let history = useHistory()
     const [formData, setFormData] = useState({
         email: '',
         password: '' 
     });
     
-    useEffect(() => {
-        const values = queryString.parse(location.search);
-        const state = values.state ? values.state : null;
-        const code = values.code ? values.code : null;
-        console.log("hello")
-
-        console.log('State: ' + state);
-        console.log('Code: ' + code);
-
-        if (state && code) {
-            googleAuthenticate(state, code);
-        }
-    }, [location]);
-
+    
     const { email, password } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -51,17 +38,17 @@ function Login({login, isAuthenticated,googleAuthenticate}) {
 
       const continueWithGoogle = async () => {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/google-oauth2/?redirect_uri=${process.env.REACT_APP_API_URL}/google`)
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/google-oauth2/?redirect_uri=${process.env.REACT_APP_API_URL}`)
 
             window.location.replace(res.data.authorization_url);
         } catch (err) {
-
+            console.log(err.message)
         }
     };
 
     const continueWithFacebook = async () => {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/facebook/?redirect_uri=${process.env.REACT_APP_API_URL}/facebook`)
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/facebook/?redirect_uri=${process.env.REACT_APP_API_URL}`)
 
             window.location.replace(res.data.authorization_url);
         } catch (err) {
@@ -69,14 +56,8 @@ function Login({login, isAuthenticated,googleAuthenticate}) {
         }
     };
 
-
-        
-
-
-    //Is the user authenticated
-    //Redirect them to the dashboard
-    if (isAuthenticated) {
-        return <Redirect to='/dash' />
+    if(isAuthenticated){
+        history.push("/profile")
     }
 
 
@@ -170,4 +151,4 @@ const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 })
 
-export default connect(mapStateToProps,{login,googleAuthenticate})(Login)
+export default connect(mapStateToProps,{login})(Login)

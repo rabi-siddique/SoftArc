@@ -15,11 +15,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import authentication, permissions
-
+from django.conf import settings
 
 
 ALLOWED_EXTENSIONS = set(['java', 'cs', 'cpp'])
-APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+APP_ROOT = settings.MEDIA_URL
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -30,15 +30,15 @@ class UploadView(APIView):
     parser_classes = [MultiPartParser,FormParser] #Format of files
 
     def post(self,request):
-        
+        folder='Files/'
         files = request.FILES.getlist('file')
-        fs = FileSystemStorage()
+        fs = FileSystemStorage(location=folder)
 
         for file in files:
             if file and allowed_file(file.name):
                 filename= file.name
                 fs.save(file.name, file)
-        target = os.path.join(APP_ROOT,'media/')
+        target = 'C:\\Users\\Rabi Siddique\\Desktop\\SoftArc\\backend\\soft_arc\\Files'
             
 
         data = self.ScanFiles(target)

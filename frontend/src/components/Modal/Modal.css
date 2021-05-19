@@ -25,6 +25,35 @@
     transition: all 0.3s ease-in-out;
 }
 
+.dark-modal-content{
+    background-color: #28282b;
+    color: #fff;
+}
+
+.dark-modal-content input{
+    background-color:#151515;
+    color: #fff;
+    outline: none;
+    border: none;
+    
+}
+
+.dark-modal-content #save-btn{
+    background-color: #fff;
+    color: #000;
+    
+}
+
+.dark-modal-content button{
+    width: 12rem;
+    height: 2.5rem;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    background-color: #fff;
+    color: #000;
+}
 .show .modal-content{
     transform: translateY(0);
 }

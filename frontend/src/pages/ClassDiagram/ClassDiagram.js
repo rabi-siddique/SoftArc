@@ -22,7 +22,7 @@ function ClassDiagram(props) {
     return (
         <div className="cd-box">
             <ArrowBackIcon onClick={clickHandler}/>
-            <MiniNavBar icon_color={icon_color} id={props.id}/>
+            <MiniNavBar icon_color={icon_color} id={props.id} darkmode={props.darkmode}/>
         <div className="boxes">
             {arr.map(a => (
                 <CDBox clss={a[0]} 

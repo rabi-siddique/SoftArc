@@ -23,6 +23,7 @@ function MiniNavBar(props) {
                 onClose={()=>{setShow(false)}} 
                 show={show}
                 id={props.id}
+                darkmode={props.darkmode}
                 />
 
             <IconButton className="it">

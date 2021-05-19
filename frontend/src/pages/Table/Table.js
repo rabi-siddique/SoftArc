@@ -20,7 +20,7 @@ function Table(props) {
         <div className="entire-table">
             
            <ArrowBackIcon onClick={clickHandler}/>
-            <MiniNavBar icon_color={icon_color} id={props.id}/>
+            <MiniNavBar icon_color={icon_color} id={props.id} darkmode={props.darkmode}/>
             <TableData />
     
         </div>

@@ -39,7 +39,7 @@ class UserAccount(AbstractBaseUser,PermissionsMixin):
     about = models.CharField(max_length=255,default="Please Complete this Section")
     darktheme = models.BooleanField(default=False)
     image = models.ImageField(
-        _("Image"), upload_to='images', default='images/default.png')
+        _("Image"), upload_to='images')
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

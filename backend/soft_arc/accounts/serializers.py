@@ -6,19 +6,9 @@ User = get_user_model()
 class UserCreateSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = ('id', 'email', 'first_name','last_name', 'password')
+        fields = ('id', 'email', 'first_name','last_name', 'password','username', 'image','about', 'darktheme')
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta(UserCreateSerializer.Meta):
         model = User
         fields = ('first_name','last_name','username', 'image','about', 'darktheme')
-
-class ProfilePhotoSerializer(serializers.ModelSerializer):
-    class Meta(UserCreateSerializer.Meta):
-        model = User
-        fields = ('image',)
-
-class PasswordSerializer(serializers.ModelSerializer):
-    class Meta(UserCreateSerializer.Meta):
-        model = User
-        fields = ('password',)

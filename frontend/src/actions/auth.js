@@ -18,7 +18,20 @@ import {
     GOOGLE_AUTH_FAIL,
     FACEBOOK_AUTH_SUCCESS,
     FACEBOOK_AUTH_FAIL,
-    LOGOUT
+    LOGOUT,
+    MESSAGE_CLEAR,
+    FIRSTNAME_CHANGE_SUCCESS,
+    FIRSTNAME_CHANGE_FAIL,
+    DARKTHEME_APPLIED,
+    DARKTHEME_APPLIED_FAILED,
+    LASTNAME_CHANGE_SUCCESS,
+    LASTNAME_CHANGE_FAIL,
+    USERNAME_CHANGE_SUCCESS,
+    USERNAME_CHANGE_FAIL,
+    ABOUT_CHANGE_SUCCESS,
+    ABOUT_CHANGE_FAIL,
+    DP_CHANGE_SUCCESS,
+    DP_CHANGE_FAIL
 } from './types';
 
 export const load_user = () => async dispatch => {
@@ -168,17 +181,18 @@ export const login = (email, password) => async dispatch => {
 
     try {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/jwt/create/`, body, config);
-
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
         });
 
         dispatch(load_user());
+        return true
     } catch (err) {
         dispatch({
             type: LOGIN_FAIL
         })
+        return false
     }
 };
 
@@ -199,7 +213,9 @@ export const signup = (first_name, last_name, email, password, re_password) => a
             payload: res.data
         });
     } catch (err) {
+        console.log(err.response)
         dispatch({
+            
             type: SIGNUP_FAIL
         })
     }
@@ -276,3 +292,126 @@ export const logout = () => dispatch => {
         type: LOGOUT
     });
 };
+
+export const messageclear = () => dispatch => {
+    dispatch({
+        type: MESSAGE_CLEAR
+    });
+};
+
+
+export const applyDark = (uid,darktheme) => async dispatch => {
+
+    let url = `${process.env.REACT_APP_API_URL}/profile/update/${uid}/`;
+
+        try {
+            await axios.patch(url,{"darktheme":!darktheme})
+            dispatch({
+                type: DARKTHEME_APPLIED
+            });
+        } catch (err) {
+            
+            dispatch({
+                type: DARKTHEME_APPLIED_FAILED
+            });
+        }
+    
+    
+  }
+
+export const changeFirstName = (uid,first_name) => async dispatch => {
+
+    let url = `${process.env.REACT_APP_API_URL}/profile/update/${uid}/`;
+
+    try {
+        await axios.patch(url,{"first_name":first_name})
+        dispatch({
+            type: FIRSTNAME_CHANGE_SUCCESS
+        });
+    } catch (err) {
+        
+        dispatch({
+            type: FIRSTNAME_CHANGE_FAIL
+        });
+}
+    
+    
+  }
+
+export const changeLastName = (uid,last_name) => async dispatch => {
+
+    let url = `${process.env.REACT_APP_API_URL}/profile/update/${uid}/`;
+
+    try {
+        await axios.patch(url,{"last_name":last_name})
+        dispatch({
+            type: LASTNAME_CHANGE_SUCCESS
+        });
+    } catch (err) {
+        
+        dispatch({
+            type: LASTNAME_CHANGE_FAIL
+        });
+}
+
+    
+}
+
+export const changeUsername = (uid,username) => async dispatch => {
+
+    let url = `${process.env.REACT_APP_API_URL}/profile/update/${uid}/`;
+
+    try {
+        await axios.patch(url,{"username":username})
+        dispatch({
+            type: USERNAME_CHANGE_SUCCESS
+        });
+    } catch (err) {
+        
+        dispatch({
+            type: USERNAME_CHANGE_FAIL
+        });
+}
+   
+}
+
+
+export const changeAbout = (uid,about) => async dispatch => {
+
+let url = `${process.env.REACT_APP_API_URL}/profile/update/${uid}/`;
+
+    try {
+        await axios.patch(url,{"about":about})
+        dispatch({
+            type: ABOUT_CHANGE_SUCCESS
+        });
+    } catch (err) {
+        
+        dispatch({
+            type: ABOUT_CHANGE_FAIL
+        });
+}
+
+}
+
+export const changeDP = (uid,image) => async dispatch => {
+
+    let url = `${process.env.REACT_APP_API_URL}/profile/update/${uid}/`;
+    const config = {
+        headers:{"content-type":"multipart/form-data",
+        accept:'application/json'}}
+    
+    
+    try {
+        await axios.patch(url,image,config)
+        dispatch({
+            type: DP_CHANGE_SUCCESS
+        });
+    } catch (err) {
+        console.log(err.response)
+        dispatch({
+            type: DP_CHANGE_FAIL
+        });
+}
+
+}

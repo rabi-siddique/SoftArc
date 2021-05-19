@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link,useHistory} from 'react-router-dom';
-import HomeIcon from '@material-ui/icons/Home';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
@@ -10,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import './Sidebar.css'
 import {SidebarOption} from '../../components'
 import { connect } from 'react-redux';
-import {logout} from '../../actions/auth'
+import {logout,applyDark} from '../../actions/auth'
 import {Avatar,IconButton} from '@material-ui/core'
 import HelpIcon from '@material-ui/icons/Help';
 
@@ -27,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Sidebar({sidebar,fullname,setDarkmode,logout,imageurl,
-  imagename,firstname,lastname}) {
+function Sidebar({sidebar,logout,imageurl,
+  imagename,firstname,lastname,applyDark,userdata}) {
   let history = useHistory()
   const classes = useStyles();
   
@@ -59,7 +58,7 @@ function Sidebar({sidebar,fullname,setDarkmode,logout,imageurl,
         <SidebarOption Icon={SaveAltIcon} text="Saved" sidebar={sidebar}/>
         </Link>
 
-        <div onClick={setDarkmode}>
+        <div onClick={()=>applyDark(userdata.id,userdata.darktheme)}>
         <SidebarOption Icon={InvertColorsIcon} text="Apply Dark Theme" sidebar={sidebar}/>
         </div>
         <div onClick={clickHandler}>
@@ -76,4 +75,4 @@ function Sidebar({sidebar,fullname,setDarkmode,logout,imageurl,
 }
 
 
-export default connect(null, {logout})(Sidebar)
+export default connect(null, {logout,applyDark})(Sidebar)

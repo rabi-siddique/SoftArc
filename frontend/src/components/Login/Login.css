@@ -113,6 +113,22 @@ form{
   }
 
 
+.warning-login {
+    display: flex;
+    word-spacing: 12px;
+    font-size: 1rem;
+    color: #0c5460;
+    background-color: #d1ecf1;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+}
+
+.closeicon{
+    cursor: pointer;
+    margin-left: 8px;
+}
 
 .si-right-component{
     width: 34vw;

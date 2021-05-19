@@ -3,18 +3,21 @@ import {Link,useHistory} from 'react-router-dom'
 import './Login.css'
 import {connect} from 'react-redux'
 import Logo from './SoftArcLogo.jpg'
-import {login} from '../../actions/auth'
+import {login,messageclear} from '../../actions/auth'
 import axios from 'axios'
+import CloseIcon from '@material-ui/icons/Close';
 
-
-
-function Login({login,isAuthenticated}) {
+function Login({login,isAuthenticated,messageclear,message}) {
+    
     let history = useHistory()
     const [formData, setFormData] = useState({
         email: '',
         password: '' 
     });
     
+    useEffect(()=>{
+        messageclear()
+    },[])
     
     const { email, password } = formData;
 
@@ -24,6 +27,7 @@ function Login({login,isAuthenticated}) {
         e.preventDefault();
 
         login(email, password);
+        messageclear()
     };
 
     const [isDesktop, setDesktop] = useState(window.innerWidth <= 800);
@@ -79,7 +83,13 @@ function Login({login,isAuthenticated}) {
                      </div>
                      <div className="si-wrapper">
                      <div className="si-border">OR</div>
-                     </div>   
+                     </div>  
+                     {message &&
+                         <div className="warning-login">
+                            <p>{message}</p>
+                            <CloseIcon className="closeicon" onClick={()=>{messageclear()}}/>
+                         </div>
+                         } 
                      <div className="si-form-elements">
                          <form onSubmit={e=>onSubmit(e)}>
 
@@ -113,6 +123,8 @@ function Login({login,isAuthenticated}) {
                          <p className='si-forgot-pass'>
                              Forgot Password? <Link to='/reset-password'> Reset Password</Link>
                          </p>
+
+                         
 
                      </div>
 
@@ -148,7 +160,9 @@ function Login({login,isAuthenticated}) {
 }
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    message: state.auth.message
+    
 })
 
-export default connect(mapStateToProps,{login})(Login)
+export default connect(mapStateToProps,{login,messageclear})(Login)

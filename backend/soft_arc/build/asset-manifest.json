@@ -1,24 +1,28 @@
 {
   "files": {
-    "main.css": "/static/css/main.271cec0b.chunk.css",
-    "main.js": "/static/js/main.25914a45.chunk.js",
-    "main.js.map": "/static/js/main.25914a45.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.79b61bb2.js",
-    "runtime-main.js.map": "/static/js/runtime-main.79b61bb2.js.map",
-    "static/js/2.dcbe1c69.chunk.js": "/static/js/2.dcbe1c69.chunk.js",
-    "static/js/2.dcbe1c69.chunk.js.map": "/static/js/2.dcbe1c69.chunk.js.map",
-    "static/js/3.43a12409.chunk.js": "/static/js/3.43a12409.chunk.js",
-    "static/js/3.43a12409.chunk.js.map": "/static/js/3.43a12409.chunk.js.map",
+    "main.css": "/static/css/main.0e842441.chunk.css",
+    "main.js": "/static/js/main.03ea34e1.chunk.js",
+    "main.js.map": "/static/js/main.03ea34e1.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b45c944d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b45c944d.js.map",
+    "static/js/2.175eedbe.chunk.js": "/static/js/2.175eedbe.chunk.js",
+    "static/js/2.175eedbe.chunk.js.map": "/static/js/2.175eedbe.chunk.js.map",
+    "static/js/3.b63e5ef2.chunk.js": "/static/js/3.b63e5ef2.chunk.js",
+    "static/js/3.b63e5ef2.chunk.js.map": "/static/js/3.b63e5ef2.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.271cec0b.chunk.css.map": "/static/css/main.271cec0b.chunk.css.map",
-    "static/js/2.dcbe1c69.chunk.js.LICENSE.txt": "/static/js/2.dcbe1c69.chunk.js.LICENSE.txt",
+    "static/css/main.0e842441.chunk.css.map": "/static/css/main.0e842441.chunk.css.map",
+    "static/js/2.175eedbe.chunk.js.LICENSE.txt": "/static/js/2.175eedbe.chunk.js.LICENSE.txt",
     "static/media/SoftArcLogo.5ef4ff8c.jpg": "/static/media/SoftArcLogo.5ef4ff8c.jpg",
-    "static/media/SoftArcLogo.77cc15d8.jpg": "/static/media/SoftArcLogo.77cc15d8.jpg"
+    "static/media/SoftArcLogo.77cc15d8.jpg": "/static/media/SoftArcLogo.77cc15d8.jpg",
+    "static/media/SoftArcLogo1.c45ee17e.JPG": "/static/media/SoftArcLogo1.c45ee17e.JPG",
+    "static/media/SoftArcLogo2.949b0adf.JPG": "/static/media/SoftArcLogo2.949b0adf.JPG",
+    "static/media/SoftArcLogo223.18aaa15c.jpg": "/static/media/SoftArcLogo223.18aaa15c.jpg",
+    "static/media/SoftArcLogo224.25d5f2e1.jpg": "/static/media/SoftArcLogo224.25d5f2e1.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.79b61bb2.js",
-    "static/js/2.dcbe1c69.chunk.js",
-    "static/css/main.271cec0b.chunk.css",
-    "static/js/main.25914a45.chunk.js"
+    "static/js/runtime-main.b45c944d.js",
+    "static/js/2.175eedbe.chunk.js",
+    "static/css/main.0e842441.chunk.css",
+    "static/js/main.03ea34e1.chunk.js"
   ]
 }

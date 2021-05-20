@@ -6,7 +6,10 @@ import axios from 'axios'
 function Saved(props) {
     const [data,setData] = useState([])
     let url = `http://127.0.0.1:8000/scanner/saved/${props.id}/`;
-    const config = {headers:{"Content-Type":"application/json"}}
+    const config = {
+        headers:{
+        'Authorization': `JWT ${localStorage.getItem('access')}`
+    }}
 
     useEffect(()=>{
         async function fetchData(){

@@ -7,8 +7,8 @@ import PublishIcon from '@material-ui/icons/Publish';
 import './Navbar.css'
 import { connect } from 'react-redux';
 import {logout} from '../../actions/auth'
-import Logo from './SoftArcLogo11.jpg'
-import Logo2 from './SoftArcLogo22.jpg'
+import Logo3 from './SoftArcLogo223.jpg'
+import Logo4 from './SoftArcLogo224.jpg'
 
 function Navbar({showSidebar,darkmode,logout,
   imageurl,imagename,firstname,lastname}) {
@@ -29,7 +29,7 @@ function Navbar({showSidebar,darkmode,logout,
         <IconButton onClick={showSidebar}>
         <MenuIcon className="bar-btn" style={{fill: icon_color}}  />
         </IconButton>
-        <img src={darkmode?Logo2:Logo}/>
+        <img src={darkmode?Logo3:Logo4}/>
      
       </div>
 

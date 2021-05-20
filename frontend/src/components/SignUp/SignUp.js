@@ -99,14 +99,14 @@ function SignUp({signup,message,messageclear}) {
             </div>
                 <div className="su-body">
                     <h1 className="su-head-text-3">Create Free Account</h1>
-                    <p className="su-head-text-4">Sign up using social networks</p>
+                {/*    <p className="su-head-text-4">Sign up using social networks</p>
                      <div className="su-social-media-buttons">
                      <button onClick={continueWithGoogle} className="fa fa-google"> </button>
                      <button onClick={continueWithFacebook} className="fa fa-facebook"></button>
-                     </div>
+                </div>
                      <div className="su-wrapper">
                      <div className="su-border">OR</div>
-                </div>
+                </div>*/}
                      {message?
                          <div className="warning-login">
                             <p>{message}</p>

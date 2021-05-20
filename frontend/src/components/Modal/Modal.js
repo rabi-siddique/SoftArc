@@ -19,12 +19,17 @@ function Modal(props){
     const { name, details } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-    
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${localStorage.getItem('access')}`,
+           
+        }
+    }; 
 
 
     let url = 'http://127.0.0.1:8000/scanner/save/';
-    const config = {headers:{"Content-Type":"application/json"}}
-
+    
     const onClickHandler = async (e) => { // take the event as a parameter here
         e.preventDefault(); // Prevent form submission
         const data = JSON.stringify({datareceived})
@@ -79,12 +84,15 @@ function Modal(props){
                         name="name" 
                         value={name}
                         onChange={e => onChange(e)}
+                        required
                         />
                         <p>Add Details:</p>
 
-                        <input 
+                        <textarea
+                        cols="30" rows="5"
                         id="details"  
                         type="text" 
+                        required
                         name="details" 
                         value={details}
                         onChange={e => onChange(e)}
@@ -93,10 +101,11 @@ function Modal(props){
                         </form>
 }
                             </div>
-                            <div className="modal-footer">
+            <div className={`modal-footer ${props.darkmode ? `dark-modal-footer` : ``}`}>
+                            
                                 <button 
                                 onClick={closeHandler}
-                                className="button">
+                                className="modalclosebutton">
                                     Close
                                 </button>
                             </div>

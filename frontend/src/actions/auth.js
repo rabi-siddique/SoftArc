@@ -344,9 +344,16 @@ export const messageclear = () => dispatch => {
 export const applyDark = (uid,darktheme) => async dispatch => {
 
     let url = `${process.env.REACT_APP_API_URL}/profile/update/${uid}/`;
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${localStorage.getItem('access')}`,
+            
+        }
+    }; 
 
         try {
-            await axios.patch(url,{"darktheme":!darktheme})
+            await axios.patch(url,{"darktheme":!darktheme},config)
             dispatch({
                 type: DARKTHEME_APPLIED
             });
@@ -363,9 +370,16 @@ export const applyDark = (uid,darktheme) => async dispatch => {
 export const changeFirstName = (uid,first_name) => async dispatch => {
 
     let url = `${process.env.REACT_APP_API_URL}/profile/update/${uid}/`;
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${localStorage.getItem('access')}`,
+           
+        }
+    }; 
 
     try {
-        await axios.patch(url,{"first_name":first_name})
+        await axios.patch(url,{"first_name":first_name},config)
         dispatch({
             type: FIRSTNAME_CHANGE_SUCCESS
         });
@@ -382,9 +396,16 @@ export const changeFirstName = (uid,first_name) => async dispatch => {
 export const changeLastName = (uid,last_name) => async dispatch => {
 
     let url = `${process.env.REACT_APP_API_URL}/profile/update/${uid}/`;
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${localStorage.getItem('access')}`,
+           
+        }
+    }; 
 
     try {
-        await axios.patch(url,{"last_name":last_name})
+        await axios.patch(url,{"last_name":last_name},config)
         dispatch({
             type: LASTNAME_CHANGE_SUCCESS
         });
@@ -401,9 +422,16 @@ export const changeLastName = (uid,last_name) => async dispatch => {
 export const changeUsername = (uid,username) => async dispatch => {
 
     let url = `${process.env.REACT_APP_API_URL}/profile/update/${uid}/`;
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${localStorage.getItem('access')}`,
+           
+        }
+    }; 
 
     try {
-        await axios.patch(url,{"username":username})
+        await axios.patch(url,{"username":username},config)
         dispatch({
             type: USERNAME_CHANGE_SUCCESS
         });
@@ -420,9 +448,16 @@ export const changeUsername = (uid,username) => async dispatch => {
 export const changeAbout = (uid,about) => async dispatch => {
 
 let url = `${process.env.REACT_APP_API_URL}/profile/update/${uid}/`;
+const config = {
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `JWT ${localStorage.getItem('access')}`,
+       
+    }
+}; 
 
     try {
-        await axios.patch(url,{"about":about})
+        await axios.patch(url,{"about":about},config)
         dispatch({
             type: ABOUT_CHANGE_SUCCESS
         });
@@ -438,9 +473,14 @@ let url = `${process.env.REACT_APP_API_URL}/profile/update/${uid}/`;
 export const changeDP = (uid,image) => async dispatch => {
 
     let url = `${process.env.REACT_APP_API_URL}/profile/update/${uid}/`;
-    const config = {
-        headers:{"content-type":"multipart/form-data",
-        accept:'application/json'}}
+        const config = {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `JWT ${localStorage.getItem('access')}`,
+                'accept':'application/json'
+               
+            }
+        }; 
     
     
     try {

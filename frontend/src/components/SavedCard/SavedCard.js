@@ -21,14 +21,26 @@ function SavedCard(props) {
 
     let url2 = `http://127.0.0.1:8000/scanner/update/${props.id}/`;
 
+    const config = {
+        headers:{
+        "Content-Type":"application/json",
+       'Authorization': `JWT ${localStorage.getItem('access')}`
+    }}
+
+    const config_2 = {
+        headers:{
+        
+       'Authorization': `JWT ${localStorage.getItem('access')}`
+    }}
+
     const onChangeName = ()=>{
-        const resp = axios.patch(url2,{"name":name})
+        const resp = axios.patch(url2,{"name":name},config)
         setNameField(false)
     }
 
     const onChangeDetails = ()=>{
         
-        const resp = axios.patch(url2,{"details":details})
+        const resp = axios.patch(url2,{"details":details},config)
         setDetailField(false)
     }
 
@@ -55,8 +67,7 @@ function SavedCard(props) {
 
     const ClickC = async () => {
         let url = `http://127.0.0.1:8000/scanner/saved/${props.id}/`;
-        const response = await axios.delete(url)
-        console.log(response)
+        const response = await axios.delete(url,config)
     }
 
     
@@ -82,7 +93,7 @@ function SavedCard(props) {
             {!namefield?
                 <h1 className="svname">{name}</h1>
                 :
-                <div className="conditioned-input">
+                <div className="conditioned-input-2">
                 <input 
                 type="text"
                 defaultValue={name}
@@ -98,8 +109,9 @@ function SavedCard(props) {
             {!detailfield?
             <p>{details}</p>
             :
-            <div className="conditioned-text">
+            <div className="conditioned-text-2">
                 <textarea 
+                cols="30" rows="5"
                 type="text"
                 defaultValue={details}
                 onChange={(e)=>{setDetails(e.target.value)}}
@@ -109,6 +121,7 @@ function SavedCard(props) {
             }
             <EditIcon className="editicon" onClick={clickHandlerB}/>
             </div>
+
 
             <div className="svbuttons">
             <Link to="/cd"><button className="svbtn" onClick={ClickB}>Show Class Diagram</button></Link>

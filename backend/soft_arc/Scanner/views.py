@@ -28,12 +28,10 @@ def allowed_file(filename):
 
 class UploadView(APIView):
     permission_classes = [permissions.IsAuthenticated]
-    #authentication_classes = [JWTAuthentication]
-     #permission to access this method
     parser_classes = [MultiPartParser,FormParser] #Format of files
 
-    def post(self,request):
-        folder='Files/'
+    def post(self,request,pk):
+        folder='Files/'+str(pk)+'/'
         files = request.FILES.getlist('file')
         fs = FileSystemStorage(location=folder)
 
@@ -41,7 +39,7 @@ class UploadView(APIView):
             if file and allowed_file(file.name):
                 filename= file.name
                 fs.save(file.name, file)
-        target = 'C:\\Users\\Rabi Siddique\\Desktop\\SoftArc\\backend\\soft_arc\\Files'
+        target = 'C:\\Users\\Rabi Siddique\\Desktop\\SoftArc\\backend\\soft_arc\\Files'+'\\'+str(pk)
             
 
         data = self.ScanFiles(target)
@@ -283,7 +281,7 @@ class UploadView(APIView):
 
 
 class UserDataView(APIView):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
 
     def post(self,request,format=None):
         serializer = SavedObjectsSerializer(data=request.data)

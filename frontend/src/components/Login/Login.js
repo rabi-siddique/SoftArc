@@ -84,15 +84,15 @@ function Login({login,isAuthenticated,messageclear,message}) {
         
                 <div className="si-body">
                     <h1 className="si-head-text-3">Login to your Account</h1>
-                     <p className="si-head-text-4">Login using social networks</p>
-                     <div className="si-social-media-buttons">
+                    { /*   <p className="si-head-text-4">Login using social networks</p>
+                    <div className="si-social-media-buttons">
                      <button onClick={continueWithGoogle} className="fa fa-google"> </button>
                      <button onClick={continueWithFacebook} className="fa fa-facebook"></button>
                     
                      </div>
                      <div className="si-wrapper">
                      <div className="si-border">OR</div>
-                     </div>  
+                     </div>  */}
                      {message &&
                          <div className="warning-login">
                             <p>{message}</p>

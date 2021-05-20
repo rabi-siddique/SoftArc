@@ -33,17 +33,21 @@
 .dark-modal-content input{
     background-color:#151515;
     color: #fff;
-    outline: none;
-    border: none;
-    
-    
+
 }
 
+.dark-modal-content textarea{
+    background-color:#151515;
+    color: #fff;
+  
+
+}
 .dark-modal-content #save-btn{
     background-color: #fff;
     color: #000;
     
 }
+
 
 .dark-modal-content button{
     width: 12rem;
@@ -126,6 +130,13 @@
     justify-content: flex-end;
 }
 
+
+
+.dark-modal-footer .modalclosebutton{
+    background-color: #fff;
+    color: #000;
+}
+
 .modal-footer button{
     height: 2.375rem;
     width: 8rem;
@@ -138,6 +149,4 @@
     outline: none;
     cursor: pointer;
     
-    
-
 }

@@ -27,7 +27,7 @@
 
 .wrap h1{
     padding: 2rem;
-    font-size: 2rem;
+    font-size: 1.3rem;
     
 }
 
@@ -50,6 +50,6 @@
 }
 
 .dropdown p{
-  font-size: 2rem;
+  font-size: 1.3rem;
   padding: 20px;
 }

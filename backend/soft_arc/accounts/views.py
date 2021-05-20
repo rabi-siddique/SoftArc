@@ -2,12 +2,11 @@ from .serializers import ProfileSerializer
 from .models import UserAccount
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
 from rest_framework import permissions
 
 
 class ProfileView(APIView):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     
     def get(self, request, pk, format=None):
         profiledata = UserAccount.objects.get(pk=pk)

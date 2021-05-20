@@ -207,7 +207,8 @@ function Profile({imagename,userdata,changeFirstName,changeLastName,
                 <h1>{userdata.about}</h1>
                 :
                 <div className="conditioned-input">
-                <textarea 
+                <textarea
+                cols="30" rows="5" 
                 type="text"
                 defaultValue={userdata.about}
                 onChange={(e)=>{setAbout(e.target.value)}}

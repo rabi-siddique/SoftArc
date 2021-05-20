@@ -35,16 +35,17 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm,message,messagecle
     const onSubmit = e => {
         e.preventDefault();
         
-        setLoading(!loading)
+        
         const uid = match.params.uid;
         const token = match.params.token;
 
         if(new_password == re_new_password){
+            setLoading(!loading)
             reset_password_confirm(uid, token, new_password, re_new_password);
         }
         else{
             setpasscheck(true)
-            setLoading(!loading)
+            
         }
 
        

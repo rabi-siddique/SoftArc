@@ -31,7 +31,7 @@
 }
 
 .Card .details{
-    display: flex;
+    display:flex;
     justify-content: center;
     align-items: center;
 }
@@ -108,3 +108,65 @@
     background-color: #f0f0f0;
     overflow: hidden;
 }
+
+
+
+.conditioned-input-2 input{
+    width: 29rem;
+    height: 2rem;
+    font-weight: bold;
+    background: #fff;
+    border-radius: 40px;
+    border: 1px solid #000;
+    outline: none;
+    margin: 0.8rem;
+    padding: 0 16px;
+    margin-right: 12px;  
+}
+
+.conditioned-input-2 button{
+    width: 100px;
+    height: 2rem;
+    margin-right: 12px; 
+    cursor: pointer; 
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    background-color:  #4654A3;
+    color: #fff;
+    
+    
+}
+
+.conditioned-text-2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.conditioned-text-2 textarea{
+    background-color: #fff;
+    margin-right: 12px;  
+    outline: none;
+    margin: 0.8rem;
+    padding: 0 16px;
+    border-radius: 20px;
+}
+
+.editicon{
+    margin-left: 10px;
+}
+
+.conditioned-text-2 button{
+
+    margin-top: 20px;
+    width: 100px;
+    height: 40px;
+    border-radius: 30px;
+    border-style: none;
+    outline: none;
+    background-color:  #4654A3;
+    color: #fff;
+}
+

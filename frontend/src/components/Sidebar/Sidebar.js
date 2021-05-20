@@ -30,6 +30,7 @@ function Sidebar({sidebar,logout,imageurl,
   imagename,firstname,lastname,applyDark,userdata}) {
   let history = useHistory()
   const classes = useStyles();
+  const darkthemetext = userdata.darktheme?'Disable Dark Theme':"Apply Dark Theme"
   
   const clickHandler = ()=>{
     logout()
@@ -59,7 +60,7 @@ function Sidebar({sidebar,logout,imageurl,
         </Link>
 
         <div onClick={()=>applyDark(userdata.id,userdata.darktheme)}>
-        <SidebarOption Icon={InvertColorsIcon} text="Apply Dark Theme" sidebar={sidebar}/>
+        <SidebarOption Icon={InvertColorsIcon} text={darkthemetext} sidebar={sidebar}/>
         </div>
         <div onClick={clickHandler}>
         <SidebarOption 

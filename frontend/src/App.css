@@ -23,15 +23,18 @@
 }
 
 .darkmode .nav-header{
-  background-color: #121212;
+  background-color: #000;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)s, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
-.darkmode .side-bar{box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.darkmode .side-bar{
+  background-color: #171717;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .darkmode .show-side-bar{
+  background-color: #000;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -131,6 +134,18 @@
 .darkmode .conditioned-input input{
   color: #fff;
   background-color: #121212;
+  
+}
+
+.darkmode .conditioned-input-2 input{
+  color: #fff;
+  background-color: #28282B;
+  
+}
+
+.darkmode .conditioned-text-2 textarea{
+  color: #fff;
+  background-color: #28282B;
   
 }
 

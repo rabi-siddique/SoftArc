@@ -20,6 +20,9 @@
 
 }
 
+.left-area img{
+  margin-top: 8px;
+}
 
 .right-area{
   display: flex;

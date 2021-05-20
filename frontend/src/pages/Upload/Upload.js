@@ -18,7 +18,7 @@ function Upload(props) {
         setSelected(event.target.files)
     }
 
-    let url = `http://127.0.0.1:8000/scanner/upload/${props.id}`;
+    let url = `http://127.0.0.1:8000/scanner/upload/${props.id}/`;
     const config = {
         headers:{
         "Content-Type":"multipart/form-data",

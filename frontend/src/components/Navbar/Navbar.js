@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link,useHistory } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
-import AppsIcon from '@material-ui/icons/Apps';
 import {Avatar,IconButton} from '@material-ui/core'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import PublishIcon from '@material-ui/icons/Publish';
 import './Navbar.css'
 import { connect } from 'react-redux';
 import {logout} from '../../actions/auth'
+import Logo from './SoftArcLogo11.jpg'
+import Logo2 from './SoftArcLogo22.jpg'
 
 function Navbar({showSidebar,darkmode,logout,
   imageurl,imagename,firstname,lastname}) {
@@ -28,7 +29,7 @@ function Navbar({showSidebar,darkmode,logout,
         <IconButton onClick={showSidebar}>
         <MenuIcon className="bar-btn" style={{fill: icon_color}}  />
         </IconButton>
-        <h1>SOFTARC</h1>
+        <img src={darkmode?Logo2:Logo}/>
      
       </div>
 

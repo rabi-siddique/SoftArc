@@ -115,7 +115,8 @@ form{
 
 .warning-login {
     display: flex;
-    word-spacing: 12px;
+    word-spacing: 6px;
+    text-transform: capitalize;
     font-size: 1rem;
     color: #0c5460;
     background-color: #d1ecf1;
@@ -132,7 +133,7 @@ form{
 
 .si-right-component{
     width: 34vw;
-    background-color: #842bd7;
+    background-color: #4654A3;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -154,6 +155,7 @@ form{
     font-size: 3.375vw;
 }
 .si-head-text-2{
+    text-align: center;
     color:#fff;
     font-size: 2.0vw;
 }
@@ -161,7 +163,7 @@ form{
 .si-btn-1{
     width: 14.688rem;
     height: 3.375rem;
-    background-color: #842bd7;
+    background-color: #4654A3;
     color:#fff;
     border-radius: 30px;
     border: none;

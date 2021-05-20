@@ -108,10 +108,10 @@ export default function(state = initialState, action) {
             }
         case GOOGLE_AUTH_FAIL:
         case FACEBOOK_AUTH_FAIL:
-        case SIGNUP_FAIL:
         case LOGOUT:
             localStorage.removeItem('access');
             localStorage.removeItem('refresh');
+            localStorage.removeItem('datareceived');
             return {
                 ...state,
                 access: null,
@@ -121,18 +121,33 @@ export default function(state = initialState, action) {
                 
 
             }
-        case PASSWORD_RESET_FAIL:
+        case SIGNUP_FAIL:
+            localStorage.removeItem('access');
+            localStorage.removeItem('refresh');
+            return {
+                ...state,
+                access: null,
+                refresh: null,
+                isAuthenticated: false,
+                user: null,
+                message:payload
+            }
         case FIRSTNAME_CHANGE_FAIL:
-        case PASSWORD_RESET_CONFIRM_FAIL:
         case ACTIVATION_FAIL:
             return {
                 ...state,
                 message:"Task Failed. Try Again Later."
             }
+        case PASSWORD_RESET_FAIL:
+        case PASSWORD_RESET_CONFIRM_FAIL:
+            return {
+                ...state,
+                message:payload
+            }
         case PASSWORD_RESET_SUCCESS:
             return {
                 ...state,
-                message:"Password Reset Link Sent To Your Email."
+                message:"Password Reset Link Sent To Your Provided Email Address."
         }
         case PASSWORD_RESET_CONFIRM_SUCCESS:
             return {

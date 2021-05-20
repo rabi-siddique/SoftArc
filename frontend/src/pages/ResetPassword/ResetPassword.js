@@ -1,14 +1,16 @@
-import React,{useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import React,{useState,useEffect} from 'react'
 import './ResetPassword.css'
 import {connect} from 'react-redux'
 import Logo from './SoftArcLogo.jpg'
-import {reset_password} from '../../actions/auth'
+import {reset_password,messageclear} from '../../actions/auth'
+import CloseIcon from '@material-ui/icons/Close';
+import ClipLoader from "react-spinners/ClipLoader";
 
 
-function ResetPassword({reset_password}) {
-    let history = useHistory()
+function ResetPassword({reset_password,messageclear,message}) {
     
+    const [loading, setLoading] = useState(false);
+    const [color, setColor] = useState("#000");
     const [formData, setFormData] = useState({
         email: ''
     });
@@ -19,13 +21,19 @@ function ResetPassword({reset_password}) {
 
     const onSubmit = e => {
         e.preventDefault();
-
+        setLoading(!loading)
         reset_password(email);
-        history.push("/login")
+       
 
     };
 
-   
+    useEffect(()=>{
+        messageclear()
+    },[])
+
+    useEffect(()=>{
+        setLoading(false)
+    },[message])
 
     return (
         <div className="rp-components">
@@ -38,10 +46,24 @@ function ResetPassword({reset_password}) {
             <div className="rp-head">
                 <img src={Logo}/>
             </div>
+
+            {message? 
+            <div className="warning-login">
+            <p>{message}</p>
+            <CloseIcon className="closeicon" onClick={()=>{messageclear()}}/>
+            </div>
+            :
+            <div>
             <h1 className="rp-head-text-2">Request Password Reset:</h1>
                      <div className="rp-form-elements">
                      
-                    <form onSubmit={e => onSubmit(e)}>
+                   
+             { loading?                             
+        
+                <ClipLoader color={color}  size={150} />
+                :  
+             
+             <form onSubmit={e => onSubmit(e)}>
                             <input
                                 className='rp-input'
                                 type='email'
@@ -52,12 +74,19 @@ function ResetPassword({reset_password}) {
                                 required
                             />
                 <button className='rp-btn-1' type='submit'>Reset Password</button>
-                    </form>
+                    </form>}
                     </div>
 
+                </div>}
                 </div>
         </div>
     )
 }
 
-export default connect(null, { reset_password })(ResetPassword);
+const mapStateToProps = state => ({
+    
+    message: state.auth.message
+})
+
+
+export default connect(mapStateToProps, { reset_password,messageclear })(ResetPassword);

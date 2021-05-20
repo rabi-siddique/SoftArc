@@ -4,7 +4,7 @@ from Scanner import views
 
 
 urlpatterns = [
-    path('upload/',views.UploadView.as_view(),name="uploaddata"),
+    path('upload/<int:pk>/',views.UploadView.as_view(),name="uploaddata"),
     path('saved/<int:pk>/',views.UserDataView.as_view(),name="getdata"),
     path('save/',views.UserDataView.as_view(),name="postdata"),
     path('update/<int:pk>/',views.UserDataView.as_view(),name="updatedata"),

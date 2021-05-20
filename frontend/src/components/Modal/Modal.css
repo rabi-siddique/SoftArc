@@ -36,6 +36,7 @@
     outline: none;
     border: none;
     
+    
 }
 
 .dark-modal-content #save-btn{
@@ -87,14 +88,20 @@
     margin-top: 16px;
 }
 
+.err-already{
+    text-transform: capitalize;
+}
+
 #details{
     height: 4rem;
+    padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
 }
 #save-btn{
     height: 2.375rem;
-    background-color: #842bd7;
+    background-color: #4654A3;
     color:#fff;
-    font-weight: 800;
     font-size: 20px;
     margin-top: 20px;
     border-radius: 16px;
@@ -105,4 +112,32 @@
 
 #save-btn:hover {
     opacity: 0.7;
+}
+
+.modal-header{
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.modal-footer{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-footer button{
+    height: 2.375rem;
+    width: 8rem;
+    background-color: #4654A3;
+    color:#fff;
+    font-size: 20px;
+    margin-top: 20px;
+    border-radius: 16px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    
+    
+
 }

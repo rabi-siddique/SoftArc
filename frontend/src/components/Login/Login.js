@@ -6,9 +6,11 @@ import Logo from './SoftArcLogo.jpg'
 import {login,messageclear} from '../../actions/auth'
 import axios from 'axios'
 import CloseIcon from '@material-ui/icons/Close';
+import ClipLoader from "react-spinners/ClipLoader";
 
 function Login({login,isAuthenticated,messageclear,message}) {
-    
+    const [loading, setLoading] = useState(false);
+    const [color, setColor] = useState("#000");
     let history = useHistory()
     const [formData, setFormData] = useState({
         email: '',
@@ -18,6 +20,10 @@ function Login({login,isAuthenticated,messageclear,message}) {
     useEffect(()=>{
         messageclear()
     },[])
+
+    useEffect(()=>{
+        setLoading(false)
+    },[message])
     
     const { email, password } = formData;
 
@@ -25,7 +31,7 @@ function Login({login,isAuthenticated,messageclear,message}) {
 
     const onSubmit = e => {
         e.preventDefault();
-
+        setLoading(!loading)
         login(email, password);
         messageclear()
     };
@@ -34,6 +40,8 @@ function Login({login,isAuthenticated,messageclear,message}) {
     const updateMedia = () => {
         setDesktop(window.innerWidth <= 800);
     };
+
+   
 
     useEffect(() => {
         window.addEventListener("resize", updateMedia);
@@ -73,6 +81,7 @@ function Login({login,isAuthenticated,messageclear,message}) {
             <div className="si-head">
                 <img src={Logo}/>
             </div>
+        
                 <div className="si-body">
                     <h1 className="si-head-text-3">Login to your Account</h1>
                      <p className="si-head-text-4">Login using social networks</p>
@@ -89,8 +98,12 @@ function Login({login,isAuthenticated,messageclear,message}) {
                             <p>{message}</p>
                             <CloseIcon className="closeicon" onClick={()=>{messageclear()}}/>
                          </div>
-                         } 
-                     <div className="si-form-elements">
+                     } 
+                    { loading?                             
+        
+        <ClipLoader color={color}  size={150} />
+        :  
+                    <div className="si-form-elements">
                          <form onSubmit={e=>onSubmit(e)}>
 
                              <input 
@@ -124,9 +137,8 @@ function Login({login,isAuthenticated,messageclear,message}) {
                              Forgot Password? <Link to='/reset-password'> Reset Password</Link>
                          </p>
 
-                         
 
-                     </div>
+                     </div>}
 
                 </div>
                 

@@ -1,16 +1,15 @@
-import React,{useState,forwardRef,useImperativeHandle} from 'react'
+import React,{useState} from 'react'
 import './Modal.css'
 import ReactDOM from 'react-dom'
 import { useContext } from 'react'
 import {DataContext} from '../../context/DataContext'
 import axios from 'axios'
-
-
+import SaveAltIcon from '@material-ui/icons/SaveAlt';
 
 function Modal(props){
 
     const owner = props.id
-   
+    const [msg,setmsg] = useState("")
     const [datareceived,setdatareceived] = useContext(DataContext)
     const [formData, setFormData] = useState({
         name: '',
@@ -32,13 +31,25 @@ function Modal(props){
         const body = JSON.stringify({ name, details, data,owner });
         try{
             const resp = await axios.post(url, body,config)
-            props.onClose()
+            setmsg("Data Saved Successfully.")
            
 
         }
         catch(err){
             console.log(err.response)
+            if(err.response.data.data){
+                setmsg(err.response.data.data)
+            }
         }
+    }
+
+    const closeHandler = ()=>{
+        setmsg("")
+        props.onClose()
+        setFormData({name: '',
+        details: ''})
+        
+        
     }
     
 
@@ -47,10 +58,19 @@ function Modal(props){
             <div className={`modal-content ${props.darkmode ? `dark-modal-content` : ``}`}
              onClick={e=>e.stopPropagation()}>
                 <div className="modal-header">
+                    <SaveAltIcon/>
                     <h4 className="modal-title">Save Data</h4>
                 </div>
                 <div className="modal-body">
                     
+           {msg?
+
+           <div>
+        <p className="err-already">{msg}</p>
+        
+        </div>
+               
+              : 
             <form className="form-elements" onSubmit={onClickHandler}>
                         <p>Name of the Project:</p>
 
@@ -71,10 +91,11 @@ function Modal(props){
                         />
                         <input id="save-btn" type="submit" value="Save" />
                         </form>
+}
                             </div>
                             <div className="modal-footer">
                                 <button 
-                                onClick={props.onClose}
+                                onClick={closeHandler}
                                 className="button">
                                     Close
                                 </button>

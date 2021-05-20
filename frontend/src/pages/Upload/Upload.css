@@ -9,12 +9,14 @@
 }
 
 .error-message{
-    max-width: 75ch;
-    word-spacing: 15px;
+    max-width: 70ch;
+    word-spacing: 6px;
     font-size: 1rem;
     background-color: #f2dede;
     color: #a94442;
-    border-radius: 15px;
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-radius: 6px;
     padding: 8px;
     margin-bottom: 70px;
 }
@@ -28,9 +30,12 @@
     outline: none;
     border: none;
     border-radius: 20px;
-    background-color:  #a94442;
-    color: #f2dede;
+    color: #d1ecf1;
+    background-color:#0c5460;   
     margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    padding-top: 3px;
 }
 select {
     width: 100pxs;     
@@ -38,7 +43,7 @@ select {
 .ubtn{
     width: 18.688rem;
     height: 4.375rem;
-    background-color: #842bd7;
+    background-color: #4654A3;
     color:#fff;
     border-radius: 60px;
     font-weight: 800;

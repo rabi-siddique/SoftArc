@@ -89,10 +89,7 @@ export const googleAuthenticate = (state, code) => async dispatch => {
 
             dispatch(load_user());
         } catch (err) {
-            console.log("in the catch")
-            console.log(err.name)
-            console.log(err.message)
-            console.log(err.stack)
+            console.log(err.response)
             dispatch({
                 type: GOOGLE_AUTH_FAIL
             });
@@ -125,8 +122,7 @@ export const facebookAuthenticate = (state, code) => async dispatch => {
 
             dispatch(load_user());
         } catch (err) {
-            console.log("Errors:")
-            console.log(err)
+            console.log(err.response)
             dispatch({
                 type: FACEBOOK_AUTH_FAIL
             });
@@ -187,12 +183,12 @@ export const login = (email, password) => async dispatch => {
         });
 
         dispatch(load_user());
-        return true
+        
     } catch (err) {
         dispatch({
             type: LOGIN_FAIL
         })
-        return false
+       
     }
 };
 
@@ -214,10 +210,36 @@ export const signup = (first_name, last_name, email, password, re_password) => a
         });
     } catch (err) {
         console.log(err.response)
+        if(err.response.data.email){
         dispatch({
             
-            type: SIGNUP_FAIL
+            type: SIGNUP_FAIL,
+            payload: err.response.data.email[0]
         })
+    }
+    else if(err.response.data.password){
+        let message1 = err.response.data.password[0]
+        let message2 = err.response.data.password[1]?err.response.data.password[1]:""
+        let message = `${message1} ${message2}`
+        dispatch({
+            
+            type: SIGNUP_FAIL,
+            payload: message
+        })
+    }
+    else if(err.response.data.non_field_errors){
+        dispatch({
+            
+            type: SIGNUP_FAIL,
+            payload: err.response.data.non_field_errors[0]
+        })
+    }
+    else{
+        dispatch({
+            type:SIGNUP_FAIL,
+            payload: "Enter Your Full Name"
+        })
+    }
     }
 };
 
@@ -259,8 +281,10 @@ export const reset_password = (email) => async dispatch => {
             type: PASSWORD_RESET_SUCCESS
         });
     } catch (err) {
+        console.log(err.response)
         dispatch({
-            type: PASSWORD_RESET_FAIL
+            type: PASSWORD_RESET_FAIL,
+            payload: err.response.data.email[0]
         });
     }
 };
@@ -280,10 +304,27 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
         dispatch({
             type: PASSWORD_RESET_CONFIRM_SUCCESS
         });
+        return true
     } catch (err) {
-        dispatch({
-            type: PASSWORD_RESET_CONFIRM_FAIL
-        });
+        console.log(err.response)
+        if(err.response.data.new_password){
+            let message1 = err.response.data.new_password[0]
+            let message2 = err.response.data.new_password[1]?err.response.data.new_password[1]:""
+            let message = `${message1} ${message2}`
+            dispatch({
+                
+                type: PASSWORD_RESET_CONFIRM_FAIL,
+                payload: message
+            })
+        }
+        else if(err.response.data.non_field_errors){
+            dispatch({
+                
+                type: PASSWORD_RESET_CONFIRM_FAIL,
+                payload: err.response.data.non_field_errors[0]
+            })
+        }
+        return false
     }
 };
 

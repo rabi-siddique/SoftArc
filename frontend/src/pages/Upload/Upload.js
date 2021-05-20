@@ -4,7 +4,7 @@ import './Upload.css'
 import axios from 'axios'
 import {DataContext} from '../../context/DataContext'
 
-function Upload() {
+function Upload(props) {
 
     const [selected,setSelected] = useState(null)
     const [received,setReceived] = useState(false)
@@ -18,8 +18,12 @@ function Upload() {
         setSelected(event.target.files)
     }
 
-    let url = 'http://127.0.0.1:8000/scanner/upload/';
-    const config = {headers:{"Content-Type":"multipart/form-data"}}
+    let url = `http://127.0.0.1:8000/scanner/upload/${props.id}`;
+    const config = {
+        headers:{
+        "Content-Type":"multipart/form-data",
+        'Authorization': `JWT ${localStorage.getItem('access')}`
+    }}
     
     const filechecker = () =>{
         
@@ -77,8 +81,7 @@ function Upload() {
             {errorMessage &&
             <div className="error-message">
                 <h1>
-                    {errorfiles.toString()} are/is File(s) with not the extension you've
-                    selected. Please select files with the extension .{filetype} or
+                    Please select files with the extension .{filetype} or
                     select appropriate filetype.
                 </h1>
                 <button onClick={()=>{

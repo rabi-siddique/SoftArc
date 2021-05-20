@@ -8,12 +8,15 @@ import {load_user,checkAuthenticated,googleAuthenticate} from './actions/auth'
 import {useEffect,useState} from 'react'
 import { connect } from 'react-redux';
 import {Upload,ClassDiagram,Table,Buttons,Saved,Homepage,Help} from './pages'
+import ClipLoader from "react-spinners/ClipLoader";
 
 function App({checkAuthenticated,load_user,isAuthenticated,userdata}) {
 
     let location = useLocation()
     const [sidebar,setSidebar] = useState(true)
     const showSidebar = ()=> {setSidebar(!sidebar)}
+    const [loading, setLoading] = useState(true);
+    const [color, setColor] = useState("#000");
     
   useEffect(() => {
     
@@ -56,7 +59,8 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata}) {
             imagename={`${userdata.first_name.slice(0,1)}${userdata.last_name.slice(0,1)}`}
             /> } />
 
-            <Route exact path='/scanner' component={Upload} />
+            <Route exact path='/scanner' component=
+            {() => <Upload id={userdata.id}/> } />
             <Route exact path='/buttons' component={Buttons} />
             <Route exact path='/help' component={Help} />
 
@@ -72,7 +76,7 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata}) {
            
           </Switch>
       </div>
-      </div>:<h1>Loading</h1>}
+      </div>:<div className="Loading"><ClipLoader color={color}  size={150} /></div>}
       </div>
      }
      

@@ -9,7 +9,7 @@ function CDBox(props) {
 
     const clickHandler = () =>{
         setActive(!active)
-        console.log(active)
+        
     }
 
 
@@ -53,7 +53,7 @@ function CDBox(props) {
   if(typeof methods[0] !== 'undefined'){
 
     for(var i =0; i < methods[0].length; i++){
-        console.log(methods[0][i])
+        
         
         if(methods[0][i] === 'public'){
             methods[0][i] = '+'

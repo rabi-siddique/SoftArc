@@ -7,7 +7,7 @@ User = get_user_model()
 class SavedObjects(models.Model):
     name = models.CharField(max_length=100)
     details = models.CharField(max_length=255)
-    data = JSONField()
+    data = JSONField(unique=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):

@@ -1,11 +1,13 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import './Profile.css'
 import EditIcon from '@material-ui/icons/Edit';
-import axios from 'axios'
 import NotInterestedIcon from '@material-ui/icons/NotInterested';
-import {Avatar,IconButton} from '@material-ui/core'
+import {Avatar} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
+import logo1 from './SoftArcLogo1.JPG'
+import logo2 from './SoftArcLogo2.JPG'
+
 import {changeFirstName,changeLastName,changeDP,
     changeUsername,changeAbout} from '../../actions/auth'
 
@@ -91,7 +93,7 @@ function Profile({imagename,userdata,changeFirstName,changeLastName,
     return (
         <div className="profile">
             <div className="profile-banner">
-               <h1> Welcome to your Profile !</h1>
+                <img src={userdata.darktheme?logo2:logo1}/>
             </div>
             
   

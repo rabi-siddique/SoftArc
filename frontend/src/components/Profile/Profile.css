@@ -7,9 +7,12 @@
 .profile-banner{
     color: #000;
     background-color: #f0f0f0;
-    padding: 100px;
+    display: flex;
+    justify-content: center;
     
 }
+
+
 
 .profile-banner > h1{
     text-align: center;
@@ -39,9 +42,10 @@
     outline: none;
     border: none;
     border-radius: 20px;
-    background-color:  #842bd7;
+    background-color:  #4654A3;
     color: #fff;
     margin-top: 20px;
+    font-weight: bold;
     
 }
 .personal-section{
@@ -119,7 +123,7 @@
     outline: none;
     border: none;
     border-radius: 20px;
-    background-color:  #842bd7;
+    background-color:  #4654A3;
     color: #fff;
     
     

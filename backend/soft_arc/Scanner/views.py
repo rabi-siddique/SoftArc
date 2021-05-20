@@ -16,6 +16,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import authentication, permissions
 from django.conf import settings
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
 ALLOWED_EXTENSIONS = set(['java', 'cs', 'cpp'])
@@ -26,7 +27,9 @@ def allowed_file(filename):
 
 
 class UploadView(APIView):
-    permission_classes = [permissions.AllowAny] #permission to access this method
+    permission_classes = [permissions.IsAuthenticated]
+    #authentication_classes = [JWTAuthentication]
+     #permission to access this method
     parser_classes = [MultiPartParser,FormParser] #Format of files
 
     def post(self,request):

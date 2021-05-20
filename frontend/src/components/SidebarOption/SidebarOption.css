@@ -5,7 +5,8 @@
   }
   
 .sidebarOption:hover {
-background-color: #e8f5fe;
+background-color: #4654A3;
+color: #fff;
 border-radius: 30px;
 transition: color 100ms ease-out;
 }

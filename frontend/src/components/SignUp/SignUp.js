@@ -3,11 +3,16 @@ import './SignUp.css'
 import {Link,Redirect} from 'react-router-dom'
 import Logo from './SoftArcLogo.jpg'
 import { connect } from 'react-redux'
-import { signup } from '../../actions/auth'
+import { signup,messageclear } from '../../actions/auth'
 import axios from 'axios'
+import CloseIcon from '@material-ui/icons/Close';
+import ClipLoader from "react-spinners/ClipLoader";
 
 
-function SignUp({signup, isAuthenticated}) {
+
+function SignUp({signup,message,messageclear}) {
+    const [loading, setLoading] = useState(false);
+    const [color, setColor] = useState("#000");
     const [isDesktop, setDesktop] = useState(window.innerWidth <= 800)
     const updateMedia = () => {
         setDesktop(window.innerWidth <= 800)
@@ -18,8 +23,15 @@ function SignUp({signup, isAuthenticated}) {
         return () => window.removeEventListener("resize", updateMedia)
       })
 
+      useEffect(()=>{
+        messageclear()
+    },[])
 
-      const [accountCreated, setAccountCreated] = useState(false)
+    useEffect(()=>{
+        setLoading(false)
+    },[message])
+
+
       const [formData, setFormData] = useState({
           fullname: '',
           email: '',
@@ -33,14 +45,11 @@ function SignUp({signup, isAuthenticated}) {
   
       const onSubmit = e => {
           e.preventDefault()
-  
-          if (password === re_password) {
-              const namearr = fullname.split(" ")
-               
-              signup(namearr[0],namearr[1], email, password, re_password)
-              setAccountCreated(true)
-          }
-      }
+                setLoading(!loading)
+                const namearr = fullname.split(" ")
+                signup(namearr[0],namearr[1], email, password, re_password)
+              
+    }
 
       const continueWithGoogle = async () => {
         try {
@@ -62,18 +71,9 @@ function SignUp({signup, isAuthenticated}) {
         }
     };
 
-
-
-    if (isAuthenticated) {
-        return <Redirect to='/login' />
-    }
-    if (accountCreated) {
-        return <Redirect to='/login' />
-    }
-
     return (
         <div className="su-components">
-    
+         
             <div className="su-left-component">
                 {!isDesktop ? (
                 <div className="su-left-content">
@@ -99,68 +99,79 @@ function SignUp({signup, isAuthenticated}) {
             </div>
                 <div className="su-body">
                     <h1 className="su-head-text-3">Create Free Account</h1>
-                     <p className="su-head-text-4">Sign up using social networks</p>
+                    <p className="su-head-text-4">Sign up using social networks</p>
                      <div className="su-social-media-buttons">
                      <button onClick={continueWithGoogle} className="fa fa-google"> </button>
                      <button onClick={continueWithFacebook} className="fa fa-facebook"></button>
                      </div>
                      <div className="su-wrapper">
                      <div className="su-border">OR</div>
-                     </div>   
+                </div>
+                     {message?
+                         <div className="warning-login">
+                            <p>{message}</p>
+                            <CloseIcon className="closeicon" onClick={()=>{messageclear()}}/>
+                         </div>
+                    :
                      <div className="su-form-elements">
                          
-                         <form onSubmit={e => onSubmit(e)}>
-
-                         <input
-                        className='su-input'
-                        type='text'
-                        placeholder='Full Name*'
-                        name='fullname'
-                        value={fullname}
-                        onChange={e => onChange(e)}
-                        required
-                        />
+                         {loading?
+                                                     
+                        <ClipLoader color={color}  size={150} />
+                            : 
+                        <form onSubmit={e => onSubmit(e)}>
 
                             <input
                             className='su-input'
-                            type='email'
-                            placeholder='Email*'
-                            name='email'
-                            value={email}
+                            type='text'
+                            placeholder='Full Name*'
+                            name='fullname'
+                            value={fullname}
                             onChange={e => onChange(e)}
                             required
                             />
 
-                            <input
+                                <input
                                 className='su-input'
-                                type='password'
-                                placeholder='Password*'
-                                name='password'
-                                value={password}
+                                type='email'
+                                placeholder='Email*'
+                                name='email'
+                                value={email}
                                 onChange={e => onChange(e)}
-                                minLength='8'
                                 required
                                 />
 
-                            <input
-                                className='su-input'
-                                type='password'
-                                placeholder='Confirm Password*'
-                                name='re_password'
-                                value={re_password}
-                                onChange={e => onChange(e)}
-                                minLength='8'
-                                required
-                            />
+                                <input
+                                    className='su-input'
+                                    type='password'
+                                    placeholder='Password*'
+                                    name='password'
+                                    value={password}
+                                    onChange={e => onChange(e)}
+                                    minLength='8'
+                                    required
+                                    />
 
-                             <input className="su-btn-1" 
-                             type="submit" 
-                             value="Sign Up" 
-                             name="submit-btn" />
+                                <input
+                                    className='su-input'
+                                    type='password'
+                                    placeholder='Confirm Password*'
+                                    name='re_password'
+                                    value={re_password}
+                                    onChange={e => onChange(e)}
+                                    minLength='8'
+                                    required
+                                />
 
-                         </form>
+                                <input className="su-btn-1" 
+                                type="submit" 
+                                value="Sign Up" 
+                                name="submit-btn" />
+
+                            </form>}
 
                      </div>
+}
 
                 </div>
             
@@ -174,7 +185,8 @@ function SignUp({signup, isAuthenticated}) {
 }
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    message: state.auth.message
 })
 
-export default connect(mapStateToProps, { signup })(SignUp)
+export default connect(mapStateToProps, { signup,messageclear })(SignUp)

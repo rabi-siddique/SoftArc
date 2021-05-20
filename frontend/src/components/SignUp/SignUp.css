@@ -8,10 +8,13 @@
 .su-left-component{
     width: 34vw;
     height: 100vh;
-    background-color :#842bd7;
+    background-color :#4654A3;
+    /*#3B5998*/
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
+    
     
     
 }
@@ -35,7 +38,7 @@
 .su-btn-1{
     width: 14.688rem;
     height: 3.375rem;
-    background-color: #842bd7;
+    background-color: #4654A3;
     color:#fff;
     border-radius: 30px;
     border: none;
@@ -51,9 +54,10 @@
     background-color:#fff;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
+
 
 
 .su-head{

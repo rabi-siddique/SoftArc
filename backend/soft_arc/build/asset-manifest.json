@@ -1,28 +1,32 @@
 {
   "files": {
-    "main.css": "/static/css/main.0e842441.chunk.css",
-    "main.js": "/static/js/main.03ea34e1.chunk.js",
-    "main.js.map": "/static/js/main.03ea34e1.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.b45c944d.js",
-    "runtime-main.js.map": "/static/js/runtime-main.b45c944d.js.map",
-    "static/js/2.175eedbe.chunk.js": "/static/js/2.175eedbe.chunk.js",
-    "static/js/2.175eedbe.chunk.js.map": "/static/js/2.175eedbe.chunk.js.map",
-    "static/js/3.b63e5ef2.chunk.js": "/static/js/3.b63e5ef2.chunk.js",
-    "static/js/3.b63e5ef2.chunk.js.map": "/static/js/3.b63e5ef2.chunk.js.map",
+    "main.css": "/static/css/main.6059699e.chunk.css",
+    "main.js": "/static/js/main.5f97adac.chunk.js",
+    "main.js.map": "/static/js/main.5f97adac.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5f2dc148.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5f2dc148.js.map",
+    "static/css/2.4329a4e3.chunk.css": "/static/css/2.4329a4e3.chunk.css",
+    "static/js/2.e734c743.chunk.js": "/static/js/2.e734c743.chunk.js",
+    "static/js/2.e734c743.chunk.js.map": "/static/js/2.e734c743.chunk.js.map",
+    "static/js/3.b3685fb6.chunk.js": "/static/js/3.b3685fb6.chunk.js",
+    "static/js/3.b3685fb6.chunk.js.map": "/static/js/3.b3685fb6.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.0e842441.chunk.css.map": "/static/css/main.0e842441.chunk.css.map",
-    "static/js/2.175eedbe.chunk.js.LICENSE.txt": "/static/js/2.175eedbe.chunk.js.LICENSE.txt",
+    "static/css/2.4329a4e3.chunk.css.map": "/static/css/2.4329a4e3.chunk.css.map",
+    "static/css/main.6059699e.chunk.css.map": "/static/css/main.6059699e.chunk.css.map",
+    "static/js/2.e734c743.chunk.js.LICENSE.txt": "/static/js/2.e734c743.chunk.js.LICENSE.txt",
     "static/media/SoftArcLogo.5ef4ff8c.jpg": "/static/media/SoftArcLogo.5ef4ff8c.jpg",
     "static/media/SoftArcLogo.77cc15d8.jpg": "/static/media/SoftArcLogo.77cc15d8.jpg",
     "static/media/SoftArcLogo1.c45ee17e.JPG": "/static/media/SoftArcLogo1.c45ee17e.JPG",
     "static/media/SoftArcLogo2.949b0adf.JPG": "/static/media/SoftArcLogo2.949b0adf.JPG",
     "static/media/SoftArcLogo223.18aaa15c.jpg": "/static/media/SoftArcLogo223.18aaa15c.jpg",
-    "static/media/SoftArcLogo224.25d5f2e1.jpg": "/static/media/SoftArcLogo224.25d5f2e1.jpg"
+    "static/media/SoftArcLogo224.25d5f2e1.jpg": "/static/media/SoftArcLogo224.25d5f2e1.jpg",
+    "static/media/font-awesome.min.css": "/static/media/fontawesome-webfont.f691f37e.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.b45c944d.js",
-    "static/js/2.175eedbe.chunk.js",
-    "static/css/main.0e842441.chunk.css",
-    "static/js/main.03ea34e1.chunk.js"
+    "static/js/runtime-main.5f2dc148.js",
+    "static/css/2.4329a4e3.chunk.css",
+    "static/js/2.e734c743.chunk.js",
+    "static/css/main.6059699e.chunk.css",
+    "static/js/main.5f97adac.chunk.js"
   ]
 }

@@ -8,6 +8,8 @@ import {Provider} from 'react-redux'
 import { BrowserRouter} from "react-router-dom";
 import { PersistGate } from 'redux-persist/integration/react'
 import configureStore from './store';
+import 'font-awesome/css/font-awesome.min.css';
+
 const { persistor, store } = configureStore()
 
 ReactDOM.render(

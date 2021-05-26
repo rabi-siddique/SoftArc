@@ -11,18 +11,20 @@
     border-bottom: 1px solid #111;
     font-weight: 800;
     font-size: 20px;
+    word-wrap: break-word;
 }
 
 
 .variables{
     margin-top: 10px;
     border-bottom: 1px solid #111;
-    
+    word-wrap: break-word;   
 }
 
 .methods{
     margin-top: 10px;
     border-bottom: 1px solid #111;
+    word-wrap: break-word;
 }
 
 ul{
@@ -30,6 +32,7 @@ ul{
     padding-left: 4px;
     font-weight: 700;
     font-size: 20px;
+    word-wrap: break-word;
 }
 
 .accordian{

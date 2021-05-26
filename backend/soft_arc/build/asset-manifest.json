@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.6059699e.chunk.css",
-    "main.js": "/static/js/main.5f97adac.chunk.js",
-    "main.js.map": "/static/js/main.5f97adac.chunk.js.map",
+    "main.css": "/static/css/main.3770ad4f.chunk.css",
+    "main.js": "/static/js/main.11f61ddc.chunk.js",
+    "main.js.map": "/static/js/main.11f61ddc.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.5f2dc148.js",
     "runtime-main.js.map": "/static/js/runtime-main.5f2dc148.js.map",
     "static/css/2.4329a4e3.chunk.css": "/static/css/2.4329a4e3.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.b3685fb6.chunk.js.map": "/static/js/3.b3685fb6.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.4329a4e3.chunk.css.map": "/static/css/2.4329a4e3.chunk.css.map",
-    "static/css/main.6059699e.chunk.css.map": "/static/css/main.6059699e.chunk.css.map",
+    "static/css/main.3770ad4f.chunk.css.map": "/static/css/main.3770ad4f.chunk.css.map",
     "static/js/2.e734c743.chunk.js.LICENSE.txt": "/static/js/2.e734c743.chunk.js.LICENSE.txt",
     "static/media/SoftArcLogo.5ef4ff8c.jpg": "/static/media/SoftArcLogo.5ef4ff8c.jpg",
     "static/media/SoftArcLogo.77cc15d8.jpg": "/static/media/SoftArcLogo.77cc15d8.jpg",
@@ -26,7 +26,7 @@
     "static/js/runtime-main.5f2dc148.js",
     "static/css/2.4329a4e3.chunk.css",
     "static/js/2.e734c743.chunk.js",
-    "static/css/main.6059699e.chunk.css",
-    "static/js/main.5f97adac.chunk.js"
+    "static/css/main.3770ad4f.chunk.css",
+    "static/js/main.11f61ddc.chunk.js"
   ]
 }

@@ -50,7 +50,7 @@ function Modal(props){
 
     const closeHandler = ()=>{
         setmsg("")
-        props.onClose()
+        closeHandler()
         setFormData({name: '',
         details: ''})
         

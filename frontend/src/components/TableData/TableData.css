@@ -1,28 +1,4 @@
-.A{
-background-color: #4654A3;
-color: #fff;
-height: 100px;
-display: flex;
-justify-content: center;
-align-items: center;
-
-}
-
-.A > h1{
-font-weight: 800;
-font-size: 20px;
-}
-
-.B{
-background-color: #111;
-color: #fff;
-height: 100px;
-display: flex;
-justify-content: center;
-align-items: center;
-}
-
-.B > h1{
-font-weight: 800;
-font-size: 20px;
+.whole-table{
+    width: 100%;
+    
 }

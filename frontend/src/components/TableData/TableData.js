@@ -1,9 +1,9 @@
 import React from 'react'
 import {VariablesTable} from '../../components'
 import {MethodsTable} from '../../components'
-import './TableData.css'
 import { useContext } from 'react'
 import {DataContext} from '../../context/DataContext'
+import './TableData.css'
 
 function TableData() {
     const [datareceived,setdatareceived] = useContext(DataContext)
@@ -13,25 +13,25 @@ function TableData() {
     return (
         <div className="whole-table">
     
-            <div  className="table-data">
+            <div  className="divide-dashed">
             {arr.map(a => (
 
-            <div>
-
-            <div className="A">
+            <div className="tableinstance">
+            <div className="AB">
             {a[3] !== ""?
-            (<h1>{a[0]} extends {a[3]}</h1>)
+            (<p class="text-lg bg-blue-500 text-white text-center font-bold mt-5 px-4 py-3">{a[0]} extends {a[3]}</p>)
             :
-            (<h1>{a[0]}</h1>)
+            (<p class="text-lg bg-blue-500 text-white text-center font-bold mt-5 px-4 py-3">{a[0]}</p>)
             }
             </div>
 
             {a[4].length !== 0?(
-            <div class="B">
+            <div class="BA">
             {ext === '.cpp'?
-            (<h1>Extends {a[4]}</h1>)
+            (<p class="text-lg bg-blue-500 text-white text-center font-bold mt-5 px-4 py-3">{a[4]}</p>)
             :
-            (<h1>Implements {a[4].toString()}</h1>) 
+            (<p class="text-lg bg-blue-500 text-white text-center font-bold mt-5 px-4 py-3">{a[4].toString()}</p>)
+            
             }
             </div>):(<div></div>)
             }       

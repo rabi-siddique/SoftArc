@@ -7,45 +7,37 @@ function VariablesTable(props) {
   if(typeof tableData[0] !== 'undefined'){
       for(var i =0; i < tableData[0].length; i++){
           res.push(
-          <tr >
-          <td>{tableData[0][i]}</td>
-          <td>{tableData[1][i]}</td>
-          <td>{tableData[2][i]}</td>
-          </tr>
+              <tr class="bg-gray-100 border-b border-gray-200">
+              <td class="px-4 py-3">{tableData[0][i]}</td>
+              <td class="px-4 py-3">{tableData[1][i]}</td>
+              <td class="px-4 py-3">{tableData[2][i]}</td>
+            </tr>
           )
       }}
   else{
-    return <div className="overall-container"> 
-    <h1>No Variables</h1>
-    </div>
-  }
+    return <p class="text-lg text-center font-bold m-5">No Variables</p>
+}
   
     return (
 
-      <div>
+      <div className="vtable">
 
-    <div className="overall-container"> 
-    <h1>Variables</h1>
-    </div>
-
-      <div className="table-container"> 
-           <table className="vtable">
-        <thead>
-          <tr>
-            <th scope="col">Modifier</th>
-            <th scope="col">Datatype</th>
-            <th scope="col">Name</th>
-          </tr>
-        </thead>
-
+<p class="text-lg text-center font-bold m-5">Variables</p>
+    
+    <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
+    <tr class="text-left border-b-2 border-gray-300">
+               <th class="px-4 py-3">Modifier</th>
+               <th class="px-4 py-3">Name</th>
+               <th class="px-4 py-3">Datatype</th>
+             </tr>
+   
         <tbody>
 
           {res}
         </tbody>
 
-      </table>
-        </div>
-        </div>
+        </table>
+      </div>
     )
 }
 

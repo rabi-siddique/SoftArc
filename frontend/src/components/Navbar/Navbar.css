@@ -50,10 +50,9 @@
 .mid-area{
   
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
   width: 40%;
   align-items: center;
-  justify-content: space-between;
   margin-top: 10px;
   margin-bottom: 10px;
   

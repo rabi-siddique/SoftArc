@@ -42,7 +42,9 @@ function Sidebar({sidebar,logout,imageurl,
 
         <center>
           
-          <Avatar className={classes.large} src={imageurl}>{imagename}</Avatar>
+          <Avatar className={classes.large} src={imageurl}>
+            {`${userdata.first_name.slice(0,1)}${userdata.last_name.slice(0,1)}`}
+            </Avatar>
           <h4>{`${firstname} ${lastname}`}</h4>
         </center>
 

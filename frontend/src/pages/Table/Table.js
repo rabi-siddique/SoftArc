@@ -18,9 +18,10 @@ function Table(props) {
     
     return (
         <div className="entire-table">
-            
-           <ArrowBackIcon onClick={clickHandler}/>
-            <MiniNavBar icon_color={icon_color} id={props.id} darkmode={props.darkmode}/>
+            <div className="goback">
+           <ArrowBackIcon  onClick={clickHandler}/>
+           </div>
+           <MiniNavBar />
             <TableData />
     
         </div>

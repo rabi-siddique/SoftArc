@@ -42,10 +42,6 @@ function Navbar({showSidebar,darkmode,logout,
 
       <div className={darkmode?"right-area-dark":"right-area-light"}>
 
-           { /**   <IconButton>
-                  <AppsIcon style={{fill: icon_color}}/>
-              </IconButton>
-           **/}
               <Link className="nav-link" to={`/scanner`}>
                 <IconButton>
                 <PublishIcon style={{fill: icon_color}}/>

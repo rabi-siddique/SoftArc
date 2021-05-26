@@ -1,8 +1,7 @@
 .profile{
-    width: 100%;
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    
+    height: 100%;
+    background-color: #E5E7EB;
 }
 .profile-banner{
     color: #000;

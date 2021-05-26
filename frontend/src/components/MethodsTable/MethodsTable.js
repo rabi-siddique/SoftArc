@@ -8,47 +8,64 @@ function MethodsTable(props) {
   if(typeof tableData[0] !== 'undefined'){
       for(var i =0; i < tableData[0].length; i++){
           res.push(
-          <tr >
-          <td>{tableData[0][i]}</td>
-          <td>{tableData[1][i]}</td>
-          <td>{tableData[2][i]}</td>
-          <td>{tableData[3][i]}</td>
-          </tr>
+            <tr class="bg-gray-100 border-b border-gray-200">
+
+            <div className="hidden sm:contents">
+            <td class="px-4 py-3">{tableData[0][i]}</td>
+            </div>
+
+            <div className="hidden sm:contents">
+            <td class="px-4 py-3">{tableData[2][i]}</td>
+            </div>
+
+            <div className="contents sm:hidden">
+            <td class="px-4 py-3">{tableData[0][i]} {tableData[2][i]}</td>
+            </div>
+
+            <td class="px-4 py-3">{tableData[1][i]}</td>
+            <td class="px-4 py-3">{tableData[3][i]}</td>
+          
+          </tr> 
           )
       }}
       else{
-        return <div className="overall-container"> 
-        <h1>No Methods</h1>
-        </div>
+     return <p class="text-lg text-center font-bold m-5">No Methods</p>
       }
 
 
     return (
-      <div>
+      <div className="mtable">
 
-    <div className="overall-container"> 
-    <h1>Methods</h1>
-    </div>
+<p class="text-lg text-center font-bold m-5">Methods</p>
+    
+    <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray">
+    <tr class="text-left border-b-2 border-gray-300">
+              
+              <div className="hidden sm:contents">
+               <th class="px-4 py-3">Modifier</th>
+               </div>
 
-      <div className="table-container"> 
-            <table className="mtable">
-      <thead>
-        <tr>
-          <th scope="col">Modifier</th>
-          <th scope="col">ReturnType</th>
-          <th scope="col">Name</th>
-          <th scope="col">Arguments</th>
-        </tr>
-      </thead>
-      <tbody>
+               <div className="hidden sm:contents">
+               <th class="px-4 py-3">Name</th>
+               </div>
+               <div className="contents sm:hidden">
+               <th class="px-4 py-3">Name</th>
+               </div>
+               <th class="px-4 py-3">Return type</th>
+               <th class="px-4 py-3">Arguments</th>
+             </tr>
+   
+        <tbody></tbody>
+   
+        <tbody>
 
-        {res}
-       
-      </tbody>
-    </table>
+          {res}
+        </tbody>
+
+        </table>
             
         </div>
-        </div>
+        
     )
 }
 

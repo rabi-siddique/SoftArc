@@ -25,6 +25,7 @@ function Saved(props) {
 if(data.length !== 0){
     return (
         <div className="card-container">
+            
             {
                 data.map(
                     (obj) =>{
@@ -45,15 +46,17 @@ if(data.length !== 0){
                     }
                 )
             }
-           
+           </div>
             
-        </div>
+        
     )
     }
     else{
         return (
             <div className="nothing-to-show">
-                <h1>No Items Saved. Nothing to Show.</h1>
+            <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
+            No Items Saved. Nothing to Show.
+            </h1>
             </div>
         )
     }

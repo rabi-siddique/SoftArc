@@ -90,24 +90,29 @@ else{
 }
   
     return (
-        <div className="box">
-            <div className="class-name">
-                {clss}
-            </div>
+        <div className="w-1/2 mx-auto mb-4 my-6 md:w-72 shadow sm:px-0 sm:py-6 py-4 px-4 bg-white dark:bg-gray-800 rounded-xl">
+            <p className="break-all text-sm sm:text-lg px-0 sm:px-2 border-b-2 border-black text-lg text-gray-800 dark:text-gray-100 pb-1 font-semibold">
+                   
+             {clss}
+            </p>
 
             <div className="variables">
                 <ul>
+                <p className="break-all px-0 sm:px-2 border-b-2 border-black text-sm sm:text-lg text-gray-800 dark:text-gray-100 pb-1 font-semibold">
                 {v}
+                </p>
                 </ul>
             </div>
 
             <div className="methods">
-                <ul>
+            <ul>
+                <p className="break-all text-sm sm:text-lg px-0 sm:px-2  text-lg text-gray-800 dark:text-gray-100 pb-1 font-semibold">
                 {m}
-                </ul>
+                </p>
+            </ul>
             </div>
 
-            <div className="accordian">
+         {/*   <div className="accordian">
             <IconButton onClick={clickHandler}>
             <ArrowDownwardIcon style={{fill: props.icon_color}}/>
             </IconButton>
@@ -119,7 +124,8 @@ else{
                 {k.length !== 0?
                 (
                 <ul>
-                    <li>Extends:</li>
+                    <li>
+                        Extends:</li>
                     <ul>
                     {k}
                     </ul>
@@ -155,7 +161,7 @@ else{
             
                 </div>
             )}       
-                
+        */}
             </div>
 
 

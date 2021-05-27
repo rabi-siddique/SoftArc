@@ -38,7 +38,7 @@ function MethodsTable(props) {
 
 <p class="text-lg text-center font-bold m-5">Methods</p>
     
-    <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray">
+    <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-indigo-200 text-gray">
     <tr class="text-left border-b-2 border-gray-300">
               
               <div className="hidden sm:contents">

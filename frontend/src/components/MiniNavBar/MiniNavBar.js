@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import GetAppIcon from '@material-ui/icons/GetApp';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
+import { jsPDF } from "jspdf";
+import html2canvas from 'html2canvas';
 import ShareIcon from '@material-ui/icons/Share';
 import { useContext } from 'react'
 import axios from 'axios'
@@ -81,6 +83,19 @@ function MiniNavBar(props) {
         setFormData({name: '',
         details: ''})
     };
+
+    const printDocument = (divName)=> {
+      const input = document.getElementById(divName);
+      html2canvas(input)
+        .then((canvas) => {
+          const imgData = canvas.toDataURL('image/png');
+          const pdf = new jsPDF();
+          pdf.addImage(imgData, 'JPEG', 0, 0);
+          // pdf.output('dataurlnewwindow');
+          pdf.save("download.pdf");
+        })
+      ;
+    }
 
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -169,7 +184,7 @@ function MiniNavBar(props) {
                 </div>
       
                 <div className="mt-2">
-<button class="w-80 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+<button class="w-80 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Save
             </button>
             </div>
@@ -184,7 +199,7 @@ function MiniNavBar(props) {
 
         </DialogContent>
         <DialogActions>
-            <button onClick={handleClose} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <button onClick={handleClose} class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Close
             </button>
         </DialogActions>
@@ -195,16 +210,18 @@ function MiniNavBar(props) {
  
   <div className="w-11/12 mx-auto mb-4 my-6 md:w-5/12 sm:px-10 sm:py-6 py-4 px-4 dark:bg-gray-800 rounded-md">
               
-    <button onClick={handleClickOpen} class="w-36 ml-2 mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <button onClick={handleClickOpen} class="w-36 ml-2 mt-2 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
      Save
     </button>
             
 
-  <button class="w-36 ml-2 mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+  <button 
+  onClick={()=>printDocument(`whole-table`)}
+  class="w-36 ml-2 mt-2 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
      Download
     </button>
 
-    <button class="w-36 ml-2 mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <button class="w-36 ml-2 mt-2 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
     
      Share
     </button>

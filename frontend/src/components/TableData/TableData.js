@@ -5,11 +5,12 @@ import { useContext } from 'react'
 import {DataContext} from '../../context/DataContext'
 import './TableData.css'
 
-function TableData() {
+function TableData(props) {
     const [datareceived,setdatareceived] = useContext(DataContext)
     const arr = datareceived[0]
     const ext = datareceived[1]
-   
+    props.setdivName("whole-table")
+    
     return (
         <div className="whole-table">
     
@@ -19,18 +20,18 @@ function TableData() {
             <div className="tableinstance">
             <div className="AB">
             {a[3] !== ""?
-            (<p class="text-lg bg-blue-500 text-white text-center font-bold mt-5 px-4 py-3">{a[0]} extends {a[3]}</p>)
+            (<p class="text-lg bg-indigo-500 text-white text-center font-bold mt-5 px-4 py-3">{a[0]} extends {a[3]}</p>)
             :
-            (<p class="text-lg bg-blue-500 text-white text-center font-bold mt-5 px-4 py-3">{a[0]}</p>)
+            (<p class="text-lg bg-indigo-500 text-white text-center font-bold mt-5 px-4 py-3">{a[0]}</p>)
             }
             </div>
 
             {a[4].length !== 0?(
             <div class="BA">
             {ext === '.cpp'?
-            (<p class="text-lg bg-blue-500 text-white text-center font-bold mt-5 px-4 py-3">{a[4]}</p>)
+            (<p class="text-lg bg-indigo-500 text-white text-center font-bold mt-5 px-4 py-3">{a[4]}</p>)
             :
-            (<p class="text-lg bg-blue-500 text-white text-center font-bold mt-5 px-4 py-3">{a[4].toString()}</p>)
+            (<p class="text-lg bg-indigo-500 text-white text-center font-bold mt-5 px-4 py-3">{a[4].toString()}</p>)
             
             }
             </div>):(<div></div>)

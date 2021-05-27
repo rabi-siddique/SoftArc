@@ -25,7 +25,7 @@ function Buttons() {
 
     <Link to="/table">
     
-    <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <button class="w-full bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
     Table
     </button>
 
@@ -36,7 +36,7 @@ function Buttons() {
 
 
     <Link to="/cd">
-    <button class="mb-8 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <button class="mb-8 w-full bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
      Class Diagram
     </button>
     </Link> 

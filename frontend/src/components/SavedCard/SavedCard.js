@@ -179,14 +179,14 @@ function SavedCard(props) {
                 {!namefield?
                 <div>
                 <button onClick={()=>{setNameField(true)}}
-                className="w-3/4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                className="w-3/4 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Edit
                 </button>
                 </div>
                 :
                 <div>
                 <button onClick={onChangeName}
-                className="w-3/4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                className="w-3/4 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Save
                 </button>
                 </div>
@@ -220,13 +220,13 @@ function SavedCard(props) {
    {!detailfield?
    <div>
    <button onClick={()=>{setDetailField(true)}}
-   className="w-3/4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+   className="w-3/4 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
    Edit
    </button>
    </div>:
    <div>
    <button onClick={onChangeDetails}
-   className="w-3/4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+   className="w-3/4 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
    Save
    </button>
    </div>
@@ -239,7 +239,7 @@ function SavedCard(props) {
 
         </DialogContent>
         <DialogActions>
-            <button onClick={handleClose} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <button onClick={handleClose} class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Close
             </button>
         </DialogActions>
@@ -318,12 +318,12 @@ function SavedCard(props) {
     {details}
     </p>
     <Link to="/table">                  
-    <button onClick={ClickA} class="mb-6 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <button onClick={ClickA} class="mb-6 w-full bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
      Table
     </button>
     </Link>
     <Link to="/cd">
-    <button onClick={ClickB} class="mb-4 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <button onClick={ClickB} class="mb-4 w-full bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
      Class Diagram
     </button>
     </Link>

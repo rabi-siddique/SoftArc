@@ -151,7 +151,7 @@ function Profile({imagename,userdata,changeFirstName,changeLastName,
                 onSubmit={onClickHandler}>
 
 <label
-  className="w-64 flex flex-col items-center px-4 py-6 bg-white rounded-md shadow-md tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue-600 hover:text-white text-white-600 ease-linear transition-all duration-150">
+  className="w-64 flex flex-col items-center px-4 py-6 bg-white rounded-md shadow-md tracking-wide uppercase border border-blue cursor-pointer hover:bg-indigo-600 hover:text-white text-white-600 ease-linear transition-all duration-150">
    <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
         </svg>
@@ -175,7 +175,7 @@ alt="image" />}
 </div>
     <div className="mt-2">
     <input type="submit" value="Upload" 
-    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" />
+    class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" />
     </div>
     </form>
 </div>
@@ -183,7 +183,7 @@ alt="image" />}
 
         </DialogContent>
         <DialogActions>
-            <button onClick={handleClose} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <button onClick={handleClose} class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Close
             </button>
         </DialogActions>
@@ -271,14 +271,14 @@ alt="image" />}
                 {!namefield?
                 <div className="ml-8">
                 <button onClick={clickHandlerA}
-                className="w-2/3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                className="w-2/3 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Edit
                 </button>
                 </div>
                 :
                 <div className="ml-9">
                 <button onClick={onChangeName}
-                className="w-2/3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                className="w-2/3 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Save
                 </button>
                 </div>
@@ -304,15 +304,15 @@ alt="image" />}
                 {!namefield2?
                 <div className="ml-8">
                 <button onClick={clickHandlerD}
-                className="w-2/3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                className="w-2/3 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Edit
                 </button>
                 </div>
                 :
                 <div className="ml-9">
                 <button onClick={onChangelname}
-                className="w-2/3 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white pbg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outliney-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                Save
+               className="w-2/3 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+               Save
                 </button>
                 </div>
                 }
@@ -325,7 +325,7 @@ alt="image" />}
                     {userdata.email}  
                 </p>
                 <div className="ml-9">
-                <button className=" w-2/3 bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">
+                <button className=" w-2/3 bg-indigo-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">
                 Edit
                 </button>
                 </div>
@@ -349,14 +349,14 @@ alt="image" />}
                 {!usernamefield?
                 <div className="ml-8" >
                 <button onClick={clickHandlerB}
-                className="w-2/3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                className="w-2/3 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Edit
                 </button>
                 </div>
                 :
                 <div className="ml-9" >
                 <button onClick={onChangeUsername}
-                className="w-2/3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                className="w-2/3 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Save
                 </button>
                 </div>
@@ -388,14 +388,14 @@ alt="image" />}
                 {!aboutfield?
                 <div className="ml-8" >
                 <button onClick={clickHandlerC}
-                className="w-2/3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                className="w-2/3 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Edit
                 </button>
                 </div>:
                 <div className="ml-9">
                 <button onClick={onChangeAbout}
-                className="w-2/3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                Save
+               className="w-2/3 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+               Save
                 </button>
                 </div>
                 }

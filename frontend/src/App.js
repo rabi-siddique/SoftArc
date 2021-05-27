@@ -79,6 +79,9 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerOpen: {
     background:'#222A44',
+    //background:'#4f46e5',
+    
+    
     color:'#ffffff',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -88,6 +91,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerClose: {
     background:'#222A44',
+    //background:'#4f46e5',
     color:'#ffffff',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
@@ -223,7 +227,8 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata,logout,apply
             </Typography>
           <center>
           <Avatar src={userdata.image}>
-          {`${userdata.first_name} ${userdata.last_name}`}
+          `${userdata.first_name.slice(0,1)}${userdata.last_name.slice(0,1)}`
+             
           </Avatar>
           </center>
           </div>
@@ -256,7 +261,8 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata,logout,apply
         <center>
           
           <Avatar className={open?classes.large:classes.small} src={userdata.image}>
-              RS</Avatar>
+          `${userdata.first_name.slice(0,1)}${userdata.last_name.slice(0,1)}`
+              </Avatar>
           {open && <h4>{`${userdata.first_name} ${userdata.last_name}`}</h4>}
         </center>
 

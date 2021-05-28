@@ -81,16 +81,16 @@ export default function Help() {
              {/* <Tab label="Email" {...a11yProps(2)} />*/}
             </Tabs>
           </AppBar>
-          <TabPanel value={value} index={0}>
+          <TabPanel value={value} index={0} class="dark:bg-gray-900">
 
           <div>
       <section class="text-gray-700">
-        <div class="container px-5 py-24 mx-auto">
+        <div class="container px-5 py-24 mx-auto dark:bg-gray-900">
           <div class="text-center mb-20">
-            <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
+            <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-800 mb-4 dark:text-gray-100">
               Frequently Asked Question
             </h1>
-            <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
+            <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto dark:text-gray-200">
               The most common questions about how SoftArc works and what
               can we do for you.
             </p>
@@ -105,7 +105,7 @@ export default function Help() {
                   {item.question}
                 </summary>
 
-                <span>
+                <span class="dark:text-gray-200">
                   {item.answer}
                 </span>
                 </details>
@@ -123,7 +123,7 @@ export default function Help() {
                   {item.question}
                 </summary>
 
-                <span>
+                <span class="dark:text-gray-200">
                   {item.answer}
                 </span>
                 </details>
@@ -138,12 +138,12 @@ export default function Help() {
           
           </TabPanel>
 
-          <TabPanel value={value} index={1}>
+          <TabPanel value={value} index={1} class="dark:bg-gray-900">
             
             
           <div className="w-11/12 mx-auto ">
           <div class="text-center mb-4">          
-    <p class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
+    <p class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4 dark:text-gray-100">
               A video tutorial on How to use SoftArc
             </p>
             </div>

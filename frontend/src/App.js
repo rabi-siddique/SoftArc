@@ -5,7 +5,7 @@ import {ResetPassword} from './pages'
 import {ResetPasswordConfirm} from './pages'
 import {Activate} from './pages'
 import {load_user,checkAuthenticated,googleAuthenticate} from './actions/auth'
-import {useEffect,useState} from 'react'
+import {useEffect,useState,useContext} from 'react'
 import { connect } from 'react-redux';
 import {Upload,ClassDiagram,Table,Buttons,Saved,Homepage,Help} from './pages'
 import ClipLoader from "react-spinners/ClipLoader";
@@ -34,6 +34,7 @@ import HelpIcon from '@material-ui/icons/Help';
 import {Avatar} from '@material-ui/core'
 import Button from '@material-ui/core/Button';
 import {logout,applyDark} from './actions/auth';
+import { ThemeContext } from "./context/ThemeContext";
 
 
 const drawerWidth = 240;
@@ -152,6 +153,8 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata,logout,apply
     const [sidebar,setSidebar] = useState(true)
     const [loading, setLoading] = useState(true);
     const [color, setColor] = useState("#000");
+    const {darktheme, setdarkTheme} = useContext(ThemeContext);
+
   
     const classes = useStyles();
     const theme = useTheme();
@@ -183,7 +186,7 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata,logout,apply
   
   return (
     
-    <div className="App">
+    <div className="dark:bg-black">
     
     {isAuthenticated && 
 
@@ -305,7 +308,7 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata,logout,apply
 
 
         <ListItem button key={"Dark Theme"} 
-        onClick={()=>applyDark(userdata.id,userdata.darktheme)}>
+           onClick={() => setdarkTheme(darktheme === "dark" ? "light" : "dark")}>
         <ListItemIcon><InvertColorsIcon style={{fill: userdata.darktheme?"#121212":"#ffffff"}}/> </ListItemIcon>
         <ListItemText classes={{primary:classes.listItemText}} primary={"Dark Theme"} />
         </ListItem>

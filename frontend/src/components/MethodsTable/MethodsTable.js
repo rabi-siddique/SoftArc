@@ -8,7 +8,7 @@ function MethodsTable(props) {
   if(typeof tableData[0] !== 'undefined'){
       for(var i =0; i < tableData[0].length; i++){
           res.push(
-            <tr class="bg-gray-100 border-b border-gray-200">
+            <tr class="bg-gray-100 border-b border-gray-200 dark:bg-gray-700 dark:text-gray-100">
 
             <div className="hidden sm:contents">
             <td class="px-4 py-3">{tableData[0][i]}</td>
@@ -29,17 +29,17 @@ function MethodsTable(props) {
           )
       }}
       else{
-     return <p class="text-lg text-center font-bold m-5">No Methods</p>
+     return <p class="text-lg text-center font-bold m-5 dark:text-gray-100">No Methods</p>
       }
 
 
     return (
       <div className="mtable">
 
-<p class="text-lg text-center font-bold m-5">Methods</p>
+<p class="text-lg text-center font-bold m-5 dark:text-gray-100">Methods</p>
     
-    <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-indigo-200 text-gray">
-    <tr class="text-left border-b-2 border-gray-300">
+    <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-indigo-300">
+    <tr class="text-left border-b-2 border-gray-300  dark:bg-gray-800 dark:text-gray-100">
               
               <div className="hidden sm:contents">
                <th class="px-4 py-3">Modifier</th>

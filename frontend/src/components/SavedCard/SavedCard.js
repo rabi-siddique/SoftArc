@@ -179,14 +179,14 @@ function SavedCard(props) {
                 {!namefield?
                 <div>
                 <button onClick={()=>{setNameField(true)}}
-                className="w-3/4 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                className="w-1/2 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Edit
                 </button>
                 </div>
                 :
                 <div>
                 <button onClick={onChangeName}
-                className="w-3/4 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                className="w-1/2 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Save
                 </button>
                 </div>

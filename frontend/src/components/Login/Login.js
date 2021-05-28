@@ -234,7 +234,7 @@ function Login({login,isAuthenticated,messageclear,message}) {
                                     name="email" 
                                     value={email}
                             onChange={e => onChange(e)}
-                                    class="h-10 px-2 w-full rounded mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 border-gray-300 border shadow" type="email" />
+                                    class="h-10 px-2 w-full rounded mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 border-gray-300 border shadow" type="email" />
                                 </div>
                                 <div class="flex flex-col mt-5">
                                     <label for="password" class="text-lg font-semibold fleading-tight">
@@ -248,7 +248,7 @@ function Login({login,isAuthenticated,messageclear,message}) {
                                     minLength = '8'
                                     name="password" 
                                     type="password" 
-                                    class="h-10 px-2 w-full rounded mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 border-gray-300 border shadow" />
+                                    class="h-10 px-2 w-full rounded mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 border-gray-300 border shadow" />
                                 </div>
                             </div>}
                             <div class="pt-6 w-full flex justify-between px-2 sm:px-6">

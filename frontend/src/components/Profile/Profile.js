@@ -193,7 +193,7 @@ alt="image" />}
 
 
 
-      <div className="max-w-full  bg-white w-full rounded-lg shadow-xl">
+      <div className="max-w-full  bg-white w-full rounded-lg shadow-xl dark:bg-gray-900">
       <div className="bg-center bg-cover bg-no-repeat rounded relative  h-48">
                 <img src="https://cdn.tuk.dev/assets/photo-1519252161722-1d52d47ac7df.jpg" alt className="w-full h-full object-cover overflow-hidden rounded shadow" />
                {/* <div className="flex bg-white dark:bg-gray-800 items-center px-3 py-2 shadow rounded absolute right-0 mr-4 mt-4 cursor-pointer top-0">
@@ -243,24 +243,24 @@ alt="image" />}
 
         <div className="p-4 border-b flex flex-col justify-center items-center">
             
-            <h2 className="text-2xl mt-8">
+            <h2 className="text-2xl mt-8 dark:text-gray-100">
                 User Profile
             </h2>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-500 dark:text-gray-300">
                 Personal details 
             </p>
         </div>
         <div>
-            <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                <p className="text-gray-600">
+            <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b dark:hover:bg-gray-900 text-white">
+                <p className="text-gray-600 dark:text-gray-300">
                     First Name
                 </p>
 
                 {!namefield?
-                <p>
+                <p className="text-gray-800 dark:text-gray-100">
                     {userdata.first_name}
                 </p>
-                : <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
+                : <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white dark:bg-gray-800 dark:text-gray-100 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 border-gray-300 border shadow" 
                 id="grid-first-name" 
                 type="text" 
                 defaultValue={userdata.first_name}
@@ -284,16 +284,16 @@ alt="image" />}
                 </div>
                 }
             </div>
-            <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                <p className="text-gray-600">
+            <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b dark:hover:bg-gray-900 text-white">
+                <p className="text-gray-600 dark:text-gray-300">
                     Last Name
                 </p>
                 
                 {!namefield2?
-                <p>
+                <p className="text-gray-800 dark:text-gray-100">
                     {userdata.last_name}
                 </p>
-                : <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
+                : <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white dark:bg-gray-800 dark:text-gray-100 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 border-gray-300 border shadow" 
                 id="grid-first-name" 
                 type="text" 
                 defaultValue={userdata.last_name}
@@ -317,11 +317,11 @@ alt="image" />}
                 </div>
                 }
             </div>
-            <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                <p className="text-gray-600">
+            <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b dark:hover:bg-gray-900 text-white">
+                <p className="text-gray-600 dark:text-gray-300">
                     Email Address
                 </p>
-                <p>
+                <p className="text-gray-800 dark:text-gray-100">
                     {userdata.email}  
                 </p>
                 <div className="ml-9">
@@ -330,15 +330,15 @@ alt="image" />}
                 </button>
                 </div>
             </div>
-            <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                <p className="text-gray-600">
+            <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b dark:hover:bg-gray-900 text-white">
+                <p className="text-gray-600 dark:text-gray-300">
                     UserName
                 </p>
                 {!usernamefield?
-                <p>
+                <p className="text-gray-800 dark:text-gray-100">
                     {userdata.username}
                 </p>
-                : <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
+                : <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white dark:bg-gray-800 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 border-gray-300 border shadow" 
                 id="grid-first-name" 
                 type="text" 
                 defaultValue={userdata.username}
@@ -363,12 +363,12 @@ alt="image" />}
                 }
 
             </div>
-            <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                <p className="text-gray-600">
+            <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b dark:hover:bg-indigo-900 text-white">
+                <p className="text-gray-600 dark:text-gray-300">
                     About
                 </p>
                 {!aboutfield?
-                <p>
+                <p className="text-gray-800 dark:text-gray-100">
                     {userdata.about}
                 </p>
                 : 
@@ -377,7 +377,7 @@ alt="image" />}
                   id="about"
                   name="about"
                   rows={3}
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 border-gray-300 border shadow" 
                  defaultValue={userdata.about}
                 onChange={(e)=>{setAbout(e.target.value)}}
                 />

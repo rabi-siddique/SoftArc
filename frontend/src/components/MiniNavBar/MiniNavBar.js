@@ -14,6 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import Pdf from 'react-to-pdf'
 var fileDownload = require('js-file-download');
 
 const styles = (theme) => ({
@@ -59,7 +60,7 @@ const styles = (theme) => ({
 
 
 
-function MiniNavBar(props) {
+const MiniNavBar = React.forwardRef((props,ref)=> {
     const owner = props.id
     const [open, setOpen] = useState(false);
     const [msg,setmsg] = useState("")
@@ -68,6 +69,11 @@ function MiniNavBar(props) {
         name: '',
         details: '' 
     });
+
+    const options = {
+      orientation: 'landscape',
+      
+  };
 
     const { name, details } = formData;
 
@@ -114,22 +120,7 @@ function MiniNavBar(props) {
         }
     }
 
-    const onClickHandler2 = async (e) => { 
-  
-      const data = JSON.stringify({datareceived})
-      try{
-          const resp = await axios.post(url2, data,config)
-          setmsg("Data Saved Successfully.")
-         
-
-      }
-      catch(err){
-          console.log(err.response)
-          if(err.response.data.data){
-              setmsg(err.response.data.data)
-          }
-      }
-  }
+   
 
   
 
@@ -234,8 +225,17 @@ const handlePDFDownload = () => {
   onClick={()=>handlePDFDownload()}
   class="w-36 ml-2 mt-2 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
      Download
-    </button>
+  </button>
 
+ {/* <Pdf targetRef={ref} 
+            filename={props.filename} 
+            options= {options}
+            >
+            {({ toPdf }) => <button 
+            class="w-36 ml-2 mt-2 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+            onClick={toPdf}>Download PDF</button>}
+            </Pdf>
+  */}
     <button class="w-36 ml-2 mt-2 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
     
      Share
@@ -244,6 +244,6 @@ const handlePDFDownload = () => {
         </div>
         </div>
     )
-}
+})
 
 export default MiniNavBar

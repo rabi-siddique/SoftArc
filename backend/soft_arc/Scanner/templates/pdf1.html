@@ -12,60 +12,42 @@
        
        
 <style>
-h1{
-height: 100px;
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
-font-weight: 800;
-font-size: 20px;
-background-color: #4654A3;
-color:#fff;
-border-bottom: 1px solid #fff;
-
+html {
+  margin:0;
+  padding:0;
+  font-size:16px;
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
 }
 
-table {
-   
-    border-spacing: 0;
-    width: 90%;
-    border-bottom: 1px solid #fff;
-
-   
-
+thead th, tfoot th {
+  font-family: 'Rock Salt', cursive;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
-  
-th{
-    text-align: center;
-    background-color: #f2f2f2;
-    padding: 8px;
-    font-weight: 600;
-    font-size: 20px;
+th {
+  letter-spacing: 2px;
 }
 
 td {
+  letter-spacing: 1px;
+}
+
+tbody td {
   text-align: center;
-  padding: 8px;
-  font-weight: 500;
-  font-size: 20px;
 }
 
-
-.A{
-background-color: #4654A3;
-color: #fff;
-height: 100px;
-width:100%;
-display: flex;
-justify-content: center;
-align-items: center;
-border-bottom:1px solid #fff ;
-
+tfoot th {
+  text-align: right;
 }
 
+h1{
+  text-align:center;
+}
+
+#A{
+  background-color:#4338CA;
+  color:white;
+  padding-top:12px;
+}
 
   </style>
 
@@ -78,6 +60,8 @@ border-bottom:1px solid #fff ;
 
 <body>
 {% load mytemps %}
+
+<div class="box">
 {% for i in mylist|length|times %}
   <div id = 'A' class="d-flex justify-content-center">
    
@@ -108,9 +92,11 @@ border-bottom:1px solid #fff ;
 
     <div class="overall-container"> 
       
-    <h1><Variables</h1>
+    <h1>Variables </h1>
   
     </div>
+
+
 
 <div> 
     <table id="table">
@@ -207,6 +193,7 @@ border-bottom:1px solid #fff ;
     
 
 {% endfor %}
+</div>
 </body>
 
 

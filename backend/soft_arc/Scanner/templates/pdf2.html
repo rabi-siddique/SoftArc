@@ -8,84 +8,79 @@
        
 <style type="text/css">
 
-.cd-box{
-    width: 100%;
-    margin: 20px;
-    
+
+html {
+  margin:0;
+  padding:0;
+  font-size:16px;
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
 }
 
-.box{
-    width: 250px;
-    border: 1px solid #111;
-    border-radius: 1rem;
-
+p{
+    margin-top:none;
 }
 
 .class-name{
-    text-align: center;
-    font-weight: bold;
-    border-bottom: 1px solid #111;
-    font-weight: 800;
-    font-size: 20px;
-    word-wrap: break-word;
+    margin-top:20px;
+    border-width:1px;
+    border-style:solid;
+    border-color:black;
+    padding-top:12px;
 }
+
 
 
 .variables{
-    margin-top: 10px;
-    border-bottom-width:1px;
-    border-bottom-style:solid;
-    border-bottom-color:black;   
+    margin-top:6px;
+    padding-left:6px;
+    border-width:1px;
+    border-style:solid;
+    border-color:black;
+    padding-top:12px;
 }
 
 .methods{
-    margin-top: 10px;
-    border-bottom-width:1px;
-    border-bottom-style:solid;
-    border-bottom-color:black; 
-    
-}
-
-ul{
-    list-style: none;
-    padding-left: 4px;
-    font-weight: 700;
-    
-    font-size: 20px;
-    word-wrap: break-word;
+    margin-top:6px;
+    padding-left:6px;
+    border-width:1px;
+    border-style:solid;
+    border-color:black;
+    padding-top:12px;
 }
 
 
 .active{
-     font-weight: 700;
-    font-size: 20px;
+    
+    padding-left:6px;
+    border-width:1px;
+    border-style:solid;
+    border-color:black;
+    padding-top:12px;
 }
+
 
 
   </style>
 
 
-
    </head>
-
-
-
 
 <body>
 {% load mytemps %}
 <div class="boxes">
 
-
 <div class="box">
+
 {% for i in mylist|length|times %}
 
             <div class="class-name">
                 {{mylist|index:i|index:0}}
     
             </div>
-
-            <div class="variables">
+<div class="variables">
+        
         {% if mylist|index:i|index:1|index:0|length != 0 %}
+        Variables
         {%for j in mylist|index:i|index:1|index:0|length|times %}
                 <ul>
         {%if mylist|index:i|index:1|index:0|index:j.strip == "public" %}   
@@ -100,14 +95,16 @@ ul{
                 </ul>
         {%endfor%}
         {%else%}
-            <ul>
+            
             No Variables
-            </ul>
+            
         {%endif%}
             </div>
 
+           
             <div class="methods">
         {% if mylist|index:i|index:2|index:0|length != 0 %}
+        Methods
         {%for k in mylist|index:i|index:2|index:0|length|times %}
                 <ul>
         {%if mylist|index:i|index:2|index:0|index:k.strip == "public" %}   
@@ -122,9 +119,9 @@ ul{
                 </ul>
         {%endfor%}
         {%else%}
-            <ul>
+            
             No Methods
-            </ul>
+            
         {%endif%}
             </div>
 
@@ -132,7 +129,7 @@ ul{
                 {% if mylist|index:i|index:3 %}
                 <p>Extends {{mylist|index:i|index:3}}</p>
                 {% else %}
-                <p></p>
+                <p>None</p>
                 {% endif %}
 
 
@@ -145,9 +142,10 @@ ul{
                 {% endif %}
 
 
-            </div>       
+            </div> 
+                
                 {%endfor%}
-            </div>
+          </div>    
     </div>
 
 

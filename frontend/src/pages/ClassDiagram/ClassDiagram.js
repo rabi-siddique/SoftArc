@@ -14,6 +14,7 @@ function ClassDiagram(props) {
     const arr = datareceived[0]
     const ext = datareceived[1]
     let history = useHistory()
+    let cd = "cd"
 
     const clickHandler = ()=>{
         history.goBack()
@@ -24,7 +25,10 @@ function ClassDiagram(props) {
             <div className="goback">
             <ArrowBackIcon onClick={clickHandler}/>
             </div>
-            <MiniNavBar icon_color={icon_color} id={props.id} darkmode={props.darkmode}/>
+            <MiniNavBar 
+            d={cd}
+            icon_color={icon_color} 
+            id={props.id} darkmode={props.darkmode}/>
         <div className="boxes">
             {arr.map(a => (
                 <CDBox clss={a[0]} 

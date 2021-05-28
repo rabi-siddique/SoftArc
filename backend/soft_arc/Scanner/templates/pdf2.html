@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Class Diagram</title>
+       
+       
+<style type="text/css">
+
+.cd-box{
+    width: 100%;
+    margin: 20px;
+    
+}
+
+.box{
+    width: 250px;
+    border: 1px solid #111;
+    border-radius: 1rem;
+
+}
+
+.class-name{
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #111;
+    font-weight: 800;
+    font-size: 20px;
+    word-wrap: break-word;
+}
+
+
+.variables{
+    margin-top: 10px;
+    border-bottom-width:1px;
+    border-bottom-style:solid;
+    border-bottom-color:black;   
+}
+
+.methods{
+    margin-top: 10px;
+    border-bottom-width:1px;
+    border-bottom-style:solid;
+    border-bottom-color:black; 
+    
+}
+
+ul{
+    list-style: none;
+    padding-left: 4px;
+    font-weight: 700;
+    
+    font-size: 20px;
+    word-wrap: break-word;
+}
+
+
+.active{
+     font-weight: 700;
+    font-size: 20px;
+}
+
+
+  </style>
+
+
+
+   </head>
+
+
+
+
+<body>
+{% load mytemps %}
+<div class="boxes">
+
+
+<div class="box">
+{% for i in mylist|length|times %}
+
+            <div class="class-name">
+                {{mylist|index:i|index:0}}
+    
+            </div>
+
+            <div class="variables">
+        {% if mylist|index:i|index:1|index:0|length != 0 %}
+        {%for j in mylist|index:i|index:1|index:0|length|times %}
+                <ul>
+        {%if mylist|index:i|index:1|index:0|index:j.strip == "public" %}   
+        +{{mylist|index:i|index:1|index:1|index:j}}:{{mylist|index:i|index:1|index:2|index:j}}
+        
+        {%elif mylist|index:i|index:1|index:0|index:j.strip == "protected" %}   
+        #{{mylist|index:i|index:1|index:1|index:j}}:{{mylist|index:i|index:1|index:2|index:j}}
+        
+        {%else%}   
+        -{{mylist|index:i|index:1|index:1|index:j}}:{{mylist|index:i|index:1|index:2|index:j}}
+        {%endif%}
+                </ul>
+        {%endfor%}
+        {%else%}
+            <ul>
+            No Variables
+            </ul>
+        {%endif%}
+            </div>
+
+            <div class="methods">
+        {% if mylist|index:i|index:2|index:0|length != 0 %}
+        {%for k in mylist|index:i|index:2|index:0|length|times %}
+                <ul>
+        {%if mylist|index:i|index:2|index:0|index:k.strip == "public" %}   
+        +{{mylist|index:i|index:2|index:2|index:k}}():{{mylist|index:i|index:2|index:1|index:k}}
+        
+        {%elif mylist|index:i|index:1|index:0|index:k.strip == "protected" %}   
+        #{{mylist|index:i|index:2|index:1|index:k}}():{{mylist|index:i|index:2|index:2|index:k}}
+        
+        {%else%}   
+        -{{mylist|index:i|index:2|index:1|index:k}}():{{mylist|index:i|index:2|index:2|index:k}}
+        {%endif%}
+                </ul>
+        {%endfor%}
+        {%else%}
+            <ul>
+            No Methods
+            </ul>
+        {%endif%}
+            </div>
+
+            <div class="active">
+                {% if mylist|index:i|index:3 %}
+                <p>Extends {{mylist|index:i|index:3}}</p>
+                {% else %}
+                <p></p>
+                {% endif %}
+
+
+                {% if mylist|index:i|index:4|length %}
+                {% if extension == '.cpp' %}
+                <p>Extends {{mylist|index:i|index:4|join:", "}}</p>
+                {% else %}  
+                <p>Implements {{mylist|index:i|index:4|join:", "}}</p> 
+                {% endif %}
+                {% endif %}
+
+
+            </div>       
+                {%endfor%}
+            </div>
+    </div>
+
+
+
+</body>
+
+
+</html>

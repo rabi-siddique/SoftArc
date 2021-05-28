@@ -1,8 +1,6 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import GetAppIcon from '@material-ui/icons/GetApp';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
-import { jsPDF } from "jspdf";
-import html2canvas from 'html2canvas';
 import ShareIcon from '@material-ui/icons/Share';
 import { useContext } from 'react'
 import axios from 'axios'
@@ -16,7 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-
+var fileDownload = require('js-file-download');
 
 const styles = (theme) => ({
     root: {
@@ -84,20 +82,6 @@ function MiniNavBar(props) {
         details: ''})
     };
 
-    const printDocument = (divName)=> {
-      const input = document.getElementById(divName);
-      html2canvas(input)
-        .then((canvas) => {
-          const imgData = canvas.toDataURL('image/png');
-          const pdf = new jsPDF();
-          pdf.addImage(imgData, 'JPEG', 0, 0);
-          // pdf.output('dataurlnewwindow');
-          pdf.save("download.pdf");
-        })
-      ;
-    }
-
-
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const config = {
         headers: {
@@ -109,6 +93,8 @@ function MiniNavBar(props) {
 
 
     let url = 'http://127.0.0.1:8000/scanner/save/';
+    let url2 = 'http://127.0.0.1:8000/scanner/download/';
+    
     
     const onClickHandler = async (e) => { // take the event as a parameter here
         e.preventDefault(); // Prevent form submission
@@ -128,8 +114,37 @@ function MiniNavBar(props) {
         }
     }
 
-    
-    
+    const onClickHandler2 = async (e) => { 
+  
+      const data = JSON.stringify({datareceived})
+      try{
+          const resp = await axios.post(url2, data,config)
+          setmsg("Data Saved Successfully.")
+         
+
+      }
+      catch(err){
+          console.log(err.response)
+          if(err.response.data.data){
+              setmsg(err.response.data.data)
+          }
+      }
+  }
+
+  
+
+const handlePDFDownload = () => {
+  const type = props.d
+  const data = JSON.stringify({datareceived,type})
+  axios.post(url2, data,config).then(res => {
+      fileDownload(res.data, 'filename.pdf');
+      console.log(res);
+  }).catch(err => {
+      console.log(err);
+  })
+}
+
+ 
 
     
     return (
@@ -216,7 +231,7 @@ function MiniNavBar(props) {
             
 
   <button 
-  onClick={()=>printDocument(`whole-table`)}
+  onClick={()=>handlePDFDownload()}
   class="w-36 ml-2 mt-2 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
      Download
     </button>

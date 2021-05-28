@@ -22,7 +22,7 @@ from django.views import View
 from django.http import HttpResponse
 from xhtml2pdf import pisa
 import socket
-socket.getaddrinfo('localhost', 8000)
+
 
 ALLOWED_EXTENSIONS = set(['java', 'cs', 'cpp'])
 APP_ROOT = settings.MEDIA_URL
@@ -318,7 +318,7 @@ class UserDataView(APIView):
 
 
 class PDFView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     def __init__(self):
         self.mylist= []
@@ -329,26 +329,42 @@ class PDFView(APIView):
         result = BytesIO()
         pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
         if not pdf.err:
-            return Response(result.getvalue(), content_type='application/pdf')
+            return HttpResponse(result.getvalue(), content_type='application/pdf')
         return None
 
     def post(self,request,format=None):
+        print(request.data)
         data=request.data
-        self.mylist = data['datareceived']
-        print(self.mylist)
-        if data:
-            return Response({"msg":"Data Saved"},status=status.HTTP_201_CREATED)
+        type = data['type']
+        print(type)
+        if type == 'tb':
+            template = get_template('pdf1.html')
+        if type == 'cd':
+            print("Inside CD")
+            template = get_template('pdf2.html')
 
-        return Response(status=status.HTTP_400_BAD_REQUEST)   
-
+        self.mylist = data['datareceived'][0]
+        extension = data['datareceived'][1]
+        context = {
+            "mylist" : self.mylist,
+            "extension": extension
+        }
         
+        html = template.render(context)
+        if type == 'cd':
+            pdf = self.render_to_pdf('pdf2.html', context)
+        else:
+            pdf = self.render_to_pdf('pdf1.html', context)
+        if pdf:
+            response = HttpResponse(pdf, content_type='application/pdf')
+            filename = "DATA_%s.pdf" %("12341231")
+            content = "inline; filename='%s'" %(filename)
+            download = request.GET.get("download")
+            if download:
+                content = "attachment; filename='%s'" %(filename)
+            response['Content-Disposition'] = content
+            return response
+        return HttpResponse("Not found")
 
-    def get(self,request,format=None):
-        pdf = self.render_to_pdf('C:\\Users\\Rabi Siddique\\Desktop\\SoftArc\\backend\\soft_arc\\Scanner\\templates\\pdf1.html', {"mylist":self.mylist})
-        res = HttpResponse(pdf, content_type='application/pdf')
-        fil = "Invoice_%s.pdf" %("12341231")
-        content = "attachment; fil='%s'" %(fil)
-        res['Content-Disposition'] = content
-        return res
-        
-		
+
+     

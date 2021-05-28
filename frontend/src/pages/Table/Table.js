@@ -10,6 +10,7 @@ function Table(props) {
     const icon_color = props.darkmode?"#fff":"#121212"
     let history = useHistory()
     const [divName,setdivName] = useState("")
+    let tb = "tb"
 
     const clickHandler = ()=>{
         history.goBack()
@@ -22,7 +23,9 @@ function Table(props) {
             <div className="goback">
            <ArrowBackIcon  onClick={clickHandler}/>
            </div>
-           <MiniNavBar divName={divName}/>
+           <MiniNavBar 
+           d = {tb}
+           divName={divName}/>
             <TableData setdivName={setdivName}/>
     
         </div>

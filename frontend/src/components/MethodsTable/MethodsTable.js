@@ -39,7 +39,7 @@ function MethodsTable(props) {
 <p class="text-lg text-center font-bold m-5 dark:text-gray-100">Methods</p>
     
     <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-indigo-300">
-    <tr class="text-left border-b-2 border-gray-300  dark:bg-gray-800 dark:text-gray-100">
+    <tr class="text-left border-b-2 border-gray-300  dark:bg-gray-900 dark:text-gray-100">
               
               <div className="hidden sm:contents">
                <th class="px-4 py-3">Modifier</th>

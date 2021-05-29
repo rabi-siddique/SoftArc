@@ -58,6 +58,21 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
   },
+  darkBar: {
+    background: '#6366F1',
+    color:'#fff',
+    //width: `calc(100% - ${theme.spacing(7) + 1}px)`,
+    width: `calc(100% - ${theme.spacing(0) + 1}px)`,
+    
+    [theme.breakpoints.up('sm')]: {
+      width: `calc(100% - ${theme.spacing(9) + 1}px)`,
+    },
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
   appBarShift: {
     
     width: `calc(100% - ${drawerWidth}px)`,
@@ -115,7 +130,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    height:"91vh"
+    
     
     
   },
@@ -150,8 +165,6 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata,logout,apply
     
     let history = useHistory()
     let location = useLocation()
-    const [sidebar,setSidebar] = useState(true)
-    const [loading, setLoading] = useState(true);
     const [color, setColor] = useState("#000");
     const {darktheme, setdarkTheme} = useContext(ThemeContext);
 
@@ -168,7 +181,10 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata,logout,apply
         setOpen(false);
     };
 
-
+    const darkThemeHandler = ()=>{
+      applyDark(userdata.id,userdata.darktheme)
+      setdarkTheme(userdata.darktheme === false ? "light" : "dark")
+    }
     
   useEffect(() => {
     
@@ -186,22 +202,22 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata,logout,apply
   
   return (
     
-    <div className="dark:bg-black">
+    <div className="App">
     
     {isAuthenticated && 
 
     <div className="dashboard">
         {userdata?
-      <div className={userdata.darktheme?"darkmode":"light"}>
-        
+      <div>
         <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="fixed"
-        className={clsx(classes.appBar, {
+        className={clsx( userdata.darktheme?classes.appBar:classes.darkBar, {
           [classes.appBarShift]: open,
         })}
       >
+    
         <Toolbar>
             
           <IconButton
@@ -259,7 +275,7 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata,logout,apply
             <ChevronLeftIcon style={{fill: userdata.darktheme?"#121212":"#ffffff"}}/>}
           </IconButton>
         </div>
-        <Divider style={{background: userdata.darktheme?"#121212":"#ffffff"}}/>
+        <Divider style={{background:"#ffffff"}}/>
 
         <center>
           
@@ -269,57 +285,57 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata,logout,apply
           {open && <h4>{`${userdata.first_name} ${userdata.last_name}`}</h4>}
         </center>
 
-        <Divider style={{background: userdata.darktheme?"#121212":"#ffffff"}}/>
+        <Divider style={{background:"#ffffff"}}/>
 
         <List>
         <Link className="side-link-nav" to="/profile">  
         <ListItem button key={"Profile"}>
-        <ListItemIcon><PersonIcon style={{fill: userdata.darktheme?"#121212":"#ffffff"}}/> </ListItemIcon>
+        <ListItemIcon><PersonIcon style={{fill:"#ffffff"}}/> </ListItemIcon>
         <ListItemText classes={{primary:classes.listItemText}} primary={"Profile"} />
         </ListItem>
         </Link>
 
         <Link className="side-link-nav" to="/help">
         <ListItem button key={"Help"}>
-        <ListItemIcon><HelpIcon style={{fill: userdata.darktheme?"#121212":"#ffffff"}}/> </ListItemIcon>
+        <ListItemIcon><HelpIcon style={{fill:"#ffffff"}}/> </ListItemIcon>
         <ListItemText classes={{primary:classes.listItemText}} primary={"Help"} />
         </ListItem>
         </Link>
 
         <Link className="side-link-nav" to="/scanner">
         <ListItem button key={"Upload"}>
-        <ListItemIcon><PublishIcon style={{fill: userdata.darktheme?"#121212":"#ffffff"}}/> </ListItemIcon>
+        <ListItemIcon><PublishIcon style={{fill:"#ffffff"}}/> </ListItemIcon>
         <ListItemText classes={{primary:classes.listItemText}} primary={"Upload"} />
         </ListItem>
         </Link>
         
     
         </List>
-        <Divider style={{background: userdata.darktheme?"#121212":"#ffffff"}}/>
+        <Divider style={{background:"#ffffff"}}/>
 
         <List>
 
         <Link className="side-link-nav" to="/sv"> 
         <ListItem button key={"Saved"}>
-        <ListItemIcon><SaveAltIcon style={{fill: userdata.darktheme?"#121212":"#ffffff"}}/> </ListItemIcon>
+        <ListItemIcon><SaveAltIcon style={{fill:"#ffffff"}} /> </ListItemIcon>
         <ListItemText classes={{primary:classes.listItemText}} primary={"Saved"} />
         </ListItem>
         </Link>
 
 
         <ListItem button key={"Dark Theme"} 
-           onClick={() => setdarkTheme(darktheme === "dark" ? "light" : "dark")}>
-        <ListItemIcon><InvertColorsIcon style={{fill: userdata.darktheme?"#121212":"#ffffff"}}/> </ListItemIcon>
+           onClick={() => darkThemeHandler()}>
+        <ListItemIcon><InvertColorsIcon style={{fill:"#ffffff"}}/> </ListItemIcon>
         <ListItemText classes={{primary:classes.listItemText}} primary={"Dark Theme"} />
         </ListItem>
 
         <ListItem button key={"Log Out"} onClick={LogOutHandler}>
-        <ListItemIcon><ExitToAppIcon style={{fill: userdata.darktheme?"#121212":"#ffffff"}}/> </ListItemIcon>
+        <ListItemIcon><ExitToAppIcon style={{fill:"#ffffff"}}/> </ListItemIcon>
         <ListItemText classes={{primary:classes.listItemText}} primary={"Log Out"} />
         </ListItem>
         </List>
       </Drawer>
-      <main className={classes.content}>
+      <main className="flex-grow h-screen bg-gray-200 dark:bg-gray-600">
         <div className={classes.toolbar} />
         
         <Switch>

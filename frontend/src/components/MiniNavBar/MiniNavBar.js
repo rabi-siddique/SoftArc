@@ -145,12 +145,14 @@ const handlePDFDownload = () => {
             maxWidth={'sm'}
             onClose={handleClose} 
             aria-labelledby="customized-dialog-title" open={open}>
-    <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+    <DialogTitle id="customized-dialog-title" 
+        className="dark:bg-gray-900 dark:text-gray-100"
+    onClose={handleClose}>
     <SaveAltIcon/> Save Results
     </DialogTitle>
-        <DialogContent dividers>
+        <DialogContent  className="dark:bg-gray-900 dark:text-gray-100" dividers>
             
-        <div class="flex w-full  items-center justify-center bg-grey-lighter">
+        <div class="flex w-full  items-center justify-center bg-grey-lighter ">
 
         {msg?
 
@@ -165,7 +167,7 @@ const handlePDFDownload = () => {
                 <div className="mt-2">
                 <p>Name of the Project</p>
 
-                <input className="appearance-none block w-80 bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
+                <input className="appearance-none block w-80 bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white dark:bg-gray-800 dark:text-gray-100 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 border-gray-300 border shadow" 
                 id="grid-first-name" 
                 type="text" 
                 name="name" 
@@ -180,7 +182,7 @@ const handlePDFDownload = () => {
 
                 <textarea
                   rows={3}
-                  className="appearance-none block w-80 bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
+                  className="appearance-none block w-80 bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white dark:bg-gray-800 dark:text-gray-100 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 border-gray-300 border shadow " 
                   type="text" 
                   required
                   name="details" 
@@ -190,7 +192,7 @@ const handlePDFDownload = () => {
                 </div>
       
                 <div className="mt-2">
-<button class="w-80 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+<button class="w-40 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Save
             </button>
             </div>
@@ -204,7 +206,7 @@ const handlePDFDownload = () => {
 
 
         </DialogContent>
-        <DialogActions>
+        <DialogActions className="dark:bg-gray-900 dark:text-gray-100">
             <button onClick={handleClose} class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Close
             </button>
@@ -214,7 +216,7 @@ const handlePDFDownload = () => {
    
    
  
-  <div className="w-11/12 mx-auto mb-4 my-6 md:w-5/12 sm:px-10 sm:py-6 py-4 px-4 dark:bg-gray-800 rounded-md">
+  <div className="w-11/12 mx-auto mb-4 my-6 md:w-5/12 sm:px-10 sm:py-6 py-4 px-4 dark:bg-gray-900 rounded-md">
               
     <button onClick={handleClickOpen} class="w-36 ml-2 mt-2 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
      Save

@@ -17,7 +17,7 @@ function Buttons() {
             <ArrowBackIcon onClick={clickHandler} />
             </div>
 
-    <div className="w-11/12 mx-auto mb-4 my-6 md:w-5/12 shadow sm:px-10 sm:py-6 py-4 px-4 bg-white dark:bg-gray-800 rounded-md">
+    <div className="w-11/12 mx-auto mb-4 my-6 md:w-5/12 shadow sm:px-10 sm:py-6 py-4 px-4 bg-white dark:bg-gray-900 rounded-md">
           
     <p className="mt-8 text-lg text-gray-800 dark:text-gray-100 pb-3 font-semibold">
                     To view the Table, click the button below.

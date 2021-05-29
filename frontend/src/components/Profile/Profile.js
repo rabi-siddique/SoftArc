@@ -140,13 +140,18 @@ function Profile({imagename,userdata,changeFirstName,changeLastName,
 
 
 
-<Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+<Dialog 
+
+maxWidth={'sl'}
+onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+        <DialogTitle id="customized-dialog-title" 
+        className="dark:bg-gray-900 dark:text-gray-100"
+        onClose={handleClose}>
           Upload Image
         </DialogTitle>
-        <DialogContent dividers>
+        <DialogContent className="dark:bg-gray-900 dark:text-gray-500" dividers>
             
-        <div class="flex w-full  items-center justify-center bg-grey-lighter">
+        <div class="flex w-full  items-center justify-center bg-grey-lighter ">
         <form method="patch" encType="multipart/formdata" 
                 onSubmit={onClickHandler}>
 
@@ -182,7 +187,7 @@ alt="image" />}
 
 
         </DialogContent>
-        <DialogActions>
+        <DialogActions className="dark:bg-gray-900 dark:text-gray-100">
             <button onClick={handleClose} class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Close
             </button>
@@ -363,7 +368,7 @@ alt="image" />}
                 }
 
             </div>
-            <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b dark:hover:bg-indigo-900 text-white">
+            <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b dark:hover:bg-gray-900 text-white">
                 <p className="text-gray-600 dark:text-gray-300">
                     About
                 </p>

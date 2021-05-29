@@ -115,7 +115,10 @@ function Upload(props) {
                 <p className="text-lg text-gray-800 dark:text-gray-100 pb-3 font-semibold">
                     Upload Your Files</p>
 
-                <p className="text-sm text-gray-600 dark:text-gray-600 pb-3 font-normal">
+                <p className="text-sm text-gray-600 
+                
+                
+                pb-3 font-normal">
                 <form method="post" 
             encType="multipart/form-data"
             onSubmit={onClickHandler}

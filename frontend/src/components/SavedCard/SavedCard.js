@@ -150,25 +150,29 @@ function SavedCard(props) {
         <div className="Card">
 
         <Dialog 
+            
             fullWidth={true}
             maxWidth={'sl'}
             onClose={handleClose} 
             aria-labelledby="customized-dialog-title" open={open}>
-    <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+    <DialogTitle id="customized-dialog-title" 
+    className="dark:bg-gray-900 dark:text-gray-100"
+    onClose={handleClose}>
     <EditIcon/> Edit Results
     </DialogTitle>
-        <DialogContent dividers>
+        <DialogContent dividers className="dark:bg-gray-900 dark:text-gray-100">
             
 
-  <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                <p className="text-gray-600">
+  <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b dark:hover:bg-gray-900">
+                <p className="text-gray-600 dark:text-gray-300">
                     Name
                 </p>
                 {!namefield?
-                <p>
+                <p className="text-gray-800 dark:text-gray-100">
                     {name}
                 </p>
-                : <input className="appearance-none block w-11/12 bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
+                : <input 
+    className="appearance-none block w-11/12 bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white dark:bg-gray-800 dark:text-gray-100 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 border-gray-300 border shadow" 
                 id="grid-first-name" 
                 type="text" 
                 defaultValue={name}
@@ -195,12 +199,12 @@ function SavedCard(props) {
             </div>
 
 
-   <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-   <p className="text-gray-600">
+   <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b dark:hover:bg-gray-900">
+   <p className="text-gray-600 dark:text-gray-300">
        Details
    </p>
    {!detailfield?
-   <p>
+   <p className="text-gray-800 dark:text-gray-100">
        {details}
    </p>
    : 
@@ -209,7 +213,7 @@ function SavedCard(props) {
      id="details"
      name="details"
      rows={3}
-     className="appearance-none block w-11/12 bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
+className="appearance-none block w-11/12 bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white dark:bg-gray-800 dark:text-gray-100 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 border-gray-300 border shadow" 
     defaultValue={details}
    onChange={(e)=>{setDetails(e.target.value)}}
    />
@@ -220,13 +224,13 @@ function SavedCard(props) {
    {!detailfield?
    <div>
    <button onClick={()=>{setDetailField(true)}}
-   className="w-3/4 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+   className="w-1/2 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
    Edit
    </button>
    </div>:
    <div>
    <button onClick={onChangeDetails}
-   className="w-3/4 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+   className="w-1/2 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
    Save
    </button>
    </div>
@@ -238,21 +242,22 @@ function SavedCard(props) {
 
 
         </DialogContent>
-        <DialogActions>
+        <DialogActions className="dark:bg-gray-900">
             <button onClick={handleClose} class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Close
             </button>
         </DialogActions>
       </Dialog>
 
-<div className="w-11/12 mx-auto mb-4 my-6 md:w-5/12 shadow sm:px-10 sm:py-6 py-4 px-4 bg-white dark:bg-gray-800 rounded-md">
+<div className="w-11/12 mx-auto mb-4 my-6 md:w-5/12 shadow sm:px-10 sm:py-6 py-4 px-4 bg-white dark:bg-gray-900 rounded-md">
 
 <div className="flex justify-end">
 <Menu as="div" className="relative inline-block text-left">
       {({ open }) => (
         <>
           <div>
-            <Menu.Button className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+            <Menu.Button 
+className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 border-gray-300 border shadow">
               Options
               <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
             </Menu.Button>
@@ -270,7 +275,7 @@ function SavedCard(props) {
           >
             <Menu.Items
               static
-              className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+              className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 border-gray-300 border shadow"
             >
               <div className="py-1">
                 <Menu.Item>
@@ -278,8 +283,8 @@ function SavedCard(props) {
                     <div
                       onClick={handleClickOpen}
                       className={classNames(
-                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                        'block px-4 py-2 text-sm'
+                        active ? 'bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-gray-100' : 'text-gray-700',
+                        'block px-4 py-2 text-sm dark:text-gray-100 '
                       )}
                     >
                       
@@ -293,8 +298,8 @@ function SavedCard(props) {
                     <div onClick={ClickC}
                       
                       className={classNames(
-                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                        'block px-4 py-2 text-sm'
+                        active ? 'bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-gray-100' : 'text-gray-700',
+                        'block px-4 py-2 text-sm dark:text-gray-100'
                       )}
                     >
                       Delete

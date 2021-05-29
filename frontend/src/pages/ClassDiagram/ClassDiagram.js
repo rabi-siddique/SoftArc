@@ -26,7 +26,7 @@ function ClassDiagram(props) {
     }
   
     return (
-        <div className="cd-box">
+        <div className="bg-gray-200 dark:bg-gray-600">
             <div className="goback">
             <ArrowBackIcon onClick={clickHandler}/>
             </div>

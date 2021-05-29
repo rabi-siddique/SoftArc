@@ -90,7 +90,7 @@ else{
 }
   
     return (
-        <div className="w-1/2 mx-auto mb-4 my-6 md:w-72 shadow sm:px-0 sm:py-6 py-4 px-4 bg-white dark:bg-gray-800 rounded-xl">
+        <div className="w-1/2 mx-auto mb-4 my-6 md:w-72 shadow sm:px-0 sm:py-6 py-4 px-4 bg-white dark:bg-gray-900 rounded-xl">
             <p className="break-all text-sm sm:text-lg px-0 sm:px-2 border-b-2 border-black text-lg text-gray-800 dark:text-gray-100 pb-1 font-semibold">
                    
              {clss}

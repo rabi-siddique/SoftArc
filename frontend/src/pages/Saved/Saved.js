@@ -24,7 +24,7 @@ function Saved(props) {
 
 if(data.length !== 0){
     return (
-        <div className="flex flex-col bg-gray-200 dark:bg-gray-600">
+        <div className="flex flex-col min-h-screen bg-gray-200 dark:bg-gray-600">
             
             {
                 data.map(

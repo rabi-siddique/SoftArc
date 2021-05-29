@@ -210,8 +210,8 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm,message,messagecle
                     </div>
                 </div>
                 <form onSubmit={e => onSubmit(e)}
-                class="w-full lg:w-1/2 flex justify-center bg-white dark:bg-gray-900">
-                    <div class="w-full sm:w-4/6 md:w-3/6 lg:w-2/3 text-gray-800 dark:text-gray-100 flex flex-col justify-center px-2 sm:px-0 py-16">
+                class="w-full lg:w-1/2 flex justify-center bg-white">
+                    <div class="w-full sm:w-4/6 md:w-3/6 lg:w-2/3 text-gray-800 flex flex-col justify-center px-2 sm:px-0 py-16">
                         <div class="px-2 sm:px-6">
                 <h3 class="text-2xl sm:text-3xl md:text-2xl font-bold leading-tight">
         Setting New Password</h3>
@@ -244,7 +244,7 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm,message,messagecle
                                     value={new_password}
                                     onChange={e => onChange(e)}
                                     minLength = '8'
-                                    class="h-10 px-2 w-full rounded mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 border-gray-300 border shadow"/>
+                                    class="h-10 px-2 w-full rounded mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 border-gray-300 border shadow"/>
                                 </div>
 
                                 <div class="flex flex-col mt-5">
@@ -259,7 +259,7 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm,message,messagecle
                                     onChange={e => onChange(e)}
                                     minLength='8'
                                     type="password"
-                                    class="h-10 px-2 w-full rounded mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 border-gray-300 border shadow" />
+                                    class="h-10 px-2 w-full rounded mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 border-gray-300 border shadow" />
                                 </div>
 
                             </div>}

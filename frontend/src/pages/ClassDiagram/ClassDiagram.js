@@ -26,9 +26,9 @@ function ClassDiagram(props) {
     }
   
     return (
-        <div className="bg-gray-200 dark:bg-gray-600">
+        <div className="min-h-screen bg-gray-200 dark:bg-gray-600">
             <div className="goback">
-            <ArrowBackIcon onClick={clickHandler}/>
+            <ArrowBackIcon style={{fill:props.darkmode?"#121212":"#fff"}} onClick={clickHandler}/>
             </div>
             <MiniNavBar 
             d={cd}

@@ -32,7 +32,6 @@ import PublishIcon from '@material-ui/icons/Publish';
 import PersonIcon from '@material-ui/icons/Person';
 import HelpIcon from '@material-ui/icons/Help';
 import {Avatar} from '@material-ui/core'
-import Button from '@material-ui/core/Button';
 import {logout,applyDark} from './actions/auth';
 import { ThemeContext } from "./context/ThemeContext";
 
@@ -76,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   appBarShift: {
     
     width: `calc(100% - ${drawerWidth}px)`,
-    height:"9vh",
+    
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -202,7 +201,7 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata,logout,apply
   
   return (
     
-    <div className="App">
+    <div className="bg-gray-900">
     
     {isAuthenticated && 
 
@@ -272,7 +271,7 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata,logout,apply
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon style={{fill: userdata.darktheme?"#121212":"#ffffff"}} /> : 
-            <ChevronLeftIcon style={{fill: userdata.darktheme?"#121212":"#ffffff"}}/>}
+            <ChevronLeftIcon style={{fill:"#ffffff"}}/>}
           </IconButton>
         </div>
         <Divider style={{background:"#ffffff"}}/>
@@ -288,54 +287,63 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata,logout,apply
         <Divider style={{background:"#ffffff"}}/>
 
         <List>
+          <div className="hover:bg-indigo-500">
         <Link className="side-link-nav" to="/profile">  
         <ListItem button key={"Profile"}>
         <ListItemIcon><PersonIcon style={{fill:"#ffffff"}}/> </ListItemIcon>
         <ListItemText classes={{primary:classes.listItemText}} primary={"Profile"} />
         </ListItem>
         </Link>
+        </div>
 
+        <div className="hover:bg-indigo-500">
         <Link className="side-link-nav" to="/help">
         <ListItem button key={"Help"}>
         <ListItemIcon><HelpIcon style={{fill:"#ffffff"}}/> </ListItemIcon>
         <ListItemText classes={{primary:classes.listItemText}} primary={"Help"} />
         </ListItem>
         </Link>
+        </div>
 
+        <div className="hover:bg-indigo-500">
         <Link className="side-link-nav" to="/scanner">
         <ListItem button key={"Upload"}>
         <ListItemIcon><PublishIcon style={{fill:"#ffffff"}}/> </ListItemIcon>
         <ListItemText classes={{primary:classes.listItemText}} primary={"Upload"} />
         </ListItem>
         </Link>
-        
+        </div>
     
         </List>
         <Divider style={{background:"#ffffff"}}/>
 
         <List>
-
+        <div className="hover:bg-indigo-500">
         <Link className="side-link-nav" to="/sv"> 
         <ListItem button key={"Saved"}>
         <ListItemIcon><SaveAltIcon style={{fill:"#ffffff"}} /> </ListItemIcon>
         <ListItemText classes={{primary:classes.listItemText}} primary={"Saved"} />
         </ListItem>
         </Link>
+</div>
 
-
-        <ListItem button key={"Dark Theme"} 
+<div className="hover:bg-indigo-500">
+        <ListItem button key={"Apply Dark Theme"} 
            onClick={() => darkThemeHandler()}>
         <ListItemIcon><InvertColorsIcon style={{fill:"#ffffff"}}/> </ListItemIcon>
-        <ListItemText classes={{primary:classes.listItemText}} primary={"Dark Theme"} />
+        <ListItemText classes={{primary:classes.listItemText}} primary={userdata.darktheme?"Themeify Dark":"Themify Light"} />
         </ListItem>
+        </div>
 
+        <div className="hover:bg-indigo-500">
         <ListItem button key={"Log Out"} onClick={LogOutHandler}>
         <ListItemIcon><ExitToAppIcon style={{fill:"#ffffff"}}/> </ListItemIcon>
         <ListItemText classes={{primary:classes.listItemText}} primary={"Log Out"} />
         </ListItem>
+        </div>
         </List>
       </Drawer>
-      <main className="flex-grow h-screen bg-gray-200 dark:bg-gray-600">
+      <main className="flex-grow h-full bg-gray-200 dark:bg-gray-600">
         <div className={classes.toolbar} />
         
         <Switch>
@@ -346,8 +354,10 @@ function App({checkAuthenticated,load_user,isAuthenticated,userdata,logout,apply
 
             <Route exact path='/scanner' component=
             {() => <Upload id={userdata.id}/> } />
-            <Route exact path='/buttons' component={Buttons} />
-            <Route exact path='/help' component={Help} />
+            <Route exact path='/buttons' 
+            component={() => <Buttons darkmode={userdata.darktheme} /> } />
+            <Route exact path='/help' 
+            component={() => <Help darkmode={userdata.darktheme} /> }  />
 
             <Route exact path='/cd' 
             component={() => <ClassDiagram darkmode={userdata.darktheme} id={userdata.id}/> } />

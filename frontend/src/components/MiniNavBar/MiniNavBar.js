@@ -216,7 +216,7 @@ const handlePDFDownload = () => {
    
    
  
-  <div className="w-11/12 mx-auto mb-4 my-6 md:w-5/12 sm:px-10 sm:py-6 py-4 px-4 dark:bg-gray-900 rounded-md">
+  <div className="w-11/12 flex justify-center mx-auto mb-4 my-6 md:w-5/12 sm:px-10 sm:py-6 py-4 px-4 dark:bg-gray-900 rounded-md">
               
     <button onClick={handleClickOpen} class="w-36 ml-2 mt-2 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
      Save

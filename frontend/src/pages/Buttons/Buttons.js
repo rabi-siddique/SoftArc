@@ -4,7 +4,7 @@ import {Link,useHistory} from 'react-router-dom'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 
-function Buttons() {
+function Buttons(props) {
     let history = useHistory()
 
     const clickHandler = ()=>{
@@ -12,9 +12,9 @@ function Buttons() {
     }
    
     return (
-        <div className="h-full bg-gray-200 dark:bg-gray-600">
+        <div className="h-screen bg-gray-200 dark:bg-gray-600">
             <div className="goback">
-            <ArrowBackIcon onClick={clickHandler} />
+            <ArrowBackIcon style={{fill:props.darkmode?"#121212":"#fff"}} onClick={clickHandler} />
             </div>
 
     <div className="w-11/12 mx-auto mb-4 my-6 md:w-5/12 shadow sm:px-10 sm:py-6 py-4 px-4 bg-white dark:bg-gray-900 rounded-md">

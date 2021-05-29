@@ -101,7 +101,7 @@ function Upload(props) {
     }    
 
     return (
-<div className="flex flex-col justify-center items-center h-full bg-gray-200 dark:bg-gray-600">
+<div className="flex flex-col justify-center items-center h-screen bg-gray-200 dark:bg-gray-600">
             
 
 {fileNo !== 0 && 

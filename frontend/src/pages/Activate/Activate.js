@@ -178,9 +178,9 @@ const Activate = ({ verify, match }) => {
                     </div>
                     
                     <div
-                    class="w-full lg:w-1/2 flex justify-center bg-white dark:bg-gray-900">
+                    class="w-full lg:w-1/2 flex justify-center bg-white">
                         
-                        <div class="w-full sm:w-4/6 md:w-3/6 lg:w-2/3 text-gray-800 dark:text-gray-100 flex flex-col justify-center px-2 sm:px-0 py-16">
+                        <div class="w-full sm:w-4/6 md:w-3/6 lg:w-2/3 text-gray-800 flex flex-col justify-center px-2 sm:px-0 py-16">
                             <div class="px-2 sm:px-6">
                                 <h3 class="text-2xl sm:text-3xl md:text-2xl font-bold leading-tight">Account Verification</h3>
                             </div>

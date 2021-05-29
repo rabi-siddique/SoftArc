@@ -54,7 +54,7 @@ function TabPanel(props) {
 
   
   
-export default function Help() {
+export default function Help(props) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
   
@@ -63,21 +63,22 @@ export default function Help() {
     };
 
     return (
-      <div className="helpcontainer">
+      <div className="w-full h-screen bg-white dark:bg-gray-900">
         <div className={classes.root}>
           <AppBar position="static" color="default">
             <Tabs
             
               value={value}
               onChange={handleChange}
+              className="dark:bg-gray-800"
               indicatorColor="primary"
               textColor="primary"
               variant="scrollable"
               scrollButtons="auto"
               centered
             >
-              <Tab label="FAQs" {...a11yProps(0)} />
-              <Tab label="Tutorial" {...a11yProps(1)} />
+              <Tab label={<span style={{ color: props.darkmode?'#111827':'#F3F4F6' }}>FAQs</span>} {...a11yProps(0)} />
+              <Tab label={<span style={{ color: props.darkmode?'#111827':'#F3F4F6' }}>Tutorial</span>}  {...a11yProps(1)} />
              {/* <Tab label="Email" {...a11yProps(2)} />*/}
             </Tabs>
           </AppBar>

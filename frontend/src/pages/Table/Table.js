@@ -25,9 +25,9 @@ function Table(props) {
  
     
     return (
-        <div className="w-full bg-gray-200 dark:bg-gray-600">
+        <div className="w-full min-h-screen bg-gray-200 dark:bg-gray-600">
             <div className="goback">
-           <ArrowBackIcon  onClick={clickHandler}/>
+           <ArrowBackIcon style={{fill:props.darkmode?"#121212":"#fff"}} onClick={clickHandler}/>
            </div>
            <MiniNavBar 
            d = {tb}

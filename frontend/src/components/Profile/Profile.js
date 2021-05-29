@@ -136,10 +136,7 @@ function Profile({imagename,userdata,changeFirstName,changeLastName,
     if(userdata){
 
     return (
-        <div className="profile">
-
-
-
+<div className="h-screen bg-white dark:bg-gray-900">
 <Dialog 
 
 maxWidth={'sl'}
@@ -256,6 +253,15 @@ alt="image" />}
             </p>
         </div>
         <div>
+        <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b dark:hover:bg-gray-900 text-white">
+                <p className="text-gray-600 dark:text-gray-300">
+                    Email Address
+                </p>
+                <p className="text-gray-800 dark:text-gray-100">
+                    {userdata.email}  
+                </p>
+                
+            </div>
             <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b dark:hover:bg-gray-900 text-white">
                 <p className="text-gray-600 dark:text-gray-300">
                     First Name
@@ -322,19 +328,7 @@ alt="image" />}
                 </div>
                 }
             </div>
-            <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b dark:hover:bg-gray-900 text-white">
-                <p className="text-gray-600 dark:text-gray-300">
-                    Email Address
-                </p>
-                <p className="text-gray-800 dark:text-gray-100">
-                    {userdata.email}  
-                </p>
-                <div className="ml-9">
-                <button className=" w-2/3 bg-indigo-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">
-                Edit
-                </button>
-                </div>
-            </div>
+            
             <div className="md:grid md:grid-cols-3 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b dark:hover:bg-gray-900 text-white">
                 <p className="text-gray-600 dark:text-gray-300">
                     UserName

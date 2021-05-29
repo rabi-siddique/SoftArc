@@ -193,8 +193,8 @@ function ResetPassword({reset_password,messageclear,message}) {
                         </div>
                     </div>
                     <form onSubmit={e => onSubmit(e)}
-                    class="w-full lg:w-1/2 flex justify-center bg-white dark:bg-gray-900">
-                        <div class="w-full sm:w-4/6 md:w-3/6 lg:w-2/3 text-gray-800 dark:text-gray-100 flex flex-col justify-center px-2 sm:px-0 py-16">
+                    class="w-full lg:w-1/2 flex justify-center bg-white">
+                        <div class="w-full sm:w-4/6 md:w-3/6 lg:w-2/3 text-gray-800 flex flex-col justify-center px-2 sm:px-0 py-16">
                             <div class="px-2 sm:px-6">
                     <h3 class="text-2xl sm:text-3xl md:text-2xl font-bold leading-tight">
             Password Request</h3>
@@ -227,7 +227,7 @@ function ResetPassword({reset_password,messageclear,message}) {
                                     value={email}
                                 onChange={e => onChange(e)}
                                    
-                                    class="h-10 px-2 w-full rounded mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 border-gray-300 border shadow" type="email" />
+                                    class="h-10 px-2 w-full rounded mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 border-gray-300 border shadow" type="email" />
                                 </div>
 
                                 </div>}

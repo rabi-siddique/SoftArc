@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Data } from './Data';
-import { IconContext } from 'react-icons';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import './Accordion.css'

@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react'
 import {Link,useHistory} from 'react-router-dom'
 import './Login.css'
 import {connect} from 'react-redux'
-import Logo from './SoftArcLogo.jpg'
 import {login,messageclear} from '../../actions/auth'
 import axios from 'axios'
 import CloseIcon from '@material-ui/icons/Close';

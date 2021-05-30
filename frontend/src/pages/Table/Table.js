@@ -32,6 +32,8 @@ function Table(props) {
            <MiniNavBar 
            d = {tb}
            ref={ref}
+           email={props.email}
+           darkmode = {props.darkmode}
            id = {props.id}
            filename="Table.pdf"
            divName={divName}/>

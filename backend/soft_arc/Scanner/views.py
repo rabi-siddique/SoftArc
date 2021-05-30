@@ -21,6 +21,7 @@ from django.template.loader import get_template
 from django.views import View
 from django.http import HttpResponse
 from xhtml2pdf import pisa
+from django.core.mail import EmailMessage
 import socket
 
 
@@ -366,5 +367,61 @@ class PDFView(APIView):
             return response
         return HttpResponse("Not found")
 
+class ShareView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def __init__(self):
+        self.mylist= []
+
+    def render_to_pdf(self,template_src, context_dict={}):
+        template = get_template(template_src)
+        html  = template.render(context_dict)
+        result = BytesIO()
+        pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+        if not pdf.err:
+            return HttpResponse(result.getvalue(), content_type='application/pdf')
+        return None
+
+    def post(self,request,format=None):
+        print(request.data)
+        data=request.data
+        type = data['type']
+        print(type)
+        if type == 'tb':
+            template = get_template('pdf1.html')
+        if type == 'cd':
+            print("Inside CD")
+            template = get_template('pdf2.html')
+
+        self.mylist = data['datareceived'][0]
+        extension = data['datareceived'][1]
+        context = {
+            "mylist" : self.mylist,
+            "extension": extension
+        }
+        
+        html = template.render(context)
+       
+        if type == 'cd':
+            pdf = self.render_to_pdf('pdf2.html', context)
+        else:
+            pdf = self.render_to_pdf('pdf1.html', context)
+        if pdf:
+            result = BytesIO()
+            pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)#, link_callback=fetch_resources)
+            pdf = result.getvalue()
+            email = EmailMessage(
+            'Sharing Results.',
+            'Hey, I am sharing this PDF which I genereated using SoftArc.',
+            data['usermail'],
+            data['receivers'],
+            )
+
+            email.attach("Results.pdf", pdf, 'application/pdf')
+            email.send()
+            return Response({'msg':'Mail Sent Successfully'})
+            
+            
+        return HttpResponse("Not found")
 
      

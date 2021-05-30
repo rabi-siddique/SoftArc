@@ -9,5 +9,6 @@ urlpatterns = [
     path('update/<int:pk>/',views.UserDataView.as_view(),name="updatedata"),
     path('delete/<int:pk>/',views.UserDataView.as_view(),name="deletedata"),
     path('download/',views.PDFView.as_view(),name="downloadpdf"),
+    path('share/',views.ShareView.as_view(),name="sharepdf"),
 ]
 

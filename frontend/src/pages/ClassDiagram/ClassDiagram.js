@@ -35,6 +35,7 @@ function ClassDiagram(props) {
             ref={ref}
             filename="ClassDiagram.pdf"
             icon_color={icon_color} 
+            email={props.email}
             id={props.id} darkmode={props.darkmode}/>
 
         <div className="boxes" ref={ref}>

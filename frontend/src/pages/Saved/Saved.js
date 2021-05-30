@@ -53,7 +53,7 @@ if(data.length !== 0){
     }
     else{
         return (
-            <div className="h-full flex justify-center items-center bg-gray-200 dark:bg-gray-600">
+            <div className="min-h-screen flex justify-center items-center bg-gray-200 dark:bg-gray-600">
             <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4 dark:text-gray-100">
             No Items Saved. Nothing to Show.
             </h1>

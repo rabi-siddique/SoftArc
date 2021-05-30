@@ -16,47 +16,17 @@ html {
   font-family: 'helvetica neue', helvetica, arial, sans-serif;
 }
 
-p{
-    margin-top:none;
-}
 
 .class-name{
+    background-color:#4338CA;
+    color:white;
+    padding-top:12px;
     margin-top:20px;
-    border-width:1px;
-    border-style:solid;
-    border-color:black;
-    padding-top:12px;
-}
-
-
-
-.variables{
-    margin-top:6px;
-    padding-left:6px;
-    border-width:1px;
-    border-style:solid;
-    border-color:black;
-    padding-top:12px;
-}
-
-.methods{
-    margin-top:6px;
-    padding-left:6px;
-    border-width:1px;
-    border-style:solid;
-    border-color:black;
-    padding-top:12px;
-}
-
-
-.active{
+    margin-bottom:12px;
     
-    padding-left:6px;
-    border-width:1px;
-    border-style:solid;
-    border-color:black;
-    padding-top:12px;
 }
+
+
 
 
 
@@ -128,8 +98,6 @@ p{
             <div class="active">
                 {% if mylist|index:i|index:3 %}
                 <p>Extends {{mylist|index:i|index:3}}</p>
-                {% else %}
-                <p>None</p>
                 {% endif %}
 
 

@@ -91,14 +91,14 @@ else{
   
     return (
         <div className="w-1/2 mx-auto mb-4 my-6 md:w-72 shadow sm:px-0 sm:py-6 py-4 px-4 bg-white dark:bg-gray-900 rounded-xl">
-            <p className="break-all text-sm sm:text-lg px-0 sm:px-2 border-b-2 border-black text-lg text-gray-800 dark:text-gray-100 pb-1 font-semibold">
+            <p className="pl-2 pb-2 break-all text-sm sm:text-lg px-0 sm:px-2 border-b-2 border-black text-lg text-gray-800 dark:text-gray-100 pb-1 font-semibold dark:border-gray-100">
                    
              {clss}
             </p>
 
             <div className="variables">
                 <ul>
-                <p className="break-all px-0 sm:px-2 border-b-2 border-black text-sm sm:text-lg text-gray-800 dark:text-gray-100 pb-1 font-semibold">
+                <p className="pl-2 pb-2 pt-2 break-all px-0 sm:px-2 border-b-2 border-black text-sm sm:text-lg text-gray-800 dark:text-gray-100 pb-1 font-semibold dark:border-gray-100">
                 {v}
                 </p>
                 </ul>
@@ -106,12 +106,41 @@ else{
 
             <div className="methods">
             <ul>
-                <p className="break-all text-sm sm:text-lg px-0 sm:px-2  text-lg text-gray-800 dark:text-gray-100 pb-1 font-semibold">
+                <p className="pl-2 pb-2 pt-2 break-all border-b-2 border-black dark:border-gray-100 text-sm sm:text-lg px-0 sm:px-2  text-lg text-gray-800 dark:text-gray-100 pb-1 font-semibold">
                 {m}
                 </p>
             </ul>
             </div>
 
+            <div class="w-full lg:w-1/2 ">
+                   
+                    
+                   <details class="mb-1">
+                   <summary class="font-semibold bg-white dark:text-gray-100 dark:bg-gray-900 rounded-md py-2 px-2">
+                      Extends 
+                     </summary>
+        
+                     <span class="pl-4 font-semibold dark:text-gray-200">
+                     {extended_class?extended_class:"None"}
+                     </span>
+                     </details>
+                  
+                 </div>
+
+            <div class="w-full lg:w-1/2 ">
+                   
+                    
+                   <details class="mb-1">
+                   <summary class="font-semibold bg-white dark:text-gray-100 dark:bg-gray-900 rounded-md py-2 px-2">
+                       Implements 
+                     </summary>
+        
+                     <span class="pl-4 text-gray-900 font-semibold dark:text-gray-200">
+                     {interfaces.length !==0 ? interfaces.join(", "):"None"}
+                     </span>
+                     </details>
+                  
+                 </div>
          {/*   <div className="accordian">
             <IconButton onClick={clickHandler}>
             <ArrowDownwardIcon style={{fill: props.icon_color}}/>

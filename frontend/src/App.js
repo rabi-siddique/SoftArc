@@ -35,7 +35,6 @@ import {Avatar} from '@material-ui/core'
 import {logout,applyDark} from './actions/auth';
 import { ThemeContext } from "./context/ThemeContext";
 
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({

@@ -11,16 +11,7 @@
     padding: 20px;
 }
 
-.home-nav button{
-    width: 10rem;
-    height: 3rem;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    background-color: #4654A3;
-    color:#fff;
-    cursor:pointer;
-}
+
 
 .home-mid-text{
     display: flex;
@@ -41,15 +32,4 @@
     max-width: 40ch;
 }
 
-.home-mid-text button{
-    width: 10rem;
-    height: 3rem;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    background-color: #4654A3;
-    color:#fff;
-    margin-top: 40px;
-    cursor: pointer;  
-}
 
